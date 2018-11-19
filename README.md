@@ -31,4 +31,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 `Donkerblauw: #283038`\
 `Oranje: #F49900`\
 `Groen: #71b643`\
-`Lichtblauw: #08ace1`\
+`Lichtblauw: #08ace1`
