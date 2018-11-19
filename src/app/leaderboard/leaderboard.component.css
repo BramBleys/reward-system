@@ -1,8 +1,17 @@
-.leaderboard-image {
-  width: 100px;
-  float: left;
+#leaderboard{
+  background-color: gray;
+  border-radius: 2px;
 }
 
-.leaderboard-title {
-  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+.leaderboard-title{
+ text-align: center;
+ padding: 20px !important;
+}
+#leaderboard-table{
+  width: 100%;
+  text-align: center;
+}
+
+tr{
+  padding: 10px;
 }
