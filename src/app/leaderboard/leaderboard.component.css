@@ -1,8 +1,8 @@
-.leaderboard-image {
-  width: 100px;
-  float: left;
+.card{
+  height: 100%;
 }
 
-.leaderboard-title {
-  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+.card-body{
+  padding: 0;
 }
+
