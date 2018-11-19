@@ -7,7 +7,7 @@ nav{
 }
 
 .nav-item{
-    position: absolute;
+    position: relative;
     right:10px;
 }
 
