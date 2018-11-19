@@ -1,0 +1,25 @@
+<form class="login-form container">
+  <table class="login-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="login-full-width">
+          <input matInput placeholder="Enter your email" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessageMail()}}</mat-error>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field class="login-full-width">
+          <input type="password" matInput placeholder="Wachtwoord" [formControl]="password" required>
+          <mat-error *ngIf="password.invalid">{{getErrorMessagePassword()}}</mat-error>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button mat-raised-button color="primary">Warn</button>
+     </td>
+    </tr>
+  </table>
+</form>
