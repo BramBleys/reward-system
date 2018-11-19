@@ -1,34 +1,62 @@
-# RewardSystem
+# Rewardsystem jstack
+This project is a rewardsystem for the company jstack. When the employees complete an assignment outside of work, they get x amount of points. With those point they can claim a prize.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+## Demo
 
-## Development server
+insert link to hosting here
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## API
 
-## Code scaffolding
+insert link to API here
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Getting Started
 
-## Build
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+### Installing
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Clone this repository
 
-## Running end-to-end tests
+```
+using SSH:
+git clone git@github.com:BramBleys/reward-system.git
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+using HTTPS:
+git clone https://github.com/BramBleys/reward-system.git
+```
 
-## Further help
+Install npm packages
+```
+npm install --save
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Run with angular
+```
+ng serve 
+```
 
-## Kleuren jstack
-`Blauw: #333d47`\
-`Donkerblauw: #283038`\
-`Oranje: #F49900`\
-`Groen: #71b643`\
-`Lichtblauw: #08ace1`
+## Built With
+
+* [Angular](https://angular.io/) - The web framework used
+* [MongoDB](https://www.mongodb.com/) - The database
+* [NodeJS](https://nodejs.org/en/) - Backend language
+
+
+## Authors
+
+* **Bram Bleys** - [BramBleys](https://github.com/BramBleys)
+* **Bram Van Bergen** - [BramVanBergen](https://github.com/BramVanBergen)
+* **Kim Moelants** - [KimMoelants](https://github.com/KimMoelants)
+* **Robbert Van Hove** - [robbertvanhove](https://github.com/robbertvanhove)
+* **Tim Swerts** - [TimSwerts](https://github.com/TimSwerts)
+
+
+## Color scheme
+```
+Blue: #333d47
+Darkblue: #283038
+Orange: #F49900
+Green: #71b643
+Lightblue: #08ace1
+```
