@@ -6,8 +6,12 @@ This project is a rewardsystem for the company jstack. When the employees comple
 insert link to hosting here
 
 ## API
+To get the rewards:
+```
+https://radiant-peak-48979.herokuapp.com/v1/rewards
+```
+POST / DELETE actions will not work if you don't have a user token!!
 
-insert link to API here
 
 ## Getting Started
 
