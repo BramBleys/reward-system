@@ -7,10 +7,21 @@ $theme-colors:(
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
+*{
+  font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 
 .grid-container {
   display: grid;
   grid-template-columns: 70% 30%;
   grid-template-areas: 'content sidebar';
 
+}
+
+.page-link{
+  color: #283038 !important;
+}
+.page-item.active .page-link{
+  color: #283038 !important;
+  border-color: #F49900;
 }

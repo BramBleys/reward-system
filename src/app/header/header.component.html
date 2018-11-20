@@ -4,7 +4,7 @@
   <div class="navbar-collapse pull-right col-md-2 col-xs-6 text-center" id="navbarContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Login</a>
+        <a class="nav-link" [routerLink]="[{ outlets: { primary: ['path'],sidebar: ['path'] } }]">Login</a>
       </li>
     </ul>
   </div>
