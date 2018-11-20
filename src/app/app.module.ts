@@ -15,7 +15,7 @@ import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, LeaderboardComponent, MainContentComponent, SidebarScoresComponent, SidebarAdminComponent, OpdrachtenComponent],
-  imports: [BrowserModule, RoutingModule, NgbModule.forRoot(),OpdrachtenModule,],
+  imports: [BrowserModule, RoutingModule, NgbModule.forRoot(), OpdrachtenModule],
 
   providers: [],
   bootstrap: [AppComponent]
