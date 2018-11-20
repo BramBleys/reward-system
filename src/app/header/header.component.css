@@ -18,7 +18,7 @@ nav{
 a{
     color:#333e47;
     text-decoration: none;
-    transition: all 0.3s;
+    transition: all 0.5s;
     text-transform: uppercase;
     letter-spacing: 3px;
 }
@@ -26,6 +26,6 @@ a{
 a:hover{
     color: #f49900;
     text-decoration: none;
-    transition: all 0.1s;
-    
+    transition: all 0.3s;
+
 }
