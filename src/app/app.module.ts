@@ -10,13 +10,18 @@ import { RoutingModule } from './routing/routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarScoresComponent } from './sidebar-scores/sidebar-scores.component';
 import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
-import { OpdrachtenModule } from './opdrachten/opdrachten.module';
-import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, LeaderboardComponent, MainContentComponent, SidebarScoresComponent, SidebarAdminComponent, OpdrachtenComponent],
-  imports: [BrowserModule, RoutingModule, NgbModule.forRoot(),OpdrachtenModule,],
-
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    LeaderboardComponent,
+    MainContentComponent,
+    SidebarScoresComponent,
+    SidebarAdminComponent
+  ],
+  imports: [BrowserModule, RoutingModule, HttpClientModule, NgbModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent]
 })
