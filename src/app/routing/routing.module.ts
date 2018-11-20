@@ -9,7 +9,7 @@ const routes: Routes = [
 { path: '', component: OpdrachtenComponent},
 { path: '', component: LeaderboardComponent, outlet: 'sidebar' },
 { path: 'path', component: LeaderboardComponent},
-{ path:'path', component: OpdrachtenComponent, outlet:'sidebar'}
+{ path: 'path', component: OpdrachtenComponent, outlet: 'sidebar'}
 
 
 ];
