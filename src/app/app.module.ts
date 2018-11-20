@@ -9,6 +9,7 @@ import { RoutingModule } from './routing/routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FormMedewerkerComponent } from './form-medewerker/form-medewerker.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, LeaderboardComponent, MainContentComponent, FormMedewerkerComponent],
@@ -16,6 +17,7 @@ import { FormMedewerkerComponent } from './form-medewerker/form-medewerker.compo
     BrowserModule,
     RoutingModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     NgbModule.forRoot()
   ],

@@ -2,35 +2,36 @@
   <div class="card-header  text-center">
     <h3 class="leaderboard-title">New assignement</h3>
   </div>
-  <form action="" class="needs-validation" novalidate>
+  <form  #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm.value)" class="needs-validation" method="POST" novalidate>
   <div class="card-body">
     
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="title" class="text-left">Title:</label>
-          <input type="text" placeholder="Title of the assignement" class="form-control" name="title" required>
+          <input type="text" id="title" placeholder="Title of the assignement" class="form-control" name="title" #title="ngModel" [(ngModel)]="opdracht.title" required>
+          
         </div>
         <div class="form-group col-md-3">
-            <label for="dp">Begin date assignement:</label>
+            <label for="beginDate">Begin date assignement:</label>
           <div class="input-group">   
-            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" required >
+            <input class="form-control" placeholder="yyyy-mm-dd" name="beginDate" [(ngModel)]="begin" ngbDatepicker #d="ngbDatepicker" #beginDate="ngModel" [(ngModel)]="opdracht.beginDate" required >
             <div class="input-group-append">
               <button class="btn btn-outline calendar" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
             </div>
           </div>
         </div>
         <div class="form-group col-md-3">
-            <label for="dp">End date assignement:</label>
+            <label for="endDate">End date assignement:</label>
           <div class="input-group">   
-            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" required >
+            <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" [(ngModel)]="eind" ngbDatepicker #f="ngbDatepicker" #endDate="ngModel" [(ngModel)]="opdracht.endDate" required >
             <div class="input-group-append">
-              <button class="btn btn-outline calendar" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+              <button class="btn btn-outline calendar" (click)="f.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
             </div>
           </div>
         </div>
         <div class="form-group col-md-6">
             <label for="type">Type assignement:</label>
-            <select class="form-control" id="type" required >
+            <select class="form-control" id="type" name="type" #type="ngModel" [(ngModel)]="opdracht.type" required >
                 <option>Choose here</option>
                 <option>1</option>
                 <option>2</option>
@@ -41,7 +42,7 @@
           </div>
         <div class="form-group col-md-12">
           <label for="title">Description:</label>
-          <textarea class="form-control" name="Description" rows="4" placeholder="Describe what the assignement was, what did you do and what are your findings on the assignement" required ></textarea>
+          <textarea class="form-control" name="description" rows="4" placeholder="Describe what the assignement was, what did you do and what are your findings on the assignement" #description="ngModel" [(ngModel)]="opdracht.description" required ></textarea>
         </div>        
       </div>
   </div>
