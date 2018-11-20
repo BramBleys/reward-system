@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { LeaderboardComponent } from '../leaderboard/leaderboard.component';
 
-const routes: Routes = [{ path: '', component: LeaderboardComponent, outlet: 'sidebar' }];
+const routes: Routes = [{ path: '', component: LeaderboardComponent, outlet: 'sidebar' },
+{ path: '', component: LeaderboardComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
