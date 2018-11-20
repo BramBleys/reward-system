@@ -14,3 +14,11 @@ $theme-colors:(
   grid-template-areas: 'content sidebar';
 
 }
+
+.page-link{
+  color: #283038 !important;
+}
+.page-item.active .page-link{
+  color: #283038 !important;
+  border-color: #F49900;
+}
