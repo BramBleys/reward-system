@@ -1,25 +1,31 @@
-<form class="login-form container">
+<form class="login-form container" #loginForm="ngForm" (ngSubmit)="onSubmit()">
   <table class="login-full-width" cellspacing="0">
     <tr>
       <td>
         <div class="form-group">
-          <input type="text" placeholder="Enter your email" [formControl]="email" required>
-          <div class="error" *ngIf="email.invalid">{{getErrorMessageMail()}}</div>
+          <input type="text" class="login-full-width" placeholder="Enter your email" [formControl]="email" required
+            name="email">
+          <div [hidden]="email.valid" class="alert alert-danger">
+            {{getErrorMessageMail()}}
+          </div>
         </div>
       </td>
     </tr>
     <tr>
       <td>
         <div class="form-group">
-          <input type="password" placeholder="Wachtwoord" [formControl]="password" required>
-          <div class="error" *ngIf="password.invalid">{{getErrorMessagePassword()}}</div>
+          <input type="password" class="login-full-width" placeholder="Wachtwoord" [formControl]="password" required
+            name="password">
+          <div [hidden]="password.valid" class="alert alert-danger">
+            {{getErrorMessagePassword()}}
+          </div>
         </div>
       </td>
     </tr>
     <tr>
       <td>
-        <button class="btn btn-primary">Log in</button>
-     </td>
+        <button type="submit" class="btn btn-succes center">Log in</button>
+      </td>
     </tr>
   </table>
 </form>
