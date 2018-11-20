@@ -12,9 +12,12 @@ import { SidebarScoresComponent } from './sidebar-scores/sidebar-scores.componen
 import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { OpdrachtenModule } from './opdrachten/opdrachten.module';
+import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent, LeaderboardComponent, MainContentComponent, SidebarScoresComponent, SidebarAdminComponent, OpdrachtenComponent],
-  imports: [BrowserModule, RoutingModule, NgbModule.forRoot(), OpdrachtenModule],
+  imports: [BrowserModule, RoutingModule, HttpClientModule, NgbModule.forRoot(), OpdrachtenModule],
   providers: [],
   bootstrap: [AppComponent]
 })
