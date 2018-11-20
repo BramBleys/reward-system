@@ -14,9 +14,13 @@ export class FormMedewerkerComponent implements OnInit {
     endDate:'',
     type:'',
     description:''
-  }
+  };
 
-  constructor(private http: HttpClient) { }
+  typeList = {};
+
+  constructor(private http: HttpClient) {
+    this.getTypes();
+   }
 
   onSubmit(form){
 
@@ -36,7 +40,13 @@ export class FormMedewerkerComponent implements OnInit {
 
     },{headers} ).subscribe(e => console.log(e));
   }
-  
+
+  getTypes(){
+    const headers = new HttpHeaders();
+    headers.set('token', 'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg');
+    
+    this.http.get('https://radiant-peak-48979.herokuapp.com/v1/types',{headers} ).subscribe(e => console.log(e));
+  }
   ngOnInit() {
   }
 
