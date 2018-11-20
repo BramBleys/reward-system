@@ -20,7 +20,6 @@ export class AuthService {
       .set('wachtwoord', wachtwoord);
 
       console.log("heej")
-      console.log(this.http.post(this.ROOT_URL + '/user/login', {params} + ''));
     this.http.post(this.ROOT_URL + '/user/login', { params }).subscribe(e => console.log(e));
   }
 }

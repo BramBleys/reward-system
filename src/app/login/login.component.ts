@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.Login("gadad@test.be", "heej");
+    //this.authService.Login("rvh@test.be", "test");
   }
 
 }

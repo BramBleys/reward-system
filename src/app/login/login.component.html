@@ -2,23 +2,23 @@
   <table class="login-full-width" cellspacing="0">
     <tr>
       <td>
-        <div class="login-full-width">
-          <input placeholder="Enter your email" [formControl]="email" required>
-          <div *ngIf="email.invalid">{{getErrorMessageMail()}}</div>
+        <div class="form-group">
+          <input type="text" placeholder="Enter your email" [formControl]="email" required>
+          <div class="error" *ngIf="email.invalid">{{getErrorMessageMail()}}</div>
         </div>
       </td>
     </tr>
     <tr>
       <td>
-        <div class="login-full-width">
+        <div class="form-group">
           <input type="password" placeholder="Wachtwoord" [formControl]="password" required>
-          <div> *ngIf="password.invalid">{{getErrorMessagePassword()}}</div>
+          <div class="error" *ngIf="password.invalid">{{getErrorMessagePassword()}}</div>
         </div>
       </td>
     </tr>
     <tr>
       <td>
-        <button color="primary">Warn</button>
+        <button class="btn btn-primary">Log in</button>
      </td>
     </tr>
   </table>
