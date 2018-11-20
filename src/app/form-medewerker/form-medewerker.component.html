@@ -7,20 +7,21 @@
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="title" class="text-left">Title:</label>
-          <input type="text" class="form-control" name="title">
+          <input type="text" placeholder="Title of the assignement" class="form-control" name="title">
         </div>
         <div class="form-group col-md-6">
             <label for="dp">Date assignement:</label>
           <div class="input-group">   
             <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+              <button class="btn btn-outline calendar" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
             </div>
           </div>
         </div>
         <div class="form-group col-md-6">
             <label for="type">Type assignement:</label>
             <select class="form-control" id="type">
+                <option>Choose here</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -30,7 +31,7 @@
           </div>
         <div class="form-group col-md-12">
           <label for="title">Description:</label>
-          <textarea class="form-control" name="Description" rows="4"></textarea>
+          <textarea class="form-control" name="Description" rows="4" placeholder="Describe what the assignement was, what did you do and what are your findings on the assignement"></textarea>
         </div>
         
       </div>

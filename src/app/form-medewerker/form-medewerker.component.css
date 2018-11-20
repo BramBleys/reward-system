@@ -5,3 +5,7 @@ button{
 .card{
     text-align: left !important;
 }
+
+.calendar{
+    margin-left:0;
+}
