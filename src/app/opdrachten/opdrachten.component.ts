@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpHeaders} from '@angular/common/http';
+import {Opdracht, OpdrachtService} from '../services/opdracht.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-opdrachten',
@@ -8,20 +9,18 @@ import {HttpHeaders} from '@angular/common/http';
 })
 export class OpdrachtenComponent implements OnInit {
 
+  allAsignments: Opdracht;
+
   currentPage = 1;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(public opdrachtService: OpdrachtService) {
   }
 
-}
+  ngOnInit() {
+    this.getAllAssignments();
+  }
 
-// const headers = new HttpHeaders();
-// headers.set('token', 'eyJhbGciOiJIUzI1NiJ9.NWJmMjlkNjQ5ZjFhOGM1NWE0ODNhMThk.CdXb4Bmuuk21XvMZiGNxaDcd8R39rohT--9rzhT1P9Y');
-//
-// this.http.get('http://localhost:3000/v1/opdrachten', {
-//   naam: 'ding',
-//   punten: 100,
-//   beschikbaar: true
-// }, {headers} ).subscribe(e => console.log(e));
+  getAllAssignments() {
+     this.opdrachtService.getAllAssignments().subscribe((data) => (this.allAsignments = data));
+  }
+}

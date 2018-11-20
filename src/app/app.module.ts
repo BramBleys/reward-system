@@ -13,15 +13,8 @@ import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    LeaderboardComponent,
-    MainContentComponent,
-    SidebarScoresComponent,
-    SidebarAdminComponent
-  ],
-  imports: [BrowserModule, RoutingModule, HttpClientModule, NgbModule.forRoot()],
+  declarations: [AppComponent, HeaderComponent, LeaderboardComponent, MainContentComponent, SidebarScoresComponent, SidebarAdminComponent, OpdrachtenComponent],
+  imports: [BrowserModule, RoutingModule, NgbModule.forRoot(), OpdrachtenModule],
   providers: [],
   bootstrap: [AppComponent]
 })
