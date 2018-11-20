@@ -8,9 +8,10 @@ import { MainContentComponent } from './main-content/main-content.component';
 import { RoutingModule } from './routing/routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarScoresComponent } from './sidebar-scores/sidebar-scores.component';
+import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, LeaderboardComponent, MainContentComponent, SidebarScoresComponent],
+  declarations: [AppComponent, HeaderComponent, LeaderboardComponent, MainContentComponent, SidebarScoresComponent, SidebarAdminComponent],
   imports: [BrowserModule, RoutingModule, NgbModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent]
