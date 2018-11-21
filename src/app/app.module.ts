@@ -14,10 +14,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { OpdrachtenModule } from './opdrachten/opdrachten.module';
 import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
+import { RewardsCrudComponent } from './rewards-crud/rewards-crud.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, LeaderboardComponent, MainContentComponent, SidebarScoresComponent, SidebarAdminComponent, OpdrachtenComponent],
-  imports: [BrowserModule, RoutingModule, HttpClientModule, NgbModule.forRoot(), OpdrachtenModule],
+  declarations: [AppComponent, HeaderComponent, LeaderboardComponent, MainContentComponent, SidebarScoresComponent, SidebarAdminComponent, OpdrachtenComponent, RewardsCrudComponent],
+  imports: [BrowserModule, RoutingModule, HttpClientModule, NgbModule.forRoot(), OpdrachtenModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
