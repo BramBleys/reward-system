@@ -18,6 +18,7 @@ import { RewardsCrudComponent } from './rewards-crud/rewards-crud.component';
 import { FormsModule } from '@angular/forms';
 import { TranslateService } from './services/translate.service';
 import { TranslatePipe } from './translate.pipe';
+import {FilterPipe} from './pipes/filterPipe';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { TranslatePipe } from './translate.pipe';
     SidebarAdminComponent,
     OpdrachtenComponent,
     RewardsCrudComponent,
-    TranslatePipe
+    TranslatePipe,
+    FilterPipe
   ],
   imports: [BrowserModule, RoutingModule, HttpClientModule, NgbModule.forRoot(), OpdrachtenModule, FormsModule],
   providers: [TranslateService],

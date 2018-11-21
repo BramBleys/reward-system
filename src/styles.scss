@@ -10,29 +10,21 @@ $theme-colors: (
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-.page-link {
-  color: #283038 !important;
-}
-.page-item.active .page-link {
-  color: #283038 !important;
-  border-color: #f49900;
+
+::-webkit-scrollbar {
+  width: 2px;
 }
 
-.addChangeDelBtn{
-  color: #f49900;
+::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #f49900;
 }
-.addChangeDelBtn:hover{
-  color: #283038;
-}
-th{
-  vertical-align: middle !important;
-}
+
 
 .tooltip > div {
   animation-name: delayedFadeIn;
   animation-duration: 1s; /* Adjust this duration */
 }
-
 @Keyframes delayedFadeIn {
   0% {opacity: 0;}
   75% {opacity: 0;}
