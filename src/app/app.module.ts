@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarScoresComponent } from './sidebar-scores/sidebar-scores.component';
 import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
 import { HttpClientModule } from '@angular/common/http';
+import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     LeaderboardComponent,
     MainContentComponent,
     SidebarScoresComponent,
-    SidebarAdminComponent
+    SidebarAdminComponent,
+    OpdrachtenComponent
   ],
   imports: [BrowserModule, RoutingModule, HttpClientModule, NgbModule.forRoot()],
   providers: [],

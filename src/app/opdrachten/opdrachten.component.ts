@@ -17,6 +17,8 @@ export class OpdrachtenComponent implements OnInit {
 
 }
 
+
+
 // const headers = new HttpHeaders();
 // headers.set('token', 'eyJhbGciOiJIUzI1NiJ9.NWJmMjlkNjQ5ZjFhOGM1NWE0ODNhMThk.CdXb4Bmuuk21XvMZiGNxaDcd8R39rohT--9rzhT1P9Y');
 //
