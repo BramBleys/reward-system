@@ -11,16 +11,25 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarScoresComponent } from './sidebar-scores/sidebar-scores.component';
 import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
 import { HttpClientModule } from '@angular/common/http';
-import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
 
 import { OpdrachtenModule } from './opdrachten/opdrachten.module';
 import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
 import { RewardsCrudComponent } from './rewards-crud/rewards-crud.component';
 import { FormsModule } from '@angular/forms';
 
-declarations: [AppComponent, HeaderComponent, LeaderboardComponent, MainContentComponent, SidebarScoresComponent, SidebarAdminComponent, OpdrachtenComponent, RewardsCrudComponent],
-imports: [BrowserModule, RoutingModule, HttpClientModule, NgbModule.forRoot(), OpdrachtenModule, FormsModule],
-providers: [],
-bootstrap: [AppComponent]
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    LeaderboardComponent,
+    MainContentComponent,
+    SidebarScoresComponent,
+    SidebarAdminComponent,
+    OpdrachtenComponent,
+    RewardsCrudComponent
+  ],
+  imports: [BrowserModule, RoutingModule, HttpClientModule, NgbModule.forRoot(), OpdrachtenModule, FormsModule],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
