@@ -20,8 +20,6 @@ export class AppComponent {
       private: true
 
     };
-    
-
     let url = this.parameterService.generateGetUrl("http://test.be",params);
     console.log(url) //Output: http://test.be?titel=dingprivate=true
   }
