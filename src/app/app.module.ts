@@ -16,6 +16,9 @@ import { OpdrachtenModule } from './opdrachten/opdrachten.module';
 import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
 import { RewardsCrudComponent } from './rewards-crud/rewards-crud.component';
 import { FormsModule } from '@angular/forms';
+import { TranslateService } from './services/translate.service';
+import { TranslatePipe } from './translate.pipe';
+
 
 @NgModule({
   declarations: [
@@ -26,10 +29,11 @@ import { FormsModule } from '@angular/forms';
     SidebarScoresComponent,
     SidebarAdminComponent,
     OpdrachtenComponent,
-    RewardsCrudComponent
+    RewardsCrudComponent,
+    TranslatePipe
   ],
   imports: [BrowserModule, RoutingModule, HttpClientModule, NgbModule.forRoot(), OpdrachtenModule, FormsModule],
-  providers: [],
+  providers: [TranslateService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
