@@ -17,3 +17,24 @@ $theme-colors: (
   color: #283038 !important;
   border-color: #f49900;
 }
+
+.addChangeDelBtn{
+  color: #f49900;
+}
+.addChangeDelBtn:hover{
+  color: #283038;
+}
+th{
+  vertical-align: middle !important;
+}
+
+.tooltip > div {
+  animation-name: delayedFadeIn;
+  animation-duration: 1s; /* Adjust this duration */
+}
+
+@Keyframes delayedFadeIn {
+  0% {opacity: 0;}
+  75% {opacity: 0;}
+  100% {opacity: 1;}
+}
