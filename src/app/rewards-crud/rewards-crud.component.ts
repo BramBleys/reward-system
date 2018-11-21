@@ -1,15 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RewardsService } from '../services/rewards.service';
 import { Reward } from '../models/reward';
-
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-rewards-crud',
   templateUrl: './rewards-crud.component.html',
-  styleUrls: ['./rewards-crud.component.css']
+  styleUrls: ['./rewards-crud.component.scss']
 })
 export class RewardsCrudComponent implements OnInit {
+
+  public reward1: Reward;
+  public searchString: string;
+
   rewards: Reward[];
   reward: Reward;
   showInput: boolean = false;
@@ -24,6 +27,7 @@ export class RewardsCrudComponent implements OnInit {
 
   ngOnInit() {
     this.getRewards();
+    console.log(this.searchString);
   }
 
   getRewards() {
