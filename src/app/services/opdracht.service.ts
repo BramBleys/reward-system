@@ -1,31 +1,33 @@
 import { Injectable } from '@angular/core';
 import {HttpHeaders, HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {filter} from 'rxjs/internal/operators';
+import {environment as api} from '../../environments/environment';
+import {Opdracht} from '../models/opdracht';
+import {Score} from '../models/score';
 
-export class Opdracht {
-  id: string;
-  titel: string;
-  omschrijving: string;
-  goedgekeurd: boolean;
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class OpdrachtService {
 
-  allAsignments$: Observable<Opdracht[]>;
+  private url = api.API_URL;
 
   constructor(private http: HttpClient) {
 
   }
 
-  getAllAssignments() {
+  getAllAssignmentsCount(): Observable<number> {
+    const url = `${this.url}/opdrachten/count?private=false`;
+    return this.http.get<number>(url);
+  }
+
+  getAllAssignments(offset, limit): Observable<Opdracht[]> {
+    const url = `${this.url}/opdrachten?private=false&offset=${offset}&limit=${limit}`;
     const headers = new HttpHeaders();
     headers.set('token', 'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg');
 
-     return this.allAsignments$ = this.http.get<any>('https://radiant-peak-48979.herokuapp.com/v1/opdrachten', {headers} );
+    return this.http.get<any>(url, {headers} );
   }
 }
 
