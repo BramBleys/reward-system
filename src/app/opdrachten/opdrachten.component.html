@@ -1,9 +1,9 @@
-<div class="card">
+<!-- <div class="card">
   <div class="card-header">
     <H4 class="leaderboard-title">Assignments</H4>
   </div>
   <div *ngFor="let opdracht of (allAsignments) ">
-    <p>{{ opdracht.omschrijving }}</p>
+    <p>{{ opdracht.titel }}</p>
   </div>
   <div class="row">
     <div *ngIf="currentPage == 1" class="card col-md assignment">
@@ -41,4 +41,11 @@
 
 
 
+ -->
+<ngb-pagination class="paginator" [collectionSize]="(count$|async) / (pageSize/10)" [(page)]="currentPage" [maxSize]="8">
 
+</ngb-pagination>
+ <pre>
+   {{count$ | async}}
+   {{opdrachten$ | async | json}}
+ </pre>
