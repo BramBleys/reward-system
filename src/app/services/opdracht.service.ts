@@ -44,8 +44,7 @@ export class OpdrachtService {
   }
 
   getCount(params={}): Observable<Number>{
-    let newParams = Object.create(params)
-
+    let newParams = Object.assign({},params);
     delete newParams['offset'];
     delete newParams['limit'];
     delete newParams['sortBy'];
