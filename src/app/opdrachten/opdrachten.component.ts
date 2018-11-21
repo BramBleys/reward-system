@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpHeaders} from '@angular/common/http';
+import {Opdracht, OpdrachtService} from '../services/opdracht.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-opdrachten',
@@ -8,14 +9,22 @@ import {HttpHeaders} from '@angular/common/http';
 })
 export class OpdrachtenComponent implements OnInit {
 
+  allAsignments: Opdracht;
+
   currentPage = 1;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(public opdrachtService: OpdrachtService) {
   }
 
+  ngOnInit() {
+    this.getAllAssignments();
+  }
+
+  getAllAssignments() {
+     this.opdrachtService.getAllAssignments().subscribe((data) => (this.allAsignments = data));
+  }
 }
+<<<<<<< HEAD
 
 
 
@@ -27,3 +36,5 @@ export class OpdrachtenComponent implements OnInit {
 //   punten: 100,
 //   beschikbaar: true
 // }, {headers} ).subscribe(e => console.log(e));
+=======
+>>>>>>> 52fd8175f5cd8ad2b2e46f9c9f5d9b41c6122a11

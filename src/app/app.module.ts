@@ -13,17 +13,12 @@ import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
 
+import { OpdrachtenModule } from './opdrachten/opdrachten.module';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    LeaderboardComponent,
-    MainContentComponent,
-    SidebarScoresComponent,
-    SidebarAdminComponent,
-    OpdrachtenComponent
-  ],
-  imports: [BrowserModule, RoutingModule, HttpClientModule, NgbModule.forRoot()],
+
+  declarations: [AppComponent, HeaderComponent, LeaderboardComponent, MainContentComponent, SidebarScoresComponent, SidebarAdminComponent, OpdrachtenComponent],
+  imports: [BrowserModule, RoutingModule, HttpClientModule, NgbModule.forRoot(), OpdrachtenModule],
   providers: [],
   bootstrap: [AppComponent]
 })

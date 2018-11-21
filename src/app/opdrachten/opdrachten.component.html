@@ -2,11 +2,14 @@
   <div class="card-header">
     <H4 class="leaderboard-title">Assignments</H4>
   </div>
+  <div *ngFor="let opdracht of (allAsignments) ">
+    <p>{{ opdracht.omschrijving }}</p>
+  </div>
   <div class="row">
     <div *ngIf="currentPage == 1" class="card col-md assignment">
       <img class="card-img-top" src="../../assets/images/presentation.jpeg" alt="Presentation">
       <div class="card-body">
-        <h5 class="card-title">Presentation</h5><i class="fas fa-trophy"><span>5</span></i>
+        <h5 class="card-title">Presentation</h5><i class="fas fa-coins"><span>5</span></i>
         <p class="card-text">Give a work related intern or extern presentation</p>
       </div>
     </div>
@@ -33,6 +36,7 @@
     </div>
   </div>
   <ngb-pagination class="paginator d-flex justify-content-center" [collectionSize]="30" [(page)]="currentPage" size="sm"></ngb-pagination>
+  <pre>{{allAsignments | json}}</pre>
 </div>
 
 
