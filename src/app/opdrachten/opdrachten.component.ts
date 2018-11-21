@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Opdracht, OpdrachtService} from '../services/opdracht.service';
 import {Observable} from 'rxjs';
+import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-opdrachten',
@@ -10,17 +11,21 @@ import {Observable} from 'rxjs';
 export class OpdrachtenComponent implements OnInit {
 
   allAsignments: Opdracht;
+  readonly pageSize = 9; 
 
   opdrachten$: Observable<any[]>;
   count$: Observable<Number>;
   filterParams = {
     offset: 0,
-    limit: 5,
+    limit: this.pageSize,
     sortBy: 'titel',
-    order: 'asc'
+    order: 'asc',
+    private: true
   };
 
-  readonly pageSize = 5; 
+  loading = false;
+
+  
   
   private _currentPage = 1;
   get currentPage(){
@@ -29,29 +34,37 @@ export class OpdrachtenComponent implements OnInit {
   set currentPage(page){
     this._currentPage = page;
     this.filterParams['offset'] = this._currentPage * this.pageSize - this.pageSize;
-    this.getAssignmentsFiltered(this.filterParams);
+    this.getAssignmentsFiltered();
   }
 
   
 
 
-  constructor(public opdrachtService: OpdrachtService) {
+  constructor(public opdrachtService: OpdrachtService, public config: NgbProgressbarConfig) {
+    config.max = 250;
+    config.striped = true;
+    config.animated = true;
+    config.type = 'secondary';
+    config.height = '20px';
   }
 
   ngOnInit() {
-    this.getAssignmentsFiltered(this.filterParams);
-    this.getAssignementsCount(this.filterParams);
+    this.getAssignementsCount();
+    this.getAssignmentsFiltered();
+    
   }
 
 
-  getAssignmentsFiltered(filter = {}){
-
-    this.opdrachten$ = this.opdrachtService.getAssignmentsFiltered(filter);
-    this.opdrachten$.subscribe(e => console.log(e));
+  getAssignmentsFiltered(){
+    this.loading = true;
+    this.opdrachten$ = this.opdrachtService.getAssignmentsFiltered(this.filterParams);
+    this.opdrachten$.subscribe(e =>this.loading = false);
    
   }
-  getAssignementsCount(filter = {}){
-    this.count$ = this.opdrachtService.getCount(filter);
+  getAssignementsCount(){
+    this.count$ = this.opdrachtService.getCount(this.filterParams);
+    console.log(this.filterParams);
+    
   }
   
 }
