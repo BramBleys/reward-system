@@ -1,6 +1,28 @@
 {
-  "header.login": "Login",
+  "header.login": "Inloggen",
   "header.language": "Taal",
   "header.language.en": "English",
-  "header.language.nl": "Nederlands"
+  "header.language.nl": "Nederlands",
+
+  "leaderboard.name": "Naam",
+  "leaderboard.title": "Klassement",
+  "leaderboard.points": "Punten",
+
+  "opdrachtenBoard.add":"Voeg voltooide opdracht toe",
+
+  "rewardsCrud.search":"Typ om te zoeken...",
+  "rewardsCrud.name":"Beloning Naam",
+  "rewardsCrud.points":"Punten",
+  "rewardsCrud.available":"Beschikbaar",
+
+  "sidebarAdmin.actions":"Acties",
+  "sidebarAdmin.assign":"Rewards toekennen",
+  "sidebarAdmin.overview":"Overzicht werknemers",
+  "sidebarAdmin.adjustAssignments":"Opdrachten aanpassen",
+  "sidebarAdmin.adjustRewards":"Rewards aanpassen",
+
+  "sidebarScore.score":"Uw punten: ",
+  "sidebarScore.tasks":"Opdrachten",
+  "sidebarScore.points":"Punten",
+  "sidebarScore.date":"Datum"
 }
