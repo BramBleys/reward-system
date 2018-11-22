@@ -7,7 +7,7 @@ import { environment as api } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class RewardsService {
+export class TypesService {
   private url = 'https://radiant-peak-48979.herokuapp.com/v1/types';
 
   constructor(private http: HttpClient) {}

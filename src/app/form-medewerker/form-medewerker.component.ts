@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpHeaders, HttpClient} from '@angular/common/http';
+import { TypesService } from '../services/types.service';
+import { Type } from '@angular/compiler';
 
 @Component({
   selector: 'app-form-medewerker',
@@ -24,11 +26,11 @@ export class FormMedewerkerComponent implements OnInit {
     description:''
   };
 
-  typeList = [];
+  types = Type[];
 
-  constructor(private http: HttpClient, ) {
+  constructor(private http: HttpClient, private typesService: TypesService) {
     this.getTypes();
-    console.log(this.typeList);
+    console.log(this.types);
    }
 
   onSubmit(form){
