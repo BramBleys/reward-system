@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Type } from '../models/type';
 import { Observable } from 'rxjs';
 import { environment as api } from '../../environments/environment';
+import { Type } from '../models/type';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TypesService {
   private url = 'https://radiant-peak-48979.herokuapp.com/v1/types';
 
@@ -18,7 +19,6 @@ export class TypesService {
       'token',
       'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
     );
-
     return this.http.get<any>(this.url, { headers });
   }
 }

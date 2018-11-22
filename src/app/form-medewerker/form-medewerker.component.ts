@@ -33,7 +33,6 @@ export class FormMedewerkerComponent implements OnInit {
 
    ngOnInit() {
     this.getTypes();
-    console.log(this.types)
   }
 
   onSubmit(form){
@@ -47,15 +46,17 @@ export class FormMedewerkerComponent implements OnInit {
       goedgekeurd: false,
       beginDatum: (this.opdracht.beginDate.day + "/" +  this.opdracht.beginDate.month + "/" +this.opdracht.beginDate.year),
       eindDatum: (this.opdracht.endDate.day + "/" +  this.opdracht.endDate.month + "/" +this.opdracht.endDate.year),
-      typeId:2,
+      typeId: this.opdracht.type,
       // fotoURL:'',
       // private:false,
       // beschikbaar: true
 
     },{headers} ).subscribe(e => console.log(e));
+    console.log(this.types)
   }
 
   getTypes() {
     this.typesService.getTypes().subscribe((data) => (this.types = data));
+    
   }
 }
