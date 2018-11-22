@@ -1,4 +1,4 @@
-import { Opdracht } from './opdracht';
+import { UserOpdracht } from './userOpdracht';
 import { Reward } from './reward';
 
 export class User {
@@ -11,5 +11,5 @@ export class User {
   wachtwoord: string;
   token: string;
   rewards: Array<Reward>;
-  opdrachten: Array<Opdracht>;
+  opdrachten: Array<UserOpdracht>;
 }

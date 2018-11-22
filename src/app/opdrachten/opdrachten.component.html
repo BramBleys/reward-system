@@ -1,44 +1,25 @@
-<div class="card">
-  <div class="card-header">
-    <H4 class="leaderboard-title">Assignments</H4>
+<div class="row">
+  <div class="col-6">
+    <ngb-pagination class="paginator" [collectionSize]="(count$|async) / (pageSize/10)" [(page)]="currentPage"
+      [maxSize]="3"></ngb-pagination>
   </div>
-  <div *ngFor="let opdracht of (allAsignments) ">
-    <p>{{ opdracht.omschrijving }}</p>
+  <div class="col-6 text-right">
+    <button class="btn btn-outline-secondary"><i class="fas fa-plus"></i>Reward toevoegen</button>
   </div>
-  <div class="row">
-    <div *ngIf="currentPage == 1" class="card col-md assignment">
+  <div class="col-12" *ngIf="loading">
+    <p>
+      <ngb-progressbar value="250"></ngb-progressbar>
+    </p>
+  </div>
+
+  <div *ngFor="let opdracht of (opdrachten$ | async)" class=" col-12 col-md-4">
+    <div class="card assignment">
       <img class="card-img-top" src="../../assets/images/presentation.jpeg" alt="Presentation">
       <div class="card-body">
-        <h5 class="card-title">Presentation</h5><i class="fas fa-coins"><span>5</span></i>
-        <p class="card-text">Give a work related intern or extern presentation</p>
-      </div>
-    </div>
-    <div *ngIf="currentPage == 1" class="card col-md assignment">
-      <img class="card-img-top" src="../../assets/images/presentation.jpeg" alt="Presentation">
-      <div class="card-body">
-        <h5 class="card-title">test</h5><i class="fas fa-trophy"><span>5</span></i>
-        <p class="card-text">Give a work related intern or extern presentation</p>
-      </div>
-    </div>
-    <div *ngIf="currentPage == 1" class="card col-md assignment" >
-      <img class="card-img-top" src="../../assets/images/presentation.jpeg" alt="Presentation">
-      <div class="card-body">
-        <h5 class="card-title">andere test</h5><i class="fas fa-trophy"><span>5</span></i>
-        <p class="card-text">Give a work related intern or extern presentation</p>
-      </div>
-    </div>
-    <div *ngIf="currentPage == 1" class="card col-md assignment" >
-      <img class="card-img-top" src="../../assets/images/presentation.jpeg" alt="Presentation">
-      <div class="card-body">
-        <h5 class="card-title">andere test</h5><i class="fas fa-trophy"><span>5</span></i>
-        <p class="card-text">Give a work related intern or extern presentation</p>
+        <h5 class="card-title">{{opdracht.titel}}<i class="fas fa-coins"><span>{{opdracht.punten}}</span></i></h5>
+        <p class="card-text">{{opdracht.omschrijving}}</p>
       </div>
     </div>
   </div>
-  <ngb-pagination class="paginator d-flex justify-content-center" [collectionSize]="30" [(page)]="currentPage" size="sm"></ngb-pagination>
-  <pre>{{allAsignments | json}}</pre>
+
 </div>
-
-
-
-

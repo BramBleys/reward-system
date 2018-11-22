@@ -1,35 +1,62 @@
+<<<<<<< HEAD
 nav{
     background-color:white;
     border-bottom: 2px solid #f49900;
     box-shadow: 0px 0px 4px 0px;
     height: 98.4px;
     margin: 0;
+=======
+nav {
+  background-color: white;
+  border-bottom: 2px solid #f49900;
+  box-shadow: 0px 0px 4px 0px;
 }
 
-.navbar-brand{
-    margin: 0;
+.navbar-brand {
+  margin: 0;
 }
 
 .nav-item {
+  position: relative;
+  right: 10px;
+>>>>>>> 0e8d8f595c663047f8fc54ad6e2a6b04f7a2c1a8
+}
+
+a {
+  color: #333e47;
+  text-decoration: none;
+  transition: all 0.5s;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+<<<<<<< HEAD
+.nav-item {
     margin: 10px;
     min-width: 140px;
+=======
+a:hover {
+  color: #f49900;
+  text-decoration: none;
+  transition: all 0.1s;
+>>>>>>> 0e8d8f595c663047f8fc54ad6e2a6b04f7a2c1a8
 }
 
-a{
-    color:#333e47;
-    text-decoration: none;
-    transition: all 0.5s;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
-a:hover{
-    color: #f49900;
-    text-decoration: none;
-    transition: all 0.1s;
-    
+.btn-dropdown {
+  color: #333e47;
+  background-color: transparent;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 7px;
 }
 
+<<<<<<< HEAD
 .divider {
     border-left: 1px solid #f49900;
 }
@@ -37,3 +64,8 @@ a:hover{
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
+=======
+.btn-dropdown:hover {
+  color: #f49900;
+}
+>>>>>>> 0e8d8f595c663047f8fc54ad6e2a6b04f7a2c1a8
