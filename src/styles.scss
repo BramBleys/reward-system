@@ -23,7 +23,7 @@ $theme-colors: (
 
 .tooltip > div {
   animation-name: delayedFadeIn;
-  animation-duration: 1s; /* Adjust this duration */
+  animation-duration: 1s;
 }
 @Keyframes delayedFadeIn {
   0% {opacity: 0;}

@@ -21,6 +21,8 @@ import { RewardsCrudComponent } from './rewards-crud/rewards-crud.component';
 import { TranslateService } from './services/translate.service';
 import { TranslatePipe } from './translate.pipe';
 import {FilterPipe} from './pipes/filterPipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import {FilterPipe} from './pipes/filterPipe';
     HttpClientModule,
     RoutingModule,
     NgbModule.forRoot(),
-    OpdrachtenModule
+    OpdrachtenModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [TranslateService],
   bootstrap: [AppComponent]
