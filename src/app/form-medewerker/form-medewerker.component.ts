@@ -10,16 +10,25 @@ export class FormMedewerkerComponent implements OnInit {
 
   opdracht = {
     title: '',
-    beginDate:'',
-    endDate:'',
+    beginDate : {
+      year:'',
+      month:'',
+      day:''
+    },
+    endDate:{
+      year:'',
+      month:'',
+      day:''
+    },
     type:'',
     description:''
   };
 
-  typeList = {};
+  typeList = [];
 
   constructor(private http: HttpClient) {
     this.getTypes();
+    console.log(this.typeList);
    }
 
   onSubmit(form){
@@ -31,8 +40,8 @@ export class FormMedewerkerComponent implements OnInit {
       titel: this.opdracht.title,
       omschrijving: this.opdracht.description,
       goedgekeurd: false,
-      beginDatum: JSON.stringify(this.opdracht.beginDate),
-      eindDatum:JSON.stringify(this.opdracht.endDate),
+      beginDatum: (this.opdracht.beginDate.day + "/" +  this.opdracht.beginDate.month + "/" +this.opdracht.beginDate.year),
+      eindDatum: (this.opdracht.endDate.day + "/" +  this.opdracht.endDate.month + "/" +this.opdracht.endDate.year),
       typeId:2,
       // fotoURL:'',
       // private:false,
@@ -44,7 +53,6 @@ export class FormMedewerkerComponent implements OnInit {
   getTypes(){
     const headers = new HttpHeaders();
     headers.set('token', 'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg');
-    
     this.http.get('https://radiant-peak-48979.herokuapp.com/v1/types',{headers} ).subscribe(e => console.log(e));
   }
   ngOnInit() {
