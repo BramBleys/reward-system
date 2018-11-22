@@ -9,7 +9,7 @@
         <div class="form-group col-md-12">
           <label for="title" class="text-left">Title:</label>
           <input type="text" id="title" placeholder="Title of the assignement" class="form-control" name="title" #title="ngModel" [(ngModel)]="opdracht.title" required>
-          
+          <div *ngIf="title.errors && (title.dirty || title.touched)" class="alert alert-danger">The title is required.</div>
         </div>
         <div class="form-group col-md-3">
             <label for="beginDate">Begin date assignement:</label>
@@ -19,6 +19,7 @@
               <button class="btn btn-outline calendar" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
             </div>
           </div>
+          <div *ngIf="beginDate.errors && (beginDate.dirty || beginDate.touched)" class="alert alert-danger">The begin date is required.</div>
         </div>
         <div class="form-group col-md-3">
             <label for="endDate">End date assignement:</label>
@@ -27,22 +28,27 @@
             <div class="input-group-append">
               <button class="btn btn-outline calendar" (click)="f.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
             </div>
+            
           </div>
+          <div *ngIf="endDate.errors && (endDate.dirty || endDate.touched)" class="alert alert-danger">The end date is required.</div>
         </div>
         <div class="form-group col-md-6">
             <label for="type">Type assignement:</label>
             <select class="form-control" id="type" name="type" #type="ngModel" [(ngModel)]="opdracht.type" required >
               <option *ngFor="let type of types" value="{{type._id}}">{{type.naam}}</option>  
             </select>
+            <div *ngIf="type.errors && (type.dirty || type.touched)" class="alert alert-danger">The type is required.</div>
           </div>
         <div class="form-group col-md-12">
           <label for="title">Description:</label>
           <textarea class="form-control" name="description" rows="4" placeholder="Describe what the assignement was, what did you do and what are your findings on the assignement" #description="ngModel" [(ngModel)]="opdracht.description" required ></textarea>
-        </div>        
+          <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger">The description is required.</div>
+        </div>
+              
       </div>
   </div>
   <div class="card-footer text-right">
-    <button class="btn btn-success" type="submit">Send</button>
+    <button class="btn btn-success" type="submit" [disabled] = "!contactForm.form.valid">Send</button>
     <button class="btn btn-danger" type="reset">Cancel</button>
   </div>
 </form>
