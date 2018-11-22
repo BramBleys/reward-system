@@ -48,6 +48,8 @@
       </div>
   </div>
   <div class="card-footer text-right">
+    <p *ngIf="!contactForm.form.valid" class="badge badge-danger">Error: Make sure all fields are correct</p>
+    <p *ngIf="contactForm.form.valid" class="badge badge-success">All fields are correct</p>
     <button class="btn btn-success" type="submit" [disabled] = "!contactForm.form.valid">Send</button>
     <button class="btn btn-danger" type="reset">Cancel</button>
   </div>
