@@ -2,5 +2,27 @@
   "header.login": "Login",
   "header.language": "Language",
   "header.language.en": "English",
-  "header.language.nl": "Nederlands"
+  "header.language.nl": "Nederlands",
+
+  "leaderboard.name": "Name",
+  "leaderboard.title": "Leaderboard",
+  "leaderboard.points": "Points",
+
+  "opdrachtenBoard.add":"Submit Completed Assignment",
+
+  "rewardsCrud.search":"Type to search...",
+  "rewardsCrud.name":"Reward name",
+  "rewardsCrud.points":"Points",
+  "rewardsCrud.available":"Available",
+
+  "sidebarAdmin.actions":"Actions",
+  "sidebarAdmin.assign":"Assign rewards",
+  "sidebarAdmin.overview":"Overview employees",
+  "sidebarAdmin.adjustAssignments":"Adjust assignments",
+  "sidebarAdmin.adjustRewards":"Adjust rewards",
+
+  "sidebarScore.score":"Your Score: ",
+  "sidebarScore.tasks":"Tasks",
+  "sidebarScore.points":"Points",
+  "sidebarScore.date":"Date"
 }

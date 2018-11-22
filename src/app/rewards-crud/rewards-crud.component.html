@@ -4,7 +4,7 @@
       <div class="form-group">
         <div class="input-group">
           <div class="searchIcon"><i class="fas fa-search"></i></div>
-          <input type="text" class="form-control col-md-2 searchField" name="searchString" placeholder="Type to search..." [(ngModel)]="searchString">
+          <input type="text" class="form-control col-md-2 searchField" name="searchString" placeholder="{{ 'rewardsCrud.search' | translate }}" [(ngModel)]="searchString">
         </div>
       </div>
     </form>
@@ -13,9 +13,9 @@
     <table class="table mt-3 table-hover">
       <thead>
       <tr>
-        <th>Reward name</th>
-        <th class="text-center">Points</th>
-        <th class="text-center">Available</th>
+        <th>{{ 'rewardsCrud.name' | translate }}</th>
+        <th class="text-center">{{ 'rewardsCrud.points' | translate }}</th>
+        <th class="text-center">{{ 'rewardsCrud.available' | translate }}</th>
         <th class="text-center">
           <button type="button" (click)="open(add)" class="btn btn-link addChangeDelBtn" placement="top" ngbTooltip="Add new reward"><i class="fas fa-plus-circle fa-lg"></i></button>
         </th>
@@ -39,7 +39,6 @@
       </tbody>
     </table>
   </div>
-
 </div>
 
 <ng-template #add let-modal>

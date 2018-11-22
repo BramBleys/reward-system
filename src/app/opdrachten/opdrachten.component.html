@@ -4,7 +4,7 @@
       [maxSize]="3"></ngb-pagination>
   </div>
   <div class="col-6 text-right">
-    <button class="btn btn-outline-secondary"><i class="fas fa-plus"></i>Reward toevoegen</button>
+    <button class="btn btn-outline-secondary"><i class="fas fa-plus"></i>{{ 'opdrachtenBoard.add' | translate }}</button>
   </div>
   <div class="col-12" *ngIf="loading">
     <p>
@@ -21,5 +21,4 @@
       </div>
     </div>
   </div>
-
 </div>
