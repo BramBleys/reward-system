@@ -2,7 +2,11 @@
   padding: 2rem !important;
 }
 
-.grid-item1 {
-  grid-column: 2;
-  grid-area: sidebar;
+.row{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.col-md-9, .col-md-2{
+  margin: 0 !important;
 }

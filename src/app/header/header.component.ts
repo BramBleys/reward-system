@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { ScoreService } from '../services/score.service';
+import { User } from '../models/user';
+import { Score } from '../models/score';
 
 @Component({
   selector: 'app-header',
@@ -7,42 +10,30 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  user = {
-    name: '',
-    score: ''
-  };
-  login = 'log in';
-  
+  currentuser: User;
+  loggedIn = false;
+  admin = false;
+  logintext = 'Log in';
 
-  action = function () {
-
-    console.log(this.authService.userData$);
-    if (this.authService.userData$ !== 'undefined') {
-      this.name = this.authService.userData$.naam;
-      this.score = this.authService.userData$.score;
-    }
-
-    if (this.login == 'log in') {
-      this.login ='log out';
-    }
-    else if (this.login == 'log out') {
-      this.login = 'log in';
-      
-    }
-  }
-  
-
-  constructor(private authService: AuthService) {
-
-    
+  constructor(public authService: AuthService) {
   }
 
+  logout() {
+    this.authService.logout();
+  }
 
   ngOnInit() {
-    
-
+    this.authService.userData$.subscribe(user => {
+      this.currentuser = user;
+      if (user != null) {
+        this.loggedIn = true;
+        this.logintext = 'Log out';
+        console.log(user);
+      }
+      else {
+        this.loggedIn = false;
+        this.logintext = 'Log in';
+      }
+    })
   }
-
-
-
 }

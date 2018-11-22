@@ -1,6 +1,6 @@
 export interface User {
     email: String;
-    naam: String;
+    naam: string;
     type: String;
     geboorteDatum: String;
     fotoUrl: String;

@@ -2,15 +2,16 @@
   <a class="navbar-brand col-md-8 col-xs-6"><img src="../../../assets/images/jstackLogo.png" alt="logo CheeseIsLife"
       width="100px"></a>
 
-  <div class="navbar-collapse col-md-4 col-xs-6" id="navbarContent">
-    
-    <ul class="navbar-nav row">
-      <li class="nav-item col-md-4">
-          <p class="nav-link">{{ name }}</p>
-          <p class="nav-link">{{ score }}</p>
+  <div class="navbar-collapse pull-right col-md-4 col-xs-6 text-center" id="navbarContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <p class="nav-link" *ngIf="loggedIn == true">{{ currentuser.naam }} ({{ currentuser.punten }} punten) </p>
       </li>
-      <li class="nav-item col-md-4 divider">
-        <a class="nav-link" href="#" (click)='action()'>{{ login }}</a>
+      <li class="nav-item divider" *ngIf="loggedIn == false">
+        <a class="nav-link" [routerLink]="[{ outlets: { primary: ['login'],sidebar: ['login'] } }]">{{ logintext }}</a>
+      </li>
+      <li class="nav-item divider" *ngIf="loggedIn == true">
+        <a class="nav-link" href (click)="logout()">{{ logintext }}</a>
       </li>
     </ul>
   </div>

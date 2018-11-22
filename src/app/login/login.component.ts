@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,9 +13,14 @@ export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
 
+  loginData = {
+    email: '',
+    password: ''
+  };
+
   //  Submit form
   onSubmit() {
-    console.log(String(this.email.value), String(this.password.value));
+    console.log('email: ', String(this.email.value),'password: ', String(this.password.value));
     this.Login(this.email.value, this.password.value);
   }
 
@@ -32,18 +38,20 @@ export class LoginComponent implements OnInit {
       '';
   }
 
-  //  Login
+  //  Login + redirect naar main page
   Login(email, password) {
     this.authService.Login(email, password);
+    this.router.navigate([""])
   }
 
-  constructor(private authService: AuthService) {
+  constructor(public authService: AuthService, private router: Router) {
 
   }
 
   ngOnInit() {
-
-    //this.authService.Login("rvh@test.be", "test");
+    if (localStorage.getItem('loginData')) {
+      this.loginData = JSON.parse(localStorage.getItem('loginData'));
+    }
   }
 
 }

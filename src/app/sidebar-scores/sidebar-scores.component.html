@@ -1,0 +1,26 @@
+<div class="card text-center">
+  <div class="card-header">
+    <h3 class="leaderboard-title"><i class="fas fa-trophy"></i> Your score: {{ score }}</h3>
+  </div>
+  <div class="card-body">
+    <div class="table-wrapper-scroll-y">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Task</th>
+            <th scope="col">Points</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let opdracht of opdrachten">
+            <td>{{ opdracht.opdrachtId }}</td>
+            <td>{{ opdracht.punten }}</td>
+            <td>{{ opdracht.timestamp }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer text-muted"></div>
+</div>
