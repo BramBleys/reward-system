@@ -26,7 +26,7 @@ export class FormMedewerkerComponent implements OnInit {
 
   typeList = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, ) {
     this.getTypes();
     console.log(this.typeList);
    }
@@ -48,6 +48,10 @@ export class FormMedewerkerComponent implements OnInit {
       // beschikbaar: true
 
     },{headers} ).subscribe(e => console.log(e));
+  }
+
+  getRewards() {
+    this.typesService.getTypes().subscribe((data) => (this.types = data));
   }
 
   getTypes(){

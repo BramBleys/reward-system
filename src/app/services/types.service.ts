@@ -12,7 +12,7 @@ export class RewardsService {
 
   constructor(private http: HttpClient) {}
 
-  getRewards(): Observable<Type[]> {
+  getTypes(): Observable<Type[]> {
     const headers = new HttpHeaders();
     headers.set(
       'token',
