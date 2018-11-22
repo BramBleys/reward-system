@@ -1,31 +1,61 @@
-
-
-nav{
-    background-color:white;
-    border-bottom: 2px solid #f49900;
-    box-shadow: 0px 0px 4px 0px;
+nav {
+  background-color: white;
+  border-bottom: 2px solid #f49900;
+  box-shadow: 0px 0px 4px 0px;
 }
 
-.navbar-brand{
-    margin: 0;
+.navbar-brand {
+  margin: 0;
 }
 
-.nav-item{
-    position: relative;
-    right:10px;
+.nav-item {
+  position: relative;
+  right: 10px;
 }
 
-a{
-    color:#333e47;
-    text-decoration: none;
-    transition: all 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+.nav-item {
+  margin: 10px;
+  min-width: 140px;
 }
 
-a:hover{
-    color: #f49900;
-    text-decoration: none;
-    transition: all 0.1s;
-    
+a {
+  color: #333e47;
+  text-decoration: none;
+  transition: all 0.5s;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+a:hover {
+  color: #f49900;
+  text-decoration: none;
+  transition: all 0.1s;
+}
+
+
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.btn-dropdown {
+  color: #333e47;
+  background-color: transparent;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 7px;
+}
+
+.divider {
+    border-left: 1px solid #f49900;
+}
+
+.row{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+.btn-dropdown:hover {
+  color: #f49900;
 }

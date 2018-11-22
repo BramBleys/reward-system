@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-6">
+    <ngb-pagination class="paginator" [collectionSize]="(count$|async) / (pageSize/10)" [(page)]="currentPage"
+      [maxSize]="3"></ngb-pagination>
+  </div>
+  <div class="col-6 text-right">
+    <button class="btn btn-outline-secondary"><i class="fas fa-plus"></i>Reward toevoegen</button>
+  </div>
+  <div class="col-12" *ngIf="loading">
+    <p>
+      <ngb-progressbar value="250"></ngb-progressbar>
+    </p>
+  </div>
+
+  <div *ngFor="let opdracht of (opdrachten$ | async)" class=" col-12 col-md-4">
+    <div class="card assignment">
+      <img class="card-img-top" src="../../assets/images/presentation.jpeg" alt="Presentation">
+      <div class="card-body">
+        <h5 class="card-title">{{opdracht.titel}}<i class="fas fa-coins"><span>{{opdracht.punten}}</span></i></h5>
+        <p class="card-text">{{opdracht.omschrijving}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>

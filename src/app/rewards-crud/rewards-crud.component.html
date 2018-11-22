@@ -1,0 +1,108 @@
+<div class="card">
+  <div class="card-header">
+    <form>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="searchIcon"><i class="fas fa-search"></i></div>
+          <input type="text" class="form-control col-md-2 searchField" name="searchString" placeholder="Type to search..." [(ngModel)]="searchString">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="fixed_header">
+    <table class="table mt-3 table-hover">
+      <thead>
+      <tr>
+        <th>Reward name</th>
+        <th class="text-center">Points</th>
+        <th class="text-center">Available</th>
+        <th class="text-center">
+          <button type="button" (click)="open(add)" class="btn btn-link addChangeDelBtn" placement="top" ngbTooltip="Add new reward"><i class="fas fa-plus-circle fa-lg"></i></button>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let reward of rewards | filter : searchString;">
+        <td>
+          <div>{{ reward.naam }}</div>
+        </td>
+        <td class="text-center">{{ reward.punten }}</td>
+        <td class="text-center">{{reward.beschikbaar ? 'Yes' : 'No'}}</td>
+        <td class="text-center">
+          <button (click)="editReward(reward._id); open(edit)" class="btn addChangeDelBtn btn-link" placement="top"
+                  ngbTooltip="Change reward"><i class="fas fa-edit"></i></button>
+          <button (click)="deleteReward(reward._id)" class="btn btn-link addChangeDelBtn" placement="top"
+                  ngbTooltip="Delete reward"><i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<ng-template #add let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add reward</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <div class="input-group">
+          <input id="name" name="name" class="form-control" placeholder="Name" [(ngModel)]="rewardName"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="points">Points</label>
+        <div class="input-group">
+          <input id="points" name="points" class="form-control" type="number" placeholder="Points"
+                 [(ngModel)]="rewardPoints"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <input id="available" type="checkbox" name="available" [(ngModel)]="rewardAvailable"/>
+        <label for="available">Available</label>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="addReward()">Save</button>
+  </div>
+</ng-template>
+<ng-template #edit let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit reward</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <div class="input-group">
+          <input id="name" name="name" class="form-control" placeholder="Name" [(ngModel)]="rewardName"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="points">Points</label>
+        <div class="input-group">
+          <input id="points" name="points" class="form-control" type="number" placeholder="Points"
+                 [(ngModel)]="rewardPoints"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <input id="available" type="checkbox" name="available" [(ngModel)]="rewardAvailable"/>
+        <label for="available">Available</label>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="saveEdit()">Save</button>
+  </div>
+</ng-template>

@@ -1,10 +1,26 @@
 <nav class="navbar navbar-expand-md sticky-top row">
-  <a class="navbar-brand col-md-10 col-xs-6"><img src="../../../assets/images/jstackLogo.png" alt="logo CheeseIsLife" width="100px"></a>
+  <a class="navbar-brand col-md-6 col-xs-6"><img src="../../../assets/images/jstackLogo.png" alt="logo CheeseIsLife"
+      width="100px"></a>
 
-  <div class="navbar-collapse pull-right col-md-2 col-xs-6 text-center" id="navbarContent">
+  <div class="navbar-collapse pull-right col-md-6 col-xs-6 text-center" id="navbarContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Login</a>
+        <p class="nav-link" *ngIf="loggedIn == true">{{ currentuser.naam }} ({{ currentuser.punten }} punten) </p>
+      </li>
+      <li class="nav-item divider" *ngIf="loggedIn == false">
+        <a class="nav-link" [routerLink]="[{ outlets: { primary: ['login'],sidebar: ['login'] } }]">{{ logintext }}</a>
+      </li>
+      <li class="nav-item divider" *ngIf="loggedIn == true">
+        <a class="nav-link" href (click)="logout()">{{ logintext }}</a>
+      </li>
+      <li class="nav-item">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-dropdown" id="dropdownBasic1" ngbDropdownToggle>{{ 'header.language' | translate }}</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button class="dropdown-item" (click)="changeLanguage('en')">{{ 'header.language.en' | translate }}</button>
+            <button class="dropdown-item" (click)="changeLanguage('nl')">{{ 'header.language.nl' | translate }}</button>
+          </div>
+        </div>
       </li>
     </ul>
   </div>

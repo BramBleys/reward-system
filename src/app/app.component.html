@@ -1,2 +1,10 @@
 <app-header></app-header>
 <app-main-content></app-main-content>
+<footer class="alert alert-primary fixed-bottom d-flex justify-content-between" *ngIf="showBanner">
+  <button class="btn btn-sm btn-outline-primary mr-2" type="button" (click)="addToHomescreen()">
+    <i class="fas fa-download mr-1"></i>Toevoegen aan startscherm
+  </button>
+  <button type="button" class="close">
+    <span (click)="showBanner = !showBanner">&times;</span>
+  </button>
+</footer>
