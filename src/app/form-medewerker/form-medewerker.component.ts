@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpHeaders, HttpClient} from '@angular/common/http';
 import { TypesService } from '../services/types.service';
-import { Type } from '@angular/compiler';
+import { Type } from '../models/type';
 
 @Component({
   selector: 'app-form-medewerker',
@@ -26,12 +26,15 @@ export class FormMedewerkerComponent implements OnInit {
     description:''
   };
 
-  types = Type[];
+  types : Type[];
 
   constructor(private http: HttpClient, private typesService: TypesService) {
+  }
+
+   ngOnInit() {
     this.getTypes();
-    console.log(this.types);
-   }
+    console.log(this.types)
+  }
 
   onSubmit(form){
 
@@ -52,16 +55,7 @@ export class FormMedewerkerComponent implements OnInit {
     },{headers} ).subscribe(e => console.log(e));
   }
 
-  getRewards() {
+  getTypes() {
     this.typesService.getTypes().subscribe((data) => (this.types = data));
   }
-
-  getTypes(){
-    const headers = new HttpHeaders();
-    headers.set('token', 'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg');
-    this.http.get('https://radiant-peak-48979.herokuapp.com/v1/types',{headers} ).subscribe(e => console.log(e));
-  }
-  ngOnInit() {
-  }
-
 }
