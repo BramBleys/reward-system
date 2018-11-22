@@ -12,6 +12,7 @@ import { MainContentComponent } from './main-content/main-content.component';
 import { RoutingModule } from './routing/routing.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormMedewerkerComponent } from './form-medewerker/form-medewerker.component';
 import { SidebarScoresComponent } from './sidebar-scores/sidebar-scores.component';
 import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
 
@@ -37,6 +38,7 @@ import { environment } from '../environments/environment';
     OpdrachtenComponent,
     RewardsCrudComponent,
     TranslatePipe,
+    FormMedewerkerComponent,
     FilterPipe
   ],
   imports: [
