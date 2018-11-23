@@ -36,6 +36,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { OpdrachtFilterPipe } from './pipes/opdrachtPipe';
 import { OpdrachtenCrudComponent } from './opdrachten-crud/opdrachten-crud.component';
 import { FilterPipe } from './pipes/rewardPipe';
+import { ApprovingComponent } from './approving-admin/approving/approving.component';
 
 
 @NgModule({
@@ -53,7 +54,7 @@ import { FilterPipe } from './pipes/rewardPipe';
     FormMedewerkerComponent,
     FilterPipe,
     RewardshopComponent,
-
+    ApprovingComponent,
     AlertComponent,
     OpdrachtFilterPipe,
     OpdrachtenCrudComponent

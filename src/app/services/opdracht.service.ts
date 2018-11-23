@@ -48,9 +48,6 @@ export class OpdrachtService {
       'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
     );
 
-<<<<<<< HEAD
-    return this.http.get<Number>(this.parametersService.generateGetUrl(this.url + '/count', newParams), {headers});
-=======
     return this.http.get<Number>(this.parametersService.generateGetUrl(this.url + '/count', newParams), { headers });
   }
 
@@ -73,7 +70,10 @@ export class OpdrachtService {
     );
 
     const url = `${this.url}/${opdracht._id}`;
-    return this.http.patch<any>(url, opdracht, { headers });
->>>>>>> 52f033f851e52ccf45ecd93b477a6224409ef955
+
+    this.http.patch(url, opdracht, {headers});
+    this.http.patch(url, {
+      goedgekeurd: opdracht.goedgekeurd
+    }, { headers });
   }
 }

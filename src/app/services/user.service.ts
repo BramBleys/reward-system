@@ -56,4 +56,16 @@ export class UserService {
       this.updateUser(userId, user )
     })
   }
+
+  setOpdracht(userId, opdrachtId, punten){
+    this.getUser(userId).subscribe(user => {
+      let opdracht = {
+        opdrachtId,
+        punten
+      }
+      user.opdrachten.push(opdracht);
+
+      this.updateUser(userId, user)
+    })
+  }
 }

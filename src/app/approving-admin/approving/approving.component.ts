@@ -4,6 +4,8 @@ import { Opdracht } from '../../models/opdracht';
 import { Observable } from 'rxjs';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 import { TypesService } from '../../services/types.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-approving',
@@ -12,10 +14,12 @@ import { TypesService } from '../../services/types.service';
 })
 export class ApprovingComponent implements OnInit {
 
-
+  uid = '5bf81b2300dc814480c0cdde';
   opdrachten$: Observable<any[]>;
   count$: Observable<Number>;
   type$: Observable<any>;
+  user: Observable<any>;
+  userObject: User;
   opdracht: Opdracht;
   eindDatum: String;
   beginDatum: String;
@@ -43,7 +47,7 @@ export class ApprovingComponent implements OnInit {
     this.getAssignmentsFiltered();
   }
 
-  constructor(public opdrachtService: OpdrachtService, public config: NgbProgressbarConfig, public typeSrevice: TypesService) {
+  constructor(public opdrachtService: OpdrachtService, public config: NgbProgressbarConfig, public typeSrevice: TypesService, public userService: UserService) {
     config.max = 250;
     config.striped = true;
     config.animated = true;
@@ -69,9 +73,20 @@ export class ApprovingComponent implements OnInit {
     this.opdrachten$.subscribe(e => this.loading = false);
   }
 
-  log(){
-    console.log(this.opdracht.punten);
-    console.log(this.opdrachten$);
+  submit(){
+    this.patchUser();
+    this.patchOpdracht();
+    this.refresh();
+  }
+
+  patchUser(){
+      this.userService.setOpdracht(this.uid, this.opdracht._id, this.opdracht.punten);
+      this.refresh();
+  }
+
+  refresh(){ 
+      this.getAssignmentsFiltered();
+      this.getAssignementsCount();
   }
 
   getAssignementsCount() {
@@ -81,7 +96,9 @@ export class ApprovingComponent implements OnInit {
   }
 
   patchOpdracht(){
-
+    this.opdracht.goedgekeurd = true;
+    console.log(this.opdracht);
+    this.opdrachtService.editAssignment(this.opdracht);
   }
 
   ngOnInit() {
