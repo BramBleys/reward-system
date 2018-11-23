@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RewardsService } from '../services/rewards.service';
 import { Reward } from '../models/reward';
-import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-rewards-crud',
@@ -9,7 +9,6 @@ import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./rewards-crud.component.scss']
 })
 export class RewardsCrudComponent implements OnInit {
-
   public reward1: Reward;
   public searchString: string;
 
@@ -22,7 +21,7 @@ export class RewardsCrudComponent implements OnInit {
     offset: 0,
     limit: 0,
     sortBy: 'naam',
-    order: 'asc',
+    order: 'asc'
   };
 
   @Input() rewardName: string;
@@ -83,5 +82,11 @@ export class RewardsCrudComponent implements OnInit {
 
   close() {
     this.modalReference.close();
+    this.maakRewardLeeg();
+  }
+
+  maakRewardLeeg() {
+    this.rewardName = '';
+    this.rewardPoints = null;
   }
 }
