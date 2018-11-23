@@ -51,6 +51,7 @@ import { FilterPipe } from './pipes/rewardPipe';
     AlertComponent,
     OpdrachtFilterPipe,
     OpdrachtenCrudComponent
+
   ],
   imports: [
     BrowserModule,
