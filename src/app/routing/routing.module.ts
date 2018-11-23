@@ -9,9 +9,10 @@ import { LoginComponent } from '../login/login.component';
 import { RewardsCrudComponent } from '../rewards-crud/rewards-crud.component';
 import {SidebarAdminComponent} from '../sidebar-admin/sidebar-admin.component';
 import {SidebarScoresComponent} from '../sidebar-scores/sidebar-scores.component';
+import { ApprovingComponent } from '../approving-admin/approving/approving.component';
 
 const routes: Routes = [
-  { path: '', component: RewardsCrudComponent },
+  { path: '', component: ApprovingComponent },
   { path: '', component: SidebarScoresComponent, outlet: 'sidebar' },
   { path: 'path', component: LeaderboardComponent },
   { path: 'path', component: OpdrachtenComponent, outlet: 'sidebar' },

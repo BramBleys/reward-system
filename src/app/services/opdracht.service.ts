@@ -57,7 +57,5 @@ export class OpdrachtService {
     );
 
     return this.http.get<Number>(this.parametersService.generateGetUrl(this.url + '/count', newParams), {headers});
-
-
   }
 }
