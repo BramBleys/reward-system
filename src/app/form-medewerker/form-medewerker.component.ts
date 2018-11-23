@@ -10,6 +10,7 @@ import { Type } from '../models/type';
 })
 export class FormMedewerkerComponent implements OnInit {
 
+  uid = '5bf5903a57288e2f94a87b22';
   opdracht = {
     title: '',
     beginDate : {
@@ -41,11 +42,12 @@ export class FormMedewerkerComponent implements OnInit {
     headers.set('token', 'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg');
     
     this.http.post('https://radiant-peak-48979.herokuapp.com/v1/opdrachten/create', { 
+      userId: this.uid,
       titel: this.opdracht.title,
       omschrijving: this.opdracht.description,
       goedgekeurd: false,
-      beginDatum: (this.opdracht.beginDate.day + "/" +  this.opdracht.beginDate.month + "/" +this.opdracht.beginDate.year),
-      eindDatum: (this.opdracht.endDate.day + "/" +  this.opdracht.endDate.month + "/" +this.opdracht.endDate.year),
+      beginDatum:this.opdracht.beginDate ,
+      eindDatum: this.opdracht.endDate,
       typeId: this.opdracht.type,
       // fotoURL:'',
       // private:false,

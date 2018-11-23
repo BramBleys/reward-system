@@ -23,6 +23,9 @@ import { TranslateService } from './services/translate.service';
 import { TranslatePipe } from './translate.pipe';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { RewardshopComponent } from './rewardshop/rewardshop.component';
+
+
 import { AlertComponent } from './_directives/alert.component';
 import { AlertService } from './services/alert.service';
 import { UserService } from './services/user.service';
@@ -33,6 +36,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { OpdrachtFilterPipe } from './pipes/opdrachtPipe';
 import { OpdrachtenCrudComponent } from './opdrachten-crud/opdrachten-crud.component';
 import { FilterPipe } from './pipes/rewardPipe';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +52,8 @@ import { FilterPipe } from './pipes/rewardPipe';
     TranslatePipe,
     FormMedewerkerComponent,
     FilterPipe,
+    RewardshopComponent
+
     AlertComponent,
     OpdrachtFilterPipe,
     OpdrachtenCrudComponent
