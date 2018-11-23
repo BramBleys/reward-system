@@ -15,12 +15,19 @@ export class RewardsCrudComponent implements OnInit {
 
   rewards: Reward[];
   reward: Reward;
-  showInput: boolean = false;
+  showInput = false;
   modalReference: any;
+
+  filterParams = {
+    offset: 0,
+    limit: 0,
+    sortBy: 'naam',
+    order: 'asc',
+  };
 
   @Input() rewardName: string;
   @Input() rewardPoints: number;
-  @Input() rewardAvailable: boolean = true;
+  @Input() rewardAvailable = true;
   @Input() rewardId: string;
 
   constructor(private rewardService: RewardsService, private modalService: NgbModal) {}
@@ -31,7 +38,7 @@ export class RewardsCrudComponent implements OnInit {
   }
 
   getRewards() {
-    this.rewardService.getRewards().subscribe((data) => (this.rewards = data));
+    this.rewardService.getRewards(this.filterParams).subscribe((data) => (this.rewards = data));
   }
 
   addReward() {
@@ -55,7 +62,7 @@ export class RewardsCrudComponent implements OnInit {
   }
 
   saveEdit() {
-    let reward = new Reward();
+    const reward = new Reward();
     reward.id = this.rewardId;
     reward.naam = this.rewardName;
     reward.punten = this.rewardPoints;

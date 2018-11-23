@@ -7,12 +7,12 @@ export class ParametersService {
 
   constructor() { }
 
-  generateGetUrl(url, params = {}){
+  generateGetUrl(url, params = {}) {
     let queryString = '?';
     const keys = Object.keys(params);
 
     keys.forEach(key => {
-      queryString +=key + '=' + params[key] + '&';
+      queryString += key + '=' + params[key] + '&';
     });
 
     return url + queryString;
