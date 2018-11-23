@@ -19,7 +19,7 @@
       </li>
     </ul>
     <ul class="navbar-nav language">
-      <li class=" dropdown" ngbDropdown>
+      <li class="dropdown" ngbDropdown autoClose="inside">
         <a class="nav-link dropdown-toggle" id="dropdownLanguage" ngbDropdownToggle>{{ 'header.language' | translate }}</a>
         <div class="dropdown-menu dropdown" aria-labelledby="dropdownLanguage" ngbDropdownMenu (click)="isCollapsed = !isCollapsed">
           <a class="dropdown-item" routerLink="" (click)="changeLanguage('en')">{{ 'header.language.en' | translate }}</a>
