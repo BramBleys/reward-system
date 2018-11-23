@@ -1,14 +1,13 @@
-import {Component, NgModule, OnInit} from '@angular/core';
-import {ParametersService} from './services/parameters.service';
-import {TranslateService} from './services/translate.service';
-import {SwUpdate} from '@angular/service-worker';
+import { Component, NgModule, OnInit } from '@angular/core';
+import { ParametersService } from './services/parameters.service';
+import { TranslateService } from './services/translate.service';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
 @NgModule({
   imports: []
 })
@@ -17,19 +16,28 @@ export class AppComponent implements OnInit {
   showBanner = false;
   deferredPrompt: any;
 
-  constructor(private parameterService: ParametersService, private translate: TranslateService, private swUpdate: SwUpdate) {
+  constructor(
+    private parameterService: ParametersService,
+    private translate: TranslateService,
+    private swUpdate: SwUpdate
+  ) {
+    let params = {
+      titel: 'ding',
+      private: true
+    };
+    let url = this.parameterService.generateGetUrl('http://test.be', params);
 
+    translate.use('en');
   }
 
   ngOnInit() {
-    this.swUpdate.available.subscribe(evt => {
-        console.log('evt', evt);
-        if (confirm('De website is aangepast. Wil je de nieuwe versie openen?')) {
-          window.location.reload();
-        }
+    this.swUpdate.available.subscribe((evt) => {
+      console.log('evt', evt);
+      if (confirm('De website is aangepast. Wil je de nieuwe versie openen?')) {
+        window.location.reload();
       }
-    );
-    window.addEventListener('beforeinstallprompt', evt => {
+    });
+    window.addEventListener('beforeinstallprompt', (evt) => {
       console.log('beforeinstallprompt', evt);
       // Voorkomen dat Chrome 67 of eerder de "native" prompt toont
       evt.preventDefault();
@@ -55,5 +63,3 @@ export class AppComponent implements OnInit {
     });
   }
 }
-
-
