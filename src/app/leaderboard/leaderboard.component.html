@@ -13,35 +13,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>420</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>230</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>59</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>59</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>59</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>59</td>
+          <tr *ngFor="let user of users; let i = index">
+            <th *ngIf="i < 10"  scope="row">{{ i + 1 }}</th>
+            <td *ngIf="i < 10">{{ user.naam }}</td>
+            <td *ngIf="i < 10">{{ user.score }}</td>
           </tr>
         </tbody>
       </table>

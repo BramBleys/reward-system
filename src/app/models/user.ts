@@ -2,7 +2,7 @@ import { UserOpdracht } from './userOpdracht';
 import { Reward } from './reward';
 
 export class User {
-  id: number;
+  _id: string;
   email: string;
   naam: string;
   type: string;
@@ -12,4 +12,5 @@ export class User {
   token: string;
   rewards: Array<Reward>;
   opdrachten: Array<UserOpdracht>;
+  punten: number;
 }
