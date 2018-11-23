@@ -21,10 +21,11 @@ import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
 import { RewardsCrudComponent } from './rewards-crud/rewards-crud.component';
 import { TranslateService } from './services/translate.service';
 import { TranslatePipe } from './translate.pipe';
-import {FilterPipe} from './pipes/filterPipe';
+import { FilterPipe } from './pipes/rewardPipe';
+import { OpdrachtFilterPipe } from './pipes/opdrachtPipe';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
+import { OpdrachtenCrudComponent } from './opdrachten-crud/opdrachten-crud.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,9 @@ import { environment } from '../environments/environment';
     RewardsCrudComponent,
     TranslatePipe,
     FormMedewerkerComponent,
-    FilterPipe
+    FilterPipe,
+    OpdrachtFilterPipe,
+    OpdrachtenCrudComponent
   ],
   imports: [
     BrowserModule,
@@ -55,4 +58,4 @@ import { environment } from '../environments/environment';
   providers: [TranslateService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

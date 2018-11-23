@@ -1,8 +1,8 @@
 import { Pipe, PipeTransform, Injectable } from '@angular/core';
-import {Reward} from '../models/reward';
+import { Reward } from '../models/reward';
 
 @Pipe({
-  name: 'filter',
+  name: 'filter'
 })
 @Injectable()
 export class FilterPipe implements PipeTransform {
@@ -11,6 +11,6 @@ export class FilterPipe implements PipeTransform {
       return rewards;
     }
 
-    return rewards.filter(reward => reward.naam.toLocaleLowerCase().indexOf(searchString.toLocaleLowerCase()) !== -1);
+    return rewards.filter((reward) => reward.naam.toLocaleLowerCase().indexOf(searchString.toLocaleLowerCase()) !== -1);
   }
 }

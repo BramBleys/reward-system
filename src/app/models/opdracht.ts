@@ -1,10 +1,11 @@
 export class Opdracht {
-  id: string;
+  _id: string;
   titel: string;
   omschrijving: string;
   goedgekeurd: boolean;
-  beginDatum: string;
-  eindDatum: string;
+  beginDatum: Object;
+  eindDatum: Object;
+  datum: Object;
   typeId: string;
   fotoUrl: string;
   private: boolean;
