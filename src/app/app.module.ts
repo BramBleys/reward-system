@@ -24,6 +24,7 @@ import { TranslatePipe } from './translate.pipe';
 import {FilterPipe} from './pipes/filterPipe';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { RewardshopComponent } from './rewardshop/rewardshop.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { environment } from '../environments/environment';
     RewardsCrudComponent,
     TranslatePipe,
     FormMedewerkerComponent,
-    FilterPipe
+    FilterPipe,
+    RewardshopComponent
   ],
   imports: [
     BrowserModule,

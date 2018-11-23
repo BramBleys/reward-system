@@ -1,3 +1,4 @@
+import { RewardshopComponent } from './../rewardshop/rewardshop.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'login', component: LeaderboardComponent, outlet: 'sidebar' },
   { path: 'sendassignement', component: LeaderboardComponent, outlet: 'sidebar' },
-  { path: 'sendassignement', component: FormMedewerkerComponent}
+  { path: 'sendassignement', component: FormMedewerkerComponent},
+  {path: 'rewardshop', component: RewardshopComponent}
 ];
 
 export const routingModule: ModuleWithProviders = RouterModule.forRoot(routes);

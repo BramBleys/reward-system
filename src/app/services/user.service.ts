@@ -33,4 +33,27 @@ export class UserService {
     const url = `${this.url}`;
     return this.http.get<User[]>(url, { headers });
   }
+
+  updateUser(id, params = {}){
+    const headers = new HttpHeaders();
+    headers.set(
+      'token',
+      'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
+    );
+
+    this.http.patch(this.url + '/' + id, params, {headers} ).subscribe(e => console.log(e));
+
+  }
+
+  claimReward(userId, rewardId, punten){
+    this.getUser(userId).subscribe( user => {
+      let reward = {
+        rewardId,
+        punten
+      }
+      user.rewards.push(reward);
+
+      this.updateUser(userId, user )
+    })
+  }
 }
