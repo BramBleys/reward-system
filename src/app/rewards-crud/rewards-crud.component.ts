@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RewardsService } from '../services/rewards.service';
 import { Reward } from '../models/reward';
-import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-rewards-crud',
@@ -9,18 +9,24 @@ import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./rewards-crud.component.scss']
 })
 export class RewardsCrudComponent implements OnInit {
-
   public reward1: Reward;
   public searchString: string;
 
   rewards: Reward[];
   reward: Reward;
-  showInput: boolean = false;
+  showInput = false;
   modalReference: any;
+
+  filterParams = {
+    offset: 0,
+    limit: 0,
+    sortBy: 'naam',
+    order: 'asc'
+  };
 
   @Input() rewardName: string;
   @Input() rewardPoints: number;
-  @Input() rewardAvailable: boolean = true;
+  @Input() rewardAvailable = true;
   @Input() rewardId: string;
 
   constructor(private rewardService: RewardsService, private modalService: NgbModal) {}
@@ -31,7 +37,7 @@ export class RewardsCrudComponent implements OnInit {
   }
 
   getRewards() {
-    this.rewardService.getRewards().subscribe((data) => (this.rewards = data));
+    this.rewardService.getRewards(this.filterParams).subscribe((data) => (this.rewards = data));
   }
 
   addReward() {
@@ -55,7 +61,7 @@ export class RewardsCrudComponent implements OnInit {
   }
 
   saveEdit() {
-    let reward = new Reward();
+    const reward = new Reward();
     reward.id = this.rewardId;
     reward.naam = this.rewardName;
     reward.punten = this.rewardPoints;
@@ -76,5 +82,11 @@ export class RewardsCrudComponent implements OnInit {
 
   close() {
     this.modalReference.close();
+    this.maakRewardLeeg();
+  }
+
+  maakRewardLeeg() {
+    this.rewardName = '';
+    this.rewardPoints = null;
   }
 }

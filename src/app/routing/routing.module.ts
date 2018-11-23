@@ -1,3 +1,4 @@
+import { RewardshopComponent } from './../rewardshop/rewardshop.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -12,14 +13,20 @@ import {SidebarScoresComponent} from '../sidebar-scores/sidebar-scores.component
 import { ApprovingComponent } from '../approving-admin/approving/approving.component';
 
 const routes: Routes = [
+<<<<<<< HEAD
   { path: '', component: ApprovingComponent },
   { path: '', component: SidebarScoresComponent, outlet: 'sidebar' },
+=======
+  { path: '', component: RewardsCrudComponent },
+  { path: '', component: LeaderboardComponent, outlet: 'sidebar' },
+>>>>>>> 52f033f851e52ccf45ecd93b477a6224409ef955
   { path: 'path', component: LeaderboardComponent },
   { path: 'path', component: OpdrachtenComponent, outlet: 'sidebar' },
   { path: 'login', component: LoginComponent },
   { path: 'login', component: LeaderboardComponent, outlet: 'sidebar' },
   { path: 'sendassignement', component: LeaderboardComponent, outlet: 'sidebar' },
-  { path: 'sendassignement', component: FormMedewerkerComponent}
+  { path: 'sendassignement', component: FormMedewerkerComponent},
+  {path: 'rewardshop', component: RewardshopComponent}
 ];
 
 export const routingModule: ModuleWithProviders = RouterModule.forRoot(routes);

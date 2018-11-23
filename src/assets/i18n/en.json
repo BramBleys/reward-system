@@ -1,8 +1,16 @@
 {
-  "header.login": "Login",
   "header.language": "Language",
   "header.language.en": "English",
   "header.language.nl": "Nederlands",
+  "header.points": "points",
+  "header.login": "Sign in",
+  "header.logout": "Sign out",
+
+  "login.mail.placeholder": "Email",
+  "login.mail.error.invalid": "Please fill out a valid email-address",
+  "login.password.placeholder": "Password",
+  "login.password.error.empty": "Please fill out your password",
+  "login.cancel": "Cancel",
 
   "leaderboard.name": "Name",
   "leaderboard.title": "Leaderboard",

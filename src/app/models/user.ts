@@ -10,6 +10,7 @@ export class User {
   functie: string;
   wachtwoord: string;
   token: string;
-  rewards: Array<Reward>;
+  rewards: any[];
   opdrachten: Array<UserOpdracht>;
+  punten: number;
 }

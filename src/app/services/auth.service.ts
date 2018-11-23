@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -20,17 +22,23 @@ export class AuthService {
     }
   }
 
-  //  Login API call, save data to userData$
-  Login(email, wachtwoord) {
-    this.http.post<User>(this.ROOT_URL, {
-      email: String(email),
-      wachtwoord: String(wachtwoord)
-    }).subscribe(user => {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.userData$.next(user);
-    });
+  //  Login API call, save data to userData$, set user in localstorage
+  Login(email: string, wachtwoord: string) {
+    return this.http.post<any>(`${environment.API_URL}/users/login`, { email: email, wachtwoord: wachtwoord })
+      .pipe(map(user => {
+        console.log('user', user);
+        // login successful if there's a jwt token in the response
+        if (user && user.token) {
+          console.log('succes');
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(user));
+        }
+
+        return user;
+      }));
   }
 
+  //  Set user data
   setUserData(user) {
     this.userData$.next({
       _id: user._id,
@@ -42,12 +50,13 @@ export class AuthService {
       wachtwoord: user.wachtwoord,
       token: user.token,
       rewards: user.rewards,
-      opdrachten: user.opdrachten
+      opdrachten: user.opdrachten,
+      punten: user.punten
     });
   }
 
+  //  Log out the user, remove user from localstorage
   logout() {
-    //  Remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     this.userData$ = new BehaviorSubject(null);
   }

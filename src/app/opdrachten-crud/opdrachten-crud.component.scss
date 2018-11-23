@@ -1,0 +1,56 @@
+.btn-round {
+  border-radius: 50%;
+}
+
+.searchField {
+  float: right;
+}
+
+.searchIcon {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 5px 5px 5px 0;
+}
+
+.form-group {
+  display: contents;
+  vertical-align: middle;
+  text-align: center;
+  color: #f49900;
+}
+
+.fixed_header {
+  table {
+    margin: 0 0 0 0 !important;
+  }
+
+  tbody {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    height: 50vh;
+  }
+
+  thead tr {
+    display: block;
+  }
+
+  th,
+  td {
+    width: 100vh;
+  }
+}
+
+
+.addChangeDelBtn {
+  color: #f49900;
+}
+
+.addChangeDelBtn:hover {
+  color: #283038;
+}
+
+.table th,
+.table td {
+  vertical-align: middle !important;
+}
