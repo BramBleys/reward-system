@@ -7,10 +7,10 @@
   "header.logout": "Log uit",
   
   "login.mail.placeholder": "Email",
-  "login.mail.error.empty": "Gelieve een email-adres in te geven",
   "login.mail.error.invalid": "Gelieve een geldig email-adres in te geven",
   "login.password.placeholder": "Wachtwoord",
   "login.password.error.empty": "Gelieve een wachtwoord in te geven",
+  "login.cancel": "Annuleer",
 
   "leaderboard.name": "Naam",
   "leaderboard.title": "Klassement",

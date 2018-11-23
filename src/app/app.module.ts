@@ -6,7 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { RoutingModule } from './routing/routing.module';
@@ -24,6 +24,13 @@ import { TranslatePipe } from './translate.pipe';
 import { FilterPipe } from './pipes/filterPipe';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AlertComponent } from './_directives/alert.component';
+import { AlertService } from './services/alert.service';
+import { UserService } from './services/user.service';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './_guards/auth.guard';
 
 
 @NgModule({
@@ -39,7 +46,8 @@ import { environment } from '../environments/environment';
     RewardsCrudComponent,
     TranslatePipe,
     FormMedewerkerComponent,
-    FilterPipe
+    FilterPipe,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +60,14 @@ import { environment } from '../environments/environment';
     OpdrachtenModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [TranslateService],
+  providers: [
+    TranslateService,
+    AuthGuard,
+    AlertService,
+    AuthService,
+    UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

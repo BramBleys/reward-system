@@ -1,44 +1,58 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+
+import { AlertService } from '../services/alert.service';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
-import { TranslateService } from '../services/translate.service';
 
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-})
+@Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
-  email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required]);
+  loginForm: FormGroup;
+  loading = false;
+  submitted = false;
 
-  loginData = {
-    email: '',
-    password: ''
-  };
-
-  constructor(public authService: AuthService, private router: Router, private translate: TranslateService) {
-
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService,
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
-    if (localStorage.getItem('loginData')) {
-      this.loginData = JSON.parse(localStorage.getItem('loginData'));
-    }
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+
+    // reset login status
+    this.authService.logout();
   }
-  
-  //  Submit form
+
+  // convenience getter for easy access to form fields
+  get f() { return this.loginForm.controls; }
+
   onSubmit() {
-    console.log('email: ', String(this.email.value),'password: ', String(this.password.value));
-    this.Login(this.email.value, this.password.value);
-  }
+    this.submitted = true;
 
-  //  Login + redirect naar main page
-  Login(email, password) {
-    this.authService.Login(email, password);
-    this.router.navigate([""]);
-  }
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+      return;
+    }
 
-  
+    this.loading = true;
+    this.authService.Login(this.f.username.value, this.f.password.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          console.log(data);
+          this.alertService.success('Login successful', true);
+          this.router.navigate([""]);
+        },
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+        });
+  }
 }
