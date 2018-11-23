@@ -14,7 +14,7 @@ import { OpdrachtenCrudComponent } from '../opdrachten-crud/opdrachten-crud.comp
 
 
 const routes: Routes = [
-  { path: '', component: OpdrachtenCrudComponent },
+  { path: '', component: FormMedewerkerComponent },
   { path: '', component: LeaderboardComponent, outlet: 'sidebar' },
   { path: 'path', component: LeaderboardComponent },
   { path: 'path', component: OpdrachtenComponent, outlet: 'sidebar' },

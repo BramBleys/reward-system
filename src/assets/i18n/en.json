@@ -16,12 +16,12 @@
   "leaderboard.title": "Leaderboard",
   "leaderboard.points": "Points",
 
-  "opdrachtenBoard.add":"Submit Completed Assignment",
+  "opdrachtenBoard.add": "Submit Completed Assignment",
 
-  "rewardsCrud.search":"Type to search...",
-  "rewardsCrud.name":"Reward name",
-  "rewardsCrud.points":"Points",
-  "rewardsCrud.available":"Available",
+  "rewardsCrud.search": "Type to search...",
+  "rewardsCrud.name": "Reward name",
+  "rewardsCrud.points": "Points",
+  "rewardsCrud.available": "Available",
 
   "opdrachtCrud.description": "Description",
   "opdrachtCrud.points": "Points",
@@ -38,14 +38,31 @@
   "opdrachtCrud.modal.save": "Save",
   "opdrachtCrud.modal.error": "Please fill in this field!",
 
-  "sidebarAdmin.actions":"Actions",
-  "sidebarAdmin.assign":"Assign rewards",
-  "sidebarAdmin.overview":"Overview employees",
-  "sidebarAdmin.adjustAssignments":"Adjust assignments",
-  "sidebarAdmin.adjustRewards":"Adjust rewards",
+  "sidebarAdmin.actions": "Actions",
+  "sidebarAdmin.assign": "Assign rewards",
+  "sidebarAdmin.overview": "Overview employees",
+  "sidebarAdmin.adjustAssignments": "Adjust assignments",
+  "sidebarAdmin.adjustRewards": "Adjust rewards",
 
-  "sidebarScore.score":"Your Score: ",
-  "sidebarScore.tasks":"Tasks",
-  "sidebarScore.points":"Points",
-  "sidebarScore.date":"Date"
+  "sidebarScore.score": "Your Score: ",
+  "sidebarScore.tasks": "Tasks",
+  "sidebarScore.points": "Points",
+  "sidebarScore.date": "Date",
+
+  "form.new": "New assignment",
+  "form.title": "Title",
+  "form.beginDate": "Begin date assignment",
+  "form.endDate": "End date assignment",
+  "form.type": "Type assignment",
+  "form.description": "Description",
+  "form.descriptionPlaceholder": "Describe what the assignment was, what did you do and what are your findings on the assignement",
+  "form.beginDateError": "The begin date is required.",
+  "form.endDateError": "The end date is required.",
+  "form.titleError": "The title is required.",
+  "form.typeError": "The type is required.",
+  "form.descriptionError": "The description is required.",
+  "form.notValid": "Error: Make sure all fields are correct.",
+  "form.valid": "All fields are correct",
+  "form.cancel": "Cancel",
+  "form.send": "Send"
 }
