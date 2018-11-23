@@ -11,7 +11,7 @@ import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 export class OpdrachtenComponent implements OnInit {
 
   allAsignments: Opdracht;
-  readonly pageSize = 9; 
+  readonly pageSize = 6;
 
   opdrachten$: Observable<any[]>;
   count$: Observable<Number>;
@@ -25,20 +25,15 @@ export class OpdrachtenComponent implements OnInit {
 
   loading = false;
 
-  
-  
   private _currentPage = 1;
-  get currentPage(){
+  get currentPage() {
     return this._currentPage;
   }
-  set currentPage(page){
+  set currentPage(page) {
     this._currentPage = page;
     this.filterParams['offset'] = this._currentPage * this.pageSize - this.pageSize;
     this.getAssignmentsFiltered();
   }
-
-  
-
 
   constructor(public opdrachtService: OpdrachtService, public config: NgbProgressbarConfig) {
     config.max = 250;
@@ -51,20 +46,19 @@ export class OpdrachtenComponent implements OnInit {
   ngOnInit() {
     this.getAssignementsCount();
     this.getAssignmentsFiltered();
-    
+
   }
 
-
-  getAssignmentsFiltered(){
+  getAssignmentsFiltered() {
     this.loading = true;
     this.opdrachten$ = this.opdrachtService.getAssignmentsFiltered(this.filterParams);
-    this.opdrachten$.subscribe(e =>this.loading = false);
-   
+    this.opdrachten$.subscribe(e => this.loading = false);
+
   }
-  getAssignementsCount(){
+  getAssignementsCount() {
     this.count$ = this.opdrachtService.getCount(this.filterParams);
     console.log(this.filterParams);
-    
+
   }
-  
+
 }

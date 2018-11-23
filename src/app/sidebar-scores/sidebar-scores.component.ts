@@ -8,7 +8,7 @@ import { stringify } from 'querystring';
 @Component({
   selector: 'app-sidebar-scores',
   templateUrl: './sidebar-scores.component.html',
-  styleUrls: ['./sidebar-scores.component.css']
+  styleUrls: ['./sidebar-scores.component.scss']
 })
 export class SidebarScoresComponent implements OnInit {
   score: Number;

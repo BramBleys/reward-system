@@ -1,0 +1,15 @@
+.btn-action {
+  margin: 8px;
+  background-color: rgba(244,153,0,0.5);
+  border-radius: 100px;
+  padding: 5px 0px;
+  transition: all 0.5s;
+}
+.btn-action:hover {
+  border: 1px solid rgba(244,153,0,1);
+  transition: all 0.5s;
+}
+
+.fa-cogs{
+  padding-right: 20px;
+}

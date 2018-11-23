@@ -10,7 +10,25 @@ $theme-colors: (
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+.page-item .page-link{
+  color: black;
+  background-color: white;
+  transition: all 0.3s;
+}
+.page-item:hover .page-link:hover{
+  border-color: #F49900;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+.page-item.active .page-link{
+  color: black;
+  border-color: #F49900;
+  border-radius: 3px;
 
+}
+.fa-trophy{
+  padding-right: 20px;
+}
 ::-webkit-scrollbar {
   width: 2px;
 }
@@ -23,7 +41,7 @@ $theme-colors: (
 
 .tooltip > div {
   animation-name: delayedFadeIn;
-  animation-duration: 1s; /* Adjust this duration */
+  animation-duration: 1s;
 }
 @Keyframes delayedFadeIn {
   0% {opacity: 0;}

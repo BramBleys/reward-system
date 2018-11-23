@@ -1,6 +1,6 @@
 <div class="card text-center">
   <div class="card-header">
-    <h3 class="leaderboard-title"><i class="fas fa-trophy"></i> Leaderboard</h3>
+    <h3 class="leaderboard-title"><i class="fas fa-trophy"></i>{{ 'leaderboard.title' | translate }}</h3>
   </div>
   <div class="card-body">
     <div class="table-wrapper-scroll-y">
@@ -8,40 +8,15 @@
         <thead class="thead-light">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Points</th>
+            <th scope="col">{{ 'leaderboard.name' | translate }}</th>
+            <th scope="col">{{ 'leaderboard.points' | translate }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>420</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>230</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>59</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>59</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>59</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>59</td>
+          <tr *ngFor="let user of users; let i = index">
+            <th *ngIf="i < 10"  scope="row">{{ i + 1 }}</th>
+            <td *ngIf="i < 10">{{ user.naam }}</td>
+            <td *ngIf="i < 10">{{ user.score }}</td>
           </tr>
         </tbody>
       </table>

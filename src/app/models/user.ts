@@ -12,4 +12,5 @@ export class User {
   token: string;
   rewards: Array<Reward>;
   opdrachten: Array<UserOpdracht>;
+  punten: number;
 }
