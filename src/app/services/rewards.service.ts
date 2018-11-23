@@ -3,6 +3,8 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Reward } from '../models/reward';
 import { Observable } from 'rxjs';
 import { environment as api } from '../../environments/environment';
+import { ParametersService } from './parameters.service';
+import {isUpperCase} from 'tslint/lib/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +12,22 @@ import { environment as api } from '../../environments/environment';
 export class RewardsService {
   private url = api.API_URL + '/rewards';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private parametersService: ParametersService) {}
 
-  getRewards(): Observable<Reward[]> {
+  getRewards(params = {}): Observable<Reward[]> {
+    const newParams = Object.assign({}, params);
+    delete newParams['offset'];
+    delete newParams['limit'];
+    delete newParams['sortBy'];
+    delete newParams['order'];
+
     const headers = new HttpHeaders();
     headers.set(
       'token',
       'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
     );
 
-    return this.http.get<any>(this.url, { headers });
+    return this.http.get<any>(this.parametersService.generateGetUrl(this.url, params), { headers });
   }
 
   getReward(id: string): Observable<Reward> {
@@ -44,7 +52,7 @@ export class RewardsService {
     return this.http.post<any>(
       url,
       {
-        naam: name,
+        naam: name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase(),
         punten: points,
         beschikbaar: available
       },

@@ -21,7 +21,6 @@ import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
 import { RewardsCrudComponent } from './rewards-crud/rewards-crud.component';
 import { TranslateService } from './services/translate.service';
 import { TranslatePipe } from './translate.pipe';
-import { FilterPipe } from './pipes/filterPipe';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AlertComponent } from './_directives/alert.component';
@@ -31,7 +30,9 @@ import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './_guards/auth.guard';
-
+import { OpdrachtFilterPipe } from './pipes/opdrachtPipe';
+import { OpdrachtenCrudComponent } from './opdrachten-crud/opdrachten-crud.component';
+import { FilterPipe } from './pipes/rewardPipe';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,9 @@ import { AuthGuard } from './_guards/auth.guard';
     TranslatePipe,
     FormMedewerkerComponent,
     FilterPipe,
-    AlertComponent
+    AlertComponent,
+    OpdrachtFilterPipe,
+    OpdrachtenCrudComponent
   ],
   imports: [
     BrowserModule,

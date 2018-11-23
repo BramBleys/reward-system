@@ -12,7 +12,7 @@ import {SidebarScoresComponent} from '../sidebar-scores/sidebar-scores.component
 
 const routes: Routes = [
   { path: '', component: RewardsCrudComponent },
-  { path: '', component: SidebarScoresComponent, outlet: 'sidebar' },
+  { path: '', component: LeaderboardComponent, outlet: 'sidebar' },
   { path: 'path', component: LeaderboardComponent },
   { path: 'path', component: OpdrachtenComponent, outlet: 'sidebar' },
   { path: 'login', component: LoginComponent },
