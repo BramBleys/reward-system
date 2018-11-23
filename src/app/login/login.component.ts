@@ -1,57 +1,58 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+
+import { AlertService } from '../services/alert.service';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
 
-
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-})
+@Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
-  email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required]);
+  loginForm: FormGroup;
+  loading = false;
+  submitted = false;
 
-  loginData = {
-    email: '',
-    password: ''
-  };
-
-  //  Submit form
-  onSubmit() {
-    console.log('email: ', String(this.email.value),'password: ', String(this.password.value));
-    this.Login(this.email.value, this.password.value);
-  }
-
-
-  //  Validation email
-  getErrorMessageMail() {
-    return this.email.hasError('required') ? 'Gelieve een emailadres in te geven' :
-      this.email.hasError('email') ? 'Gelieve een geldig emailadres in te geven' :
-        '';
-  }
-
-  //  Validation password
-  getErrorMessagePassword() {
-    return this.password.hasError('required') ? 'Gelieve een wachtwoord in te geven' :
-      '';
-  }
-
-  //  Login + redirect naar main page
-  Login(email, password) {
-    this.authService.Login(email, password);
-    this.router.navigate([""])
-  }
-
-  constructor(public authService: AuthService, private router: Router) {
-
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService,
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
-    if (localStorage.getItem('loginData')) {
-      this.loginData = JSON.parse(localStorage.getItem('loginData'));
-    }
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      wachtwoord: ['', Validators.required]
+    });
+
+    // reset login status
+    this.authService.logout();
   }
 
+  // convenience getter for easy access to form fields
+  get f() { return this.loginForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    this.loading = true;
+    this.authService.Login(this.f.email.value, this.f.wachtwoord.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          window.location.reload();
+          this.router.navigate(['']);
+          this.alertService.success('Login successful', true);
+        },
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+        });
+  }
 }
