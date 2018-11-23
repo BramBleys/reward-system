@@ -20,7 +20,7 @@ export class OpdrachtService {
 
   constructor(private http: HttpClient, private parametersService: ParametersService) { }
 
-  
+
   getOpdracht(id: string) {
     const headers = new HttpHeaders();
     headers.set(
@@ -43,8 +43,8 @@ export class OpdrachtService {
    return this.http.get<any[]>(this.parametersService.generateGetUrl(this.url, params), {headers});
   }
 
-  getCount(params={}): Observable<Number>{
-    let newParams = Object.assign({},params);
+  getCount(params= {}): Observable<Number> {
+    let newParams = Object.assign({}, params);
     delete newParams['offset'];
     delete newParams['limit'];
     delete newParams['sortBy'];
