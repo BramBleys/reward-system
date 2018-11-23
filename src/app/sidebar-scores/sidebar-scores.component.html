@@ -16,7 +16,7 @@
           <tr *ngFor="let opdracht of opdrachten">
             <td>{{ opdracht.titel }}</td>
             <td>{{ opdracht.punten }}</td>
-            <td>{{ opdracht.datum }}</td>
+            <td>{{ opdracht.datum.day }}/{{ opdracht.datum.month }}/{{ opdracht.datum.year }}</td>
           </tr>
         </tbody>
       </table>

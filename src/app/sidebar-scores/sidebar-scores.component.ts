@@ -3,7 +3,6 @@ import { ScoreService } from '../services/score.service';
 import { UserService } from '../services/user.service';
 import { OpdrachtService } from '../services/opdracht.service';
 import { Opdracht } from '../models/Opdracht';
-import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-sidebar-scores',
@@ -15,18 +14,18 @@ export class SidebarScoresComponent implements OnInit {
   opdrachten: any[];
 
   constructor(
-    private scoreService: ScoreService,
     private userService: UserService,
     private opdrachtService: OpdrachtService
   ) {}
 
   ngOnInit() {
-    this.getScore('5bf29dd1f879cf0ca45aca3a');
-    this.getOpdrachten('5bf29dd1f879cf0ca45aca3a');
+    let user = JSON.parse(localStorage.getItem('currentUser'));
+    this.getScore(user._id);
+    this.getOpdrachten(user._id);
   }
 
   getScore(accountId: string) {
-    this.scoreService.getTotaalscore(accountId).subscribe((data) => (this.score = data.score));
+    this.userService.getUser(accountId).subscribe((data) => (this.score = data.punten));
   }
 
   getOpdrachten(accountId: string) {
@@ -34,7 +33,7 @@ export class SidebarScoresComponent implements OnInit {
     this.userService.getUser(accountId).subscribe((data) =>
       data.opdrachten.forEach((e) => {
         this.opdrachtService
-          .getOpdracht(e.opdrachtId)
+          .getOpdracht(e.id)
           .subscribe((opdracht) =>
             opdrachtenArray.push({ titel: opdracht.titel, punten: opdracht.punten, datum: opdracht.eindDatum })
           );
