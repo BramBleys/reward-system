@@ -25,16 +25,18 @@ export class AuthService {
   //  Login API call, save data to userData$, set user in localstorage
   Login(email: string, wachtwoord: string) {
     return this.http.post<any>(`${environment.API_URL}/users/login`, { email: email, wachtwoord: wachtwoord })
-        .pipe(map(user => {
-            // login successful if there's a jwt token in the response
-            if (user && user.token) {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
-            }
+      .pipe(map(user => {
+        console.log('user', user);
+        // login successful if there's a jwt token in the response
+        if (user && user.token) {
+          console.log('succes');
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(user));
+        }
 
-            return user;
-        }));
-}
+        return user;
+      }));
+  }
 
   //  Set user data
   setUserData(user) {

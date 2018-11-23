@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['', Validators.required],
+      wachtwoord: ['', Validators.required]
     });
 
     // reset login status
@@ -42,13 +42,13 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authService.Login(this.f.username.value, this.f.password.value)
+    this.authService.Login(this.f.email.value, this.f.wachtwoord.value)
       .pipe(first())
       .subscribe(
         data => {
-          console.log(data);
+          window.location.reload();
+          this.router.navigate(['']);
           this.alertService.success('Login successful', true);
-          this.router.navigate([""]);
         },
         error => {
           this.alertService.error(error);

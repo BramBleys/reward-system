@@ -5,12 +5,12 @@
   <div class="navbar-collapse pull-right col-md-6 col-xs-6 text-center" id="navbarContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <p class="nav-link" *ngIf="loggedIn == true">{{ currentuser.naam }} ({{ currentuser.punten }} {{ 'header.points' | translate }}) </p>
+        <p class="nav-link" *ngIf="loggedIn">{{ currentuser.naam }} ({{ currentuser.punten }} {{ 'header.points' | translate }}) </p>
       </li>
-      <li class="nav-item divider" *ngIf="loggedIn == false">
+      <li class="nav-item divider" *ngIf="!loggedIn">
         <a class="nav-link" [routerLink]="[{ outlets: { primary: ['login'],sidebar: ['login'] } }]">{{ 'header.login' | translate }}</a>
       </li>
-      <li class="nav-item divider" *ngIf="loggedIn == true">
+      <li class="nav-item divider" *ngIf="loggedIn">
         <a class="nav-link" href (click)="logout()">{{ 'header.logout' | translate }}</a>
       </li>
       <li class="nav-item">

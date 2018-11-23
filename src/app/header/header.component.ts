@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { ScoreService } from '../services/score.service';
 import { User } from '../models/user';
-import { Score } from '../models/score';
 import { TranslateService } from '../services/translate.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -15,11 +14,7 @@ export class HeaderComponent implements OnInit {
   loggedIn = false;
   admin = false;
 
-  constructor(public authService: AuthService, private translate: TranslateService) {
-  }
-
-  logout() {
-    this.authService.logout();
+  constructor(private authService: AuthService, private translate: TranslateService, private router: Router) {
   }
 
   ngOnInit() {
@@ -44,5 +39,10 @@ export class HeaderComponent implements OnInit {
         this.translate.use('nl');
         break;
     }
+  }
+
+  logout() {
+    this.authService.logout();
+    window.location.reload();
   }
 }
