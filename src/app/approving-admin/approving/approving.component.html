@@ -12,22 +12,50 @@
             <ngb-progressbar value="250"></ngb-progressbar>
           </p>
         </div>
-      
-        <div *ngFor="let opdracht of (opdrachten$ | async)" class=" col-12 col-md-2" (click)="getOpdracht(opdracht._id)">
-            <img src="../../assets/images/presentation.jpeg" alt="Presentation">
-            <p *ngIf="!loading2">{{opdracht.titel}}</p>
-          </div>
-          </div>
+
+        <div *ngFor="let opdracht of (opdrachten$ | async)" class=" col-12 col-md-2" (click)="setOpdracht(opdracht)">
+          <img src="../../assets/images/presentation.jpeg" alt="Presentation">
+          <p>{{opdracht.titel}}</p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="card-body">
-      <div class="form-row">
-        <p></p>
+    <div *ngIf="opdracht" class="form-row">
+      <div class="form-group col-md-12">
+        <label for="title" class="text-left">Title:</label>
+        <input type="text" id="title" placeholder="Title of the assignement" class="form-control" name="titel" #titel="ngModel"
+          [(ngModel)]="opdracht.titel" disabled>
       </div>
-  </div>
-  <div class="card-footer">
-      <button class="btn btn-danger" type="reset" (click)="log()">Disapprove</button>
+      <div class="form-group col-md-3">
+        <label for="beginDatum">Begin date assignement:</label>
+        <input class="form-control" name="beginDatum" value="{{beginDatum}}" disabled>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="eindDatum">End date assignement:</label>
+        <input class="form-control" name="eindDatum" value="{{eindDatum}}" disabled>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="typeNaam">Type assignement:</label>
+        <input class="form-control" type="text" name="typeNaam" value="{{typeNaam}}" disabled>
+      </div>
+      <div class="form-group col-md-12">
+        <label for="omschrijving">Description:</label>
+        <textarea class="form-control" name="omschrijving" rows="4" #description="ngModel" [(ngModel)]="opdracht.omschrijving"
+          disabled>{{opdracht.omschrijving}}</textarea>
+      </div>
     </div>
   </div>
-
-
+  <div class="card-footer">
+    <form action="">
+      <div class="col-md-6">
+        <label for="punten">Punten:</label>
+        <input *ngIf="opdracht" type="number" class="form-control" name="punten" #punten="ngModel" [(ngModel)]="opdracht.punten" value="0">
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-success" type="submit">Approve</button>
+        <button class="btn btn-danger" type="reset" (click)="log()">Disapprove</button>
+      </div>
+    </form>
+  </div>
+</div>

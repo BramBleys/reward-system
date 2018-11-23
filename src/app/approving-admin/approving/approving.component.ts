@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { OpdrachtService, Opdracht } from '../../services/opdracht.service';
+import { Component, OnInit} from '@angular/core';
+import { OpdrachtService} from '../../services/opdracht.service';
+import { Opdracht } from '../../models/opdracht';
 import { Observable } from 'rxjs';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
+import { TypesService } from '../../services/types.service';
 
 @Component({
   selector: 'app-approving',
@@ -13,11 +15,12 @@ export class ApprovingComponent implements OnInit {
 
   opdrachten$: Observable<any[]>;
   count$: Observable<Number>;
-  opdracht$: Observable<any>;
-
-  opdracht:{
-    omschrijving: '';
-  }
+  type$: Observable<any>;
+  opdracht: Opdracht;
+  eindDatum: String;
+  beginDatum: String;
+  punten: number;
+  typeNaam: '';
 
   readonly pageSize = 6;
 
@@ -40,7 +43,7 @@ export class ApprovingComponent implements OnInit {
     this.getAssignmentsFiltered();
   }
 
-  constructor(public opdrachtService: OpdrachtService, public config: NgbProgressbarConfig) {
+  constructor(public opdrachtService: OpdrachtService, public config: NgbProgressbarConfig, public typeSrevice: TypesService) {
     config.max = 250;
     config.striped = true;
     config.animated = true;
@@ -48,26 +51,36 @@ export class ApprovingComponent implements OnInit {
     config.height = '20px';
    }
 
-  getOpdracht(id){
-    this.opdracht$ = this.opdrachtService.getOpdracht(id);
-    this.opdracht$.subscribe(e => console.log(e));
+  setOpdracht(opdracht){
+    this.opdracht = opdracht;
+    this.eindDatum = (opdracht.eindDatum.day + "/" + opdracht.eindDatum.month + "/" + opdracht.eindDatum.year);
+    this.beginDatum = (opdracht.beginDatum.day +"/" + opdracht.beginDatum.month + "/" + opdracht.beginDatum.year);
+    this.getType(opdracht.typeId);
+  }
+
+  getType(id){
+    this.type$ = this.typeSrevice.getType(id);
+    this.type$.subscribe(e => this.typeNaam = e.naam);
   }
 
   getAssignmentsFiltered() {
     this.loading = true;
     this.opdrachten$ = this.opdrachtService.getAssignmentsFiltered(this.filterParams);
     this.opdrachten$.subscribe(e => this.loading = false);
-
   }
 
   log(){
-    console.log(this.opdracht$);
+    console.log(this.opdracht.punten);
     console.log(this.opdrachten$);
   }
 
   getAssignementsCount() {
     this.count$ = this.opdrachtService.getCount(this.filterParams);
     console.log(this.filterParams);
+
+  }
+
+  patchOpdracht(){
 
   }
 
