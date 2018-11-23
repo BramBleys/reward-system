@@ -1,3 +1,3 @@
 export class UserOpdracht{
-    id: string;
+    _id: string;
 }

@@ -7,9 +7,9 @@
   "header.logout": "Sign out",
 
   "login.mail.placeholder": "Email",
-  "login.mail.error.invalid": "Please fill out a valid email-address",
+  "login.mail.error": "Please fill out a valid email-address",
   "login.password.placeholder": "Password",
-  "login.password.error.empty": "Please fill out your password",
+  "login.password.error": "Please fill out your password",
   "login.cancel": "Cancel",
 
   "leaderboard.name": "Name",

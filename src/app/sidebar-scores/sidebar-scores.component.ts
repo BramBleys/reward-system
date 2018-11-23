@@ -33,7 +33,7 @@ export class SidebarScoresComponent implements OnInit {
     this.userService.getUser(accountId).subscribe((data) =>
       data.opdrachten.forEach((e) => {
         this.opdrachtService
-          .getOpdracht(e.id)
+          .getOpdracht(e._id)
           .subscribe((opdracht) =>
             opdrachtenArray.push({ titel: opdracht.titel, punten: opdracht.punten, datum: opdracht.eindDatum })
           );
