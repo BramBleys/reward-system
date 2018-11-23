@@ -39,7 +39,7 @@ import { environment } from '../environments/environment';
     RewardsCrudComponent,
     TranslatePipe,
     FormMedewerkerComponent,
-    FilterPipe
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,6 @@ import { Reward } from '../models/reward';
 import { Observable } from 'rxjs';
 import { environment as api } from '../../environments/environment';
 import { ParametersService } from './parameters.service';
-import {isUpperCase} from 'tslint/lib/utils';
 
 @Injectable({
   providedIn: 'root'

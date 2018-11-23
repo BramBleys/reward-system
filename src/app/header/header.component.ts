@@ -4,19 +4,23 @@ import { ScoreService } from '../services/score.service';
 import { User } from '../models/user';
 import { Score } from '../models/score';
 import { TranslateService } from '../services/translate.service';
+import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
   currentuser: User;
   loggedIn = false;
   admin = false;
   logintext = 'Log in';
+  isCollapsed = true;
 
-  constructor(public authService: AuthService, private translate: TranslateService) {
+  constructor(public authService: AuthService, private translate: TranslateService, config: NgbDropdownConfig) {
+    config.placement = 'bottom-right';
+    config.autoClose = false;
   }
 
   logout() {
@@ -30,12 +34,11 @@ export class HeaderComponent implements OnInit {
         this.loggedIn = true;
         this.logintext = 'Log out';
         console.log(user);
-      }
-      else {
+      } else {
         this.loggedIn = false;
         this.logintext = 'Log in';
       }
-    })
+    });
   }
 
   changeLanguage(language: string) {
