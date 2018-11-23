@@ -1,8 +1,16 @@
 {
-  "header.login": "Inloggen",
   "header.language": "Taal",
   "header.language.en": "English",
   "header.language.nl": "Nederlands",
+  "header.points": "punten",
+  "header.login": "Log in",
+  "header.logout": "Log uit",
+  
+  "login.mail.placeholder": "Email",
+  "login.mail.error.invalid": "Gelieve een geldig email-adres in te geven",
+  "login.password.placeholder": "Wachtwoord",
+  "login.password.error.empty": "Gelieve een wachtwoord in te geven",
+  "login.cancel": "Annuleer",
 
   "leaderboard.name": "Naam",
   "leaderboard.title": "Klassement",
@@ -11,7 +19,7 @@
   "opdrachtenBoard.add":"Voeg voltooide opdracht toe",
 
   "rewardsCrud.search":"Typ om te zoeken...",
-  "rewardsCrud.name":"Beloning Naam",
+  "rewardsCrud.name":"Beloning naam",
   "rewardsCrud.points":"Punten",
   "rewardsCrud.available":"Beschikbaar",
 

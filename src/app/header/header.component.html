@@ -11,11 +11,11 @@
       <li class="nav-item userCoins">
         <p class="nav-link" *ngIf="loggedIn == true">{{currentuser.naam}}<i class="fas fa-coins"><span>{{currentuser.punten}}</span></i></p>
       </li>
-      <li class="nav-item divider" *ngIf="loggedIn == false">
-        <a class="nav-link" [routerLink]="[{ outlets: { primary: ['login'],sidebar: ['login'] } }]">{{ logintext }}</a>
+      <li class="nav-item divider" *ngIf="!loggedIn">
+        <a class="nav-link" [routerLink]="[{ outlets: { primary: ['login'],sidebar: ['login'] } }]">{{ 'header.login' | translate }}</a>
       </li>
-      <li class="nav-item divider" *ngIf="loggedIn == true">
-        <a class="nav-link" href (click)="logout()">{{ logintext }}</a>
+      <li class="nav-item divider" *ngIf="loggedIn">
+        <a class="nav-link" href (click)="logout()">{{ 'header.logout' | translate }}</a>
       </li>
     </ul>
     <ul class="navbar-nav language">
