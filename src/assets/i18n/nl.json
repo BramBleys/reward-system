@@ -5,7 +5,7 @@
   "header.points": "punten",
   "header.login": "Log in",
   "header.logout": "Log uit",
-  
+
   "login.mail.placeholder": "Email",
   "login.mail.error.invalid": "Gelieve een geldig email-adres in te geven",
   "login.password.placeholder": "Wachtwoord",
@@ -16,12 +16,12 @@
   "leaderboard.title": "Klassement",
   "leaderboard.points": "Punten",
 
-  "opdrachtenBoard.add":"Voeg voltooide opdracht toe",
+  "opdrachtenBoard.add": "Voeg voltooide opdracht toe",
 
-  "rewardsCrud.search":"Typ om te zoeken...",
-  "rewardsCrud.name":"Beloning naam",
-  "rewardsCrud.points":"Punten",
-  "rewardsCrud.available":"Beschikbaar",
+  "rewardsCrud.search": "Typ om te zoeken...",
+  "rewardsCrud.name": "Beloning naam",
+  "rewardsCrud.points": "Punten",
+  "rewardsCrud.available": "Beschikbaar",
 
   "opdrachtCrud.description": "Beschrijving",
   "opdrachtCrud.points": "Punten",
@@ -38,14 +38,31 @@
   "opdrachtCrud.modal.save": "Opslaan",
   "opdrachtCrud.modal.error": "Vul dit veld in!",
 
-  "sidebarAdmin.actions":"Acties",
-  "sidebarAdmin.assign":"Rewards toekennen",
-  "sidebarAdmin.overview":"Overzicht werknemers",
-  "sidebarAdmin.adjustAssignments":"Opdrachten aanpassen",
-  "sidebarAdmin.adjustRewards":"Rewards aanpassen",
+  "sidebarAdmin.actions": "Acties",
+  "sidebarAdmin.assign": "Rewards toekennen",
+  "sidebarAdmin.overview": "Overzicht werknemers",
+  "sidebarAdmin.adjustAssignments": "Opdrachten aanpassen",
+  "sidebarAdmin.adjustRewards": "Rewards aanpassen",
 
-  "sidebarScore.score":"Uw punten: ",
-  "sidebarScore.tasks":"Opdrachten",
-  "sidebarScore.points":"Punten",
-  "sidebarScore.date":"Datum"
+  "sidebarScore.score": "Uw punten: ",
+  "sidebarScore.tasks": "Opdrachten",
+  "sidebarScore.points": "Punten",
+  "sidebarScore.date": "Datum",
+
+  "form.new": "Nieuwe opdracht",
+  "form.title": "Titel",
+  "form.beginDate": "Begindatum opdracht",
+  "form.endDate": "Einddatum opdracht",
+  "form.type": "Type opdracht",
+  "form.description": "Omschrijving",
+  "form.descriptionPlaceholder": "Beschrijf wat de opdracht inhield, wat je gedaan hebt, en wat je er van vond.",
+  "form.beginDateError": "De begindatum is verplicht.",
+  "form.endDateError": "De einddatum is verplicht.",
+  "form.titleError": "De titel is verplicht.",
+  "form.typeError": "Het type is verplicht.",
+  "form.descriptionError": "De omschrijving is verplicht.",
+  "form.notValid": "Error: zorg dat all velden correct zijn ingevuld!",
+  "form.valid": "ALle velden zijn correct.",
+  "form.cancel": "Annuleer",
+  "form.send": "Verzend"
 }
