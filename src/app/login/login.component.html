@@ -3,10 +3,10 @@
     <tr>
       <td>
         <div class="form-group">
-          <input type="text" class="login-full-width" placeholder="Enter your email" [formControl]="email" required
+          <input type="text" class="login-full-width" placeholder="{{ 'mail.placeholder' | translate }}" [formControl]="email" required
             name="email">
           <div [hidden]="email.valid" class="alert alert-danger">
-            {{getErrorMessageMail()}}
+            {{ 'mail.error.invalid' | translate }}
           </div>
         </div>
       </td>
@@ -14,10 +14,10 @@
     <tr>
       <td>
         <div class="form-group">
-          <input type="password" class="login-full-width" placeholder="Wachtwoord" [formControl]="password" required
+          <input type="password" class="login-full-width" placeholder="{{ 'wachtwoord.placeholder' | translate }}" [formControl]="password" required
             name="password">
           <div [hidden]="password.valid" class="alert alert-danger">
-            {{getErrorMessagePassword()}}
+            {{ 'password.error.empty' | translate }}
           </div>
         </div>
       </td>

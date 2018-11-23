@@ -2,5 +2,13 @@
   "header.login": "Login",
   "header.language": "Taal",
   "header.language.en": "English",
-  "header.language.nl": "Nederlands"
+  "header.language.nl": "Nederlands",
+  "header.punten": "punten",
+  "login": "Log in",
+  "logout": "Log uit",
+  "mail.placeholder": "Email",
+  "mail.error.empty": "Gelieve een email-adres in te geven",
+  "mail.error.invalid": "Gelieve een geldig email-adres in te geven",
+  "password.placeholder": "Wachtwoord",
+  "password.error.empty": "Gelieve een wachtwoord in te geven",
 }

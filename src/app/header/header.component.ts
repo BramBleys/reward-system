@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit {
   currentuser: User;
   loggedIn = false;
   admin = false;
-  logintext = 'Log in';
 
   constructor(public authService: AuthService, private translate: TranslateService) {
   }
@@ -28,12 +27,10 @@ export class HeaderComponent implements OnInit {
       this.currentuser = user;
       if (user != null) {
         this.loggedIn = true;
-        this.logintext = 'Log out';
         console.log(user);
       }
       else {
         this.loggedIn = false;
-        this.logintext = 'Log in';
       }
     })
   }
