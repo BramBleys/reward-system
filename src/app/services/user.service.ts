@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -10,7 +11,7 @@ import { environment as api } from '../../environments/environment';
 export class UserService {
   private url = api.API_URL + '/users';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   getUser(accountId: string): Observable<User> {
     const headers = new HttpHeaders();
@@ -41,7 +42,7 @@ export class UserService {
       'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
     );
 
-    this.http.patch(this.url + '/' + id, params, {headers} ).subscribe(e => console.log(e));
+    this.http.patch<User>(this.url + '/' + id, params, {headers} );
 
   }
 
@@ -53,7 +54,16 @@ export class UserService {
       }
       user.rewards.push(reward);
 
-      this.updateUser(userId, user )
+      const headers = new HttpHeaders();
+
+      headers.set(
+        'token',
+        'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
+      );
+      this.http.patch<User>(this.url + '/' + userId, user, {headers} ).subscribe(e => {
+        this.authService.setUserData(e);
+      
+    });
     })
   }
 

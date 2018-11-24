@@ -1,3 +1,6 @@
+import { AdminGuard } from './../_guards/admin.guard';
+import { OpdrachtenCrudComponent } from './../opdrachten-crud/opdrachten-crud.component';
+import { AuthGuard } from './../_guards/auth.guard';
 import { RewardshopComponent } from './../rewardshop/rewardshop.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,8 +15,10 @@ import {SidebarAdminComponent} from '../sidebar-admin/sidebar-admin.component';
 import {SidebarScoresComponent} from '../sidebar-scores/sidebar-scores.component';
 import { ApprovingComponent } from '../approving-admin/approving/approving.component';
 
+
 const routes: Routes = [
-  { path: '', component: ApprovingComponent },
+
+  { path: 'addOpdracht', component: FormMedewerkerComponent, canActivate: [AuthGuard] },
   { path: '', component: LeaderboardComponent, outlet: 'sidebar' },
   { path: 'path', component: LeaderboardComponent },
   { path: 'path', component: OpdrachtenComponent, outlet: 'sidebar' },
@@ -21,7 +26,10 @@ const routes: Routes = [
   { path: 'login', component: LeaderboardComponent, outlet: 'sidebar' },
   { path: 'sendassignement', component: LeaderboardComponent, outlet: 'sidebar' },
   { path: 'sendassignement', component: FormMedewerkerComponent},
-  {path: 'rewardshop', component: RewardshopComponent}
+  {path: 'rewardshop', component: RewardshopComponent, canActivate:[AuthGuard]},
+  {path: 'rewardscrud', component: RewardsCrudComponent, canActivate:[AdminGuard]},
+  {path: 'opdrachten', component: OpdrachtenComponent, canActivate: [AuthGuard]},
+  {path: 'opdrachtencrud', component: OpdrachtenCrudComponent, canActivate:[AdminGuard]}
 ];
 
 export const routingModule: ModuleWithProviders = RouterModule.forRoot(routes);

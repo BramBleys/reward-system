@@ -58,7 +58,6 @@ import { ApprovingComponent } from './approving-admin/approving/approving.compon
     AlertComponent,
     OpdrachtFilterPipe,
     OpdrachtenCrudComponent
-
   ],
   imports: [
     BrowserModule,

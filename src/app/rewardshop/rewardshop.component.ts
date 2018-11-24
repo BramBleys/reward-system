@@ -1,3 +1,5 @@
+import { AuthService } from './../services/auth.service';
+import { User } from './../models/user';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 import { RewardsService } from './../services/rewards.service';
 import { Observable } from 'rxjs';
@@ -13,8 +15,9 @@ import { UserService } from '../services/user.service';
 export class RewardshopComponent implements OnInit {
   allRewards$: Observable<Reward[]>
   readonly pageSize = 6;
+  userData: User;
 
-  uid = '5bf5903a57288e2f94a87b22';
+ 
 
   count$: Observable<Number>;
   filterParams = {
@@ -40,12 +43,15 @@ export class RewardshopComponent implements OnInit {
 
   constructor(public rewardsService: RewardsService, 
     public config: NgbProgressbarConfig,
-    private userService: UserService) { 
+    private userService: UserService, private authService: AuthService) { 
     config.max = 250;
     config.striped = true;
     config.animated = true;
     config.type = 'secondary';
     config.height = '20px';
+
+
+    authService.userData$.subscribe(e => this.userData = e);
   }
 
   ngOnInit() {
@@ -65,8 +71,12 @@ export class RewardshopComponent implements OnInit {
   }
 
   claimReward(reward){
-    console.log(reward.punten)
-    this.userService.claimReward(this.uid, reward._id, reward.punten);
+    // if(this.userData.totaalScore > reward.punten){
+    this.userService.claimReward(this.userData._id, reward._id, reward.punten);
+
+    // } else {
+    //   alert("niet genoeg punten")
+    // }
   }
 
 }

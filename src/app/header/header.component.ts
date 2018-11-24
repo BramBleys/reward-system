@@ -22,26 +22,16 @@ export class HeaderComponent implements OnInit {
     config.autoClose = false;
   }
 
-    ngOnInit() {
-      this.authService.userData$.subscribe(user => {
-        this.currentuser = user;
-        if (user != null) {
-          this.loggedIn = true;
-          console.log(user);
-        } else {
-          this.loggedIn = false;
-        }
-      });
-    }
 
-    changeLanguage(language: string) {
-      switch (language) {
-        case 'en':
-          this.translate.use('en');
-          break;
-        case 'nl':
-          this.translate.use('nl');
-          break;
+
+  ngOnInit() {
+    this.authService.userData$.subscribe(user => {
+      this.currentuser = user;
+      if (user != null) {
+        this.loggedIn = true;
+        console.log(user);
+      } else {
+        this.loggedIn = false;
       }
     }
 

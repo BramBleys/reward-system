@@ -51,7 +51,8 @@ export class AuthService {
       token: user.token,
       rewards: user.rewards,
       opdrachten: user.opdrachten,
-      punten: user.punten
+      punten: user.punten,
+      totaalScore: user.totaalScore
     });
   }
 
