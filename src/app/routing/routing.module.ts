@@ -35,6 +35,6 @@ export const routingModule: ModuleWithProviders = RouterModule.forRoot(routes);
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: []
+  providers: [AdminGuard]
 })
 export class RoutingModule { }
