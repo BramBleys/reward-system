@@ -23,12 +23,23 @@ export class HeaderComponent implements OnInit {
     config: NgbDropdownConfig,
     private router: Router
   ) {
-    config.placement = "bottom-right";
+    config.placement = 'bottom-right';
     config.autoClose = false;
   }
 
+  changeLanguage(language: string) {
+    switch (language) {
+      case 'en':
+        this.translate.use('en');
+        break;
+      case 'nl':
+        this.translate.use('nl');
+        break;
+    }
+  }
+  
   ngOnInit() {
-    this.authService.userData$.subscribe(user => {
+    this.authService.userData$.subscribe((user) => {
       this.currentuser = user;
       if (user != null) {
         this.loggedIn = true;
@@ -38,7 +49,10 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
+<<<<<<< HEAD
   
+=======
+>>>>>>> 7bbf9946457ac8524d221e1bddd77ea2b971661a
   logout() {
     this.authService.logout();
     window.location.reload();
