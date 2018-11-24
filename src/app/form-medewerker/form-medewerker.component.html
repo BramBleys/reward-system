@@ -1,28 +1,28 @@
 <div class="card">
   <div class="card-header  text-center">
-    <h3 class="leaderboard-title">New assignement</h3>
+    <h3 class="leaderboard-title">{{ 'form.new' | translate }}</h3>
   </div>
   <form  #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm.value)" class="needs-validation" method="POST" novalidate>
   <div class="card-body">
 
       <div class="form-row">
         <div class="form-group col-md-12">
-          <label for="title" class="text-left">Title:</label>
-          <input type="text" id="title" placeholder="Title of the assignement" class="form-control" name="title" #title="ngModel" [(ngModel)]="opdracht.title" required>
-          <div *ngIf="title.errors && (title.dirty || title.touched)" class="alert alert-danger">The title is required.</div>
+          <label for="title" class="text-left">{{ 'form.title' | translate }}</label>
+          <input type="text" id="title" placeholder="{{ 'form.title' | translate }}" class="form-control" name="title" #title="ngModel" [(ngModel)]="opdracht.title" required>
+          <div *ngIf="title.errors && (title.dirty || title.touched)" class="alert alert-danger">{{ 'form.titleError' | translate }}</div>
         </div>
         <div class="form-group col-md-3">
-            <label for="beginDate">Begin date assignement:</label>
+            <label for="beginDate">{{ 'form.beginDate' | translate }}</label>
           <div class="input-group">
             <input class="form-control" placeholder="yyyy-mm-dd" name="beginDate" ngbDatepicker #d="ngbDatepicker" #beginDate="ngModel" [(ngModel)]="opdracht.beginDate" required >
             <div class="input-group-append">
               <button class="btn btn-outline calendar" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
             </div>
           </div>
-          <div *ngIf="beginDate.errors && (beginDate.dirty || beginDate.touched)" class="alert alert-danger">The begin date is required.</div>
+          <div *ngIf="beginDate.errors && (beginDate.dirty || beginDate.touched)" class="alert alert-danger">{{ 'form.beginDateError' | translate }}</div>
         </div>
         <div class="form-group col-md-3">
-            <label for="endDate">End date assignement:</label>
+            <label for="endDate">{{ 'form.endDate' | translate }}</label>
           <div class="input-group">
             <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" ngbDatepicker #f="ngbDatepicker" #endDate="ngModel" [(ngModel)]="opdracht.endDate" required >
             <div class="input-group-append">
@@ -30,28 +30,28 @@
             </div>
 
           </div>
-          <div *ngIf="endDate.errors && (endDate.dirty || endDate.touched)" class="alert alert-danger">The end date is required.</div>
+          <div *ngIf="endDate.errors && (endDate.dirty || endDate.touched)" class="alert alert-danger">{{ 'form.endDateError' | translate }}</div>
         </div>
         <div class="form-group col-md-6">
-            <label for="type">Type assignement:</label>
+            <label for="type">{{ 'form.type' | translate }}</label>
             <select class="form-control" id="type" name="type" #type="ngModel" [(ngModel)]="opdracht.type" required >
               <option *ngFor="let type of types" value="{{type._id}}">{{type.naam}}</option>
             </select>
-            <div *ngIf="type.errors && (type.dirty || type.touched)" class="alert alert-danger">The type is required.</div>
+            <div *ngIf="type.errors && (type.dirty || type.touched)" class="alert alert-danger">{{ 'form.typeError' | translate }}</div>
           </div>
         <div class="form-group col-md-12">
-          <label for="title">Description:</label>
-          <textarea class="form-control" name="description" rows="4" placeholder="Describe what the assignement was, what did you do and what are your findings on the assignement" #description="ngModel" [(ngModel)]="opdracht.description" required ></textarea>
-          <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger">The description is required.</div>
+          <label for="title">{{ 'form.description' | translate }}</label>
+          <textarea class="form-control" name="description" rows="4" placeholder="{{ 'form.descriptionPlaceholder' | translate }}" #description="ngModel" [(ngModel)]="opdracht.description" required ></textarea>
+          <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger">{{ 'form.descriptionError' | translate }}</div>
         </div>
 
       </div>
   </div>
   <div class="card-footer text-right">
-    <p *ngIf="!contactForm.form.valid" class="badge badge-danger">Error: Make sure all fields are correct</p>
-    <p *ngIf="contactForm.form.valid" class="badge badge-success">All fields are correct</p>
-    <button class="btn btn-success" type="submit" [disabled] = "!contactForm.form.valid">Send</button>
-    <button class="btn btn-danger" type="reset">Cancel</button>
+    <p *ngIf="!contactForm.form.valid" class="badge badge-danger">{{ 'form.notValid' | translate }}</p>
+    <p *ngIf="contactForm.form.valid" class="badge badge-success">{{ 'form.valid' | translate }}</p>
+    <button class="btn btn-success" type="submit" [disabled] = "!contactForm.form.valid">{{ 'form.send' | translate }}</button>
+    <button class="btn btn-danger" type="reset">{{ 'form.cancel' | translate }}</button>
   </div>
 </form>
 </div>

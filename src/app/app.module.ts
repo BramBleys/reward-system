@@ -53,11 +53,9 @@ import { FilterPipe } from './pipes/rewardPipe';
     FormMedewerkerComponent,
     FilterPipe,
     RewardshopComponent,
-
     AlertComponent,
     OpdrachtFilterPipe,
     OpdrachtenCrudComponent
-
   ],
   imports: [
     BrowserModule,

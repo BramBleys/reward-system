@@ -71,8 +71,12 @@ export class RewardshopComponent implements OnInit {
   }
 
   claimReward(reward){
-    console.log(reward.punten)
+    // if(this.userData.totaalScore > reward.punten){
     this.userService.claimReward(this.userData._id, reward._id, reward.punten);
+
+    // } else {
+    //   alert("niet genoeg punten")
+    // }
   }
 
 }

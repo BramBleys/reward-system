@@ -12,7 +12,6 @@ export class RewardsService {
 
   constructor(private http: HttpClient, private parametersService: ParametersService) {}
 
-
   getRewards(params = {}): Observable<Reward[]> {
     const newParams = Object.assign({}, params);
     delete newParams['offset'];

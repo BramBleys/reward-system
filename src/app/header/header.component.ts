@@ -22,8 +22,6 @@ export class HeaderComponent implements OnInit {
     config.autoClose = false;
   }
 
-  
-
   ngOnInit() {
     this.authService.userData$.subscribe(user => {
       this.currentuser = user;
