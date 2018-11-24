@@ -23,7 +23,6 @@ export class HeaderComponent implements OnInit {
   }
 
 
-
   ngOnInit() {
     this.authService.userData$.subscribe(user => {
       this.currentuser = user;
@@ -41,5 +40,4 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
     window.location.reload();
   }
-
 }
