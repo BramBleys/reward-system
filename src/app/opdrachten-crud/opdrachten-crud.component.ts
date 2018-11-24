@@ -5,6 +5,7 @@ import { TypesService } from '../services/types.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { OpdrachtService } from '../services/opdracht.service';
 import { Opdracht } from '../models/opdracht';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-opdrachten-crud',
@@ -12,6 +13,9 @@ import { Opdracht } from '../models/opdracht';
   styleUrls: ['./opdrachten-crud.component.scss']
 })
 export class OpdrachtenCrudComponent implements OnInit {
+  addAssignmentForm: FormGroup;
+  loading = false;
+  submitted = false;
   opdracht = {
     id: null,
     title: '',
@@ -29,7 +33,7 @@ export class OpdrachtenCrudComponent implements OnInit {
     description: '',
     points: 0
   };
-
+  
   modalReference: any;
   types: Type[];
   opdrachten: Opdracht[];
@@ -39,12 +43,45 @@ export class OpdrachtenCrudComponent implements OnInit {
     private modalService: NgbModal,
     private typesService: TypesService,
     private http: HttpClient,
-    private opdrachtService: OpdrachtService
-  ) {}
+    private opdrachtService: OpdrachtService,
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
     this.getTypes();
     this.getAssignments();
+    this.addAssignmentForm = this.formBuilder.group({
+      id: [null, Validators.required],
+      title: ['', Validators.required],
+      beginDate: [{
+        year: '',
+        month: '',
+        day: ''
+      }, Validators.required],
+      endDate: [{
+        year: '',
+        month: '',
+        day: ''
+      }, Validators.required],
+      type: ['', Validators.required],
+      description: ['', Validators.required],
+      points: [0, Validators.required]
+    })
+  }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.addAssignmentForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.addAssignmentForm.invalid) {
+      return;
+    }
+
+    this.loading = true;
+    this.addAssignment();
   }
 
   open(content) {
@@ -75,14 +112,14 @@ export class OpdrachtenCrudComponent implements OnInit {
       .post(
         'https://radiant-peak-48979.herokuapp.com/v1/opdrachten/create',
         {
-          titel: this.opdracht.title,
-          omschrijving: this.opdracht.description,
+          titel: this.f.title.value,
+          omschrijving: this.f.description.value,
           goedgekeurd: false,
-          beginDatum: this.opdracht.beginDate,
-          eindDatum: this.opdracht.endDate,
-          typeId: this.opdracht.type,
+          beginDatum: this.f.beginDate.value,
+          eindDatum: this.f.endDate.value,
+          typeId: this.f.type.value,
           private: false,
-          punten: this.opdracht.points
+          punten: this.f.points.value
         },
         { headers }
       )

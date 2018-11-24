@@ -4,11 +4,14 @@
       <div class="form-group">
         <div class="input-group">
           <div class="searchIcon"><i class="fas fa-search"></i></div>
-          <input type="text" class="form-control col-md-2 searchField" name="searchString" placeholder="{{ 'rewardsCrud.search' | translate }}" [(ngModel)]="searchString">
+          <input type="text" class="form-control col-md-2 searchField" name="searchString" placeholder="{{ 'rewardsCrud.search' | translate }}"
+            [(ngModel)]="searchString">
         </div>
       </div>
     </form>
   </div>
+
+  <!--HEADER-->
   <div class="fixed_header">
     <table class="table mt-3 table-hover">
       <thead>
@@ -17,10 +20,12 @@
           <th class="text-center">Description</th>
           <th class="text-center">Points</th>
           <th class="text-center">
-            <button type="button" (click)="open(add)" class="btn btn-link addChangeDelBtn" placement="top" ngbTooltip="Add new reward"><i class="fas fa-plus-circle fa-lg"></i></button>
+            <button type="button" (click)="open(add)" class="btn btn-link addChangeDelBtn" placement="top" ngbTooltip="Add new reward"><i
+                class="fas fa-plus-circle fa-lg"></i></button>
           </th>
         </tr>
       </thead>
+      <!--OPDRACHTEN-->
       <tbody>
         <tr *ngFor="let opdracht of opdrachten | opdrachtFilter: searchString;">
           <td>
@@ -29,8 +34,10 @@
           <td class="text-center">{{ opdracht.omschrijving }}</td>
           <td class="text-center">{{ opdracht.punten }}</td>
           <td class="text-center">
-            <button (click)="editAssignment(opdracht._id); open(edit)" class="btn addChangeDelBtn btn-link" placement="top" ngbTooltip="Change assignment"><i class="fas fa-edit"></i></button>
-            <button (click)="deleteAssignment(opdracht._id)" class="btn btn-link addChangeDelBtn" placement="top" ngbTooltip="Delete assignment"><i class="fas fa-trash-alt"></i>
+            <button (click)="editAssignment(opdracht._id); open(edit)" class="btn addChangeDelBtn btn-link" placement="top"
+              ngbTooltip="Change assignment"><i class="fas fa-edit"></i></button>
+            <button (click)="deleteAssignment(opdracht._id)" class="btn btn-link addChangeDelBtn" placement="top"
+              ngbTooltip="Delete assignment"><i class="fas fa-trash-alt"></i>
             </button>
           </td>
         </tr>
@@ -38,6 +45,7 @@
     </table>
   </div>
 </div>
+<!--MODAL ADD ASSIGNMENT-->
 <ng-template #add let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Add Assignment</h4>
@@ -46,55 +54,88 @@
     </button>
   </div>
   <div class="modal-body">
-    <form>
+    <form [formGroup]="addAssignmentForm" (ngSubmit)="onSubmit()">
+      <!--TITLE-->
       <div class="form-group">
         <label for="title">Title</label>
         <div class="input-group">
-          <input id="title" name="title" class="form-control" placeholder="Title" [(ngModel)]="opdracht.title" />
+          <input id="title" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" name="title"
+            class="form-control" placeholder="Title" [(ngModel)]="opdracht.title" required />
+          <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+            <div *ngIf="f.title.errors.required">{{ 'opdrachten.CRUD.required' | translate }}</div>
+          </div>
         </div>
       </div>
+      <!--DESCRIPTION-->
       <div class="form-group">
         <label for="description">Description</label>
         <div class="input-group">
-          <input id="description" name="description" class="form-control" placeholder="Description" [(ngModel)]="opdracht.description" />
+          <input id="description" formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
+            name="description" class="form-control" placeholder="Description" [(ngModel)]="opdracht.description" />
+          <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+            <div *ngIf="f.description.errors.required">{{ 'opdrachten.CRUD.required' | translate }}</div>
+          </div>
         </div>
       </div>
+      <!--BEGINDATE-->
       <div class="form-group col-md-3">
         <label for="beginDate">Begin date assignement:</label>
         <div class="input-group">
-          <input class="form-control" placeholder="yyyy-mm-dd" name="beginDate" [(ngModel)]="begin" ngbDatepicker #d="ngbDatepicker" #beginDate="ngModel" [(ngModel)]="opdracht.beginDate" required>
+          <input class="form-control" formControlName="beginDate" [ngClass]="{ 'is-invalid': submitted && f.beginDate.errors }"
+            placeholder="yyyy-mm-dd" name="beginDate" [(ngModel)]="beginDate" ngbDatepicker #d="ngbDatepicker"
+            [(ngModel)]="opdracht.beginDate" required>
+          <div *ngIf="submitted && f.beginDate.errors" class="invalid-feedback">
+            <div *ngIf="f.beginDate.errors.required">{{ 'opdrachten.CRUD.required' | translate }}</div>
+          </div>
           <div class="input-group-append">
             <button class="btn btn-outline calendar" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
           </div>
         </div>
       </div>
+      <!--ENDDATE-->
       <div class="form-group col-md-3">
         <label for="endDate">End date assignement:</label>
         <div class="input-group">
-          <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" [(ngModel)]="eind" ngbDatepicker #f="ngbDatepicker" #endDate="ngModel" [(ngModel)]="opdracht.endDate" required>
+          <input class="form-control" formControlName="endDate" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }"
+            placeholder="yyyy-mm-dd" name="endDate" [(ngModel)]="endDate" ngbDatepicker #f="ngbDatepicker"
+            [(ngModel)]="opdracht.endDate" required>
+          <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
+            <div *ngIf="f.endDate.errors.required">{{ 'opdrachten.CRUD.required' | translate }}</div>
+          </div>
           <div class="input-group-append">
             <button class="btn btn-outline calendar" (click)="f.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
           </div>
         </div>
       </div>
+      <!--ASSIGNMENT TYPE-->
       <div class="form-group col-md-6">
         <label for="type">Type assignement:</label>
-        <select class="form-control" id="type" name="type" #type="ngModel" [(ngModel)]="opdracht.type" required>
+        <select class="form-control" formControlName="type" [ngClass]="{ 'is-invalid': submitted && f.type.errors }" id="type"
+          name="type" [(ngModel)]="opdrachten.type" required>
           <option *ngFor="let type of types" value="{{type._id}}">{{type.naam}}</option>
         </select>
+        <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+          <div *ngIf="f.type.errors.required">{{ 'opdrachten.CRUD.required' | translate }}</div>
+        </div>
       </div>
+      <!--POINTS-->
       <div class="form-group">
         <label for="points">Points</label>
         <div class="input-group">
-          <input id="points" name="points" class="form-control" type="number" placeholder="Points" [(ngModel)]="opdracht.points" />
+          <input id="points" formControlName="points" [ngClass]="{ 'is-invalid': submitted && f.points.errors }" name="points"
+            class="form-control" type="number" placeholder="Points" [(ngModel)]="opdracht.points" />
+          <div *ngIf="submitted && f.points.errors" class="invalid-feedback">
+            <div *ngIf="f.points.errors.required">{{ 'opdrachten.CRUD.required' | translate }}</div>
+          </div>
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="addAssignment()">Save</button>
+    <button type="button" [disabled]="loading" class="btn btn-outline-dark" >Save</button>
   </div>
 </ng-template>
+<!--MODAL EDIT ASSIGNMENT-->
 <ng-template #edit let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Edit assignment</h4>
@@ -104,42 +145,50 @@
   </div>
   <div class="modal-body">
     <form>
+      <!--TITLE-->
       <div class="form-group">
         <label for="title">Title</label>
         <div class="input-group">
           <input id="title" name="title" class="form-control" placeholder="Title" [(ngModel)]="opdracht.title" />
         </div>
       </div>
+      <!--DESCRIPTION-->
       <div class="form-group">
         <label for="description">Description</label>
         <div class="input-group">
           <input id="description" name="description" class="form-control" placeholder="Description" [(ngModel)]="opdracht.description" />
         </div>
       </div>
+      <!--BEGINDATE-->
       <div class="form-group col-md-3">
         <label for="beginDate">Begin date assignement:</label>
         <div class="input-group">
-          <input class="form-control" placeholder="yyyy-mm-dd" name="beginDate" [(ngModel)]="begin" ngbDatepicker #d="ngbDatepicker" #beginDate="ngModel" [(ngModel)]="opdracht.beginDate" required>
+          <input class="form-control" placeholder="yyyy-mm-dd" name="beginDate" [(ngModel)]="begin" ngbDatepicker #d="ngbDatepicker"
+            #beginDate="ngModel" [(ngModel)]="opdracht.beginDate" required>
           <div class="input-group-append">
             <button class="btn btn-outline calendar" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
           </div>
         </div>
       </div>
+      <!--ENDDATE-->
       <div class="form-group col-md-3">
         <label for="endDate">End date assignement:</label>
         <div class="input-group">
-          <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" [(ngModel)]="eind" ngbDatepicker #f="ngbDatepicker" #endDate="ngModel" [(ngModel)]="opdracht.endDate" required>
+          <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" [(ngModel)]="eind" ngbDatepicker #f="ngbDatepicker"
+            #endDate="ngModel" [(ngModel)]="opdracht.endDate" required>
           <div class="input-group-append">
             <button class="btn btn-outline calendar" (click)="f.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
           </div>
         </div>
       </div>
+      <!--ASSIGNMENT TYPE-->
       <div class="form-group col-md-6">
         <label for="type">Type assignement:</label>
         <select class="form-control" id="type" name="type" #type="ngModel" [(ngModel)]="opdracht.type" required>
           <option *ngFor="let type of types" value="{{type._id}}">{{type.naam}}</option>
         </select>
       </div>
+      <!--POINTS-->
       <div class="form-group">
         <label for="points">Points</label>
         <div class="input-group">

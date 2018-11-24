@@ -32,5 +32,10 @@
   "sidebarScore.score":"Your Score: ",
   "sidebarScore.tasks":"Tasks",
   "sidebarScore.points":"Points",
-  "sidebarScore.date":"Date"
+  "sidebarScore.date":"Date",
+
+
+
+
+  "opdrachten.CRUD.required": "test"
 }
