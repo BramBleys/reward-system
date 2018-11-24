@@ -1,33 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { User } from '../models/user';
-import { TranslateService } from '../services/translate.service';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { AuthService } from "../services/auth.service";
+import { User } from "../models/user";
+import { TranslateService } from "../services/translate.service";
+import { NgbDropdownConfig } from "@ng-bootstrap/ng-bootstrap";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"]
 })
 export class HeaderComponent implements OnInit {
   currentuser: User;
   loggedIn = false;
   admin = false;
+  logintext = "Log in";
+  isCollapsed = true;
 
-  constructor(private authService: AuthService, private translate: TranslateService, private router: Router) {
-  }
-
-  ngOnInit() {
-    this.authService.userData$.subscribe(user => {
-      this.currentuser = user;
-      if (user != null) {
-        this.loggedIn = true;
-        console.log(user);
-      }
-      else {
-        this.loggedIn = false;
-      }
-    })
+  constructor(
+    public authService: AuthService,
+    private translate: TranslateService,
+    config: NgbDropdownConfig,
+    private router: Router
+  ) {
+    config.placement = 'bottom-right';
+    config.autoClose = false;
   }
 
   changeLanguage(language: string) {
@@ -40,7 +37,22 @@ export class HeaderComponent implements OnInit {
         break;
     }
   }
-
+  
+  ngOnInit() {
+    this.authService.userData$.subscribe((user) => {
+      this.currentuser = user;
+      if (user != null) {
+        this.loggedIn = true;
+        console.log(user);
+      } else {
+        this.loggedIn = false;
+      }
+    });
+  }
+<<<<<<< HEAD
+  
+=======
+>>>>>>> 7bbf9946457ac8524d221e1bddd77ea2b971661a
   logout() {
     this.authService.logout();
     window.location.reload();

@@ -146,6 +146,7 @@ export class OpdrachtenCrudComponent implements OnInit {
     opdracht.beginDatum = this.opdracht.beginDate;
     opdracht.eindDatum = this.opdracht.endDate;
     opdracht.titel = this.opdracht.title;
+    opdracht.omschrijving = this.opdracht.description;
     opdracht.typeId = this.opdracht.type;
     opdracht.punten = this.opdracht.points;
     opdracht.private = false;

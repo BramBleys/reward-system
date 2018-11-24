@@ -1,10 +1,9 @@
+import { ParametersService } from './parameters.service';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Reward } from '../models/reward';
 import { Observable } from 'rxjs';
 import { environment as api } from '../../environments/environment';
-import { ParametersService } from './parameters.service';
-import {isUpperCase} from 'tslint/lib/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +27,34 @@ export class RewardsService {
     );
 
     return this.http.get<any>(this.parametersService.generateGetUrl(this.url, params), { headers });
+  }
+
+  getRewardsFiltered(params = {}): Observable<any[]> {
+    const headers = new HttpHeaders();
+    headers.set(
+      'token',
+      'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
+    );
+
+   return this.http.get<any[]>(this.parametersService.generateGetUrl(this.url, params), {headers});
+  }
+
+  getCount(params={}): Observable<Number>{
+    let newParams = Object.assign({},params);
+    delete newParams['offset'];
+    delete newParams['limit'];
+    delete newParams['sortBy'];
+    delete newParams['order'];
+
+    const headers = new HttpHeaders();
+    headers.set(
+      'token',
+      'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
+    );
+
+    return this.http.get<Number>(this.parametersService.generateGetUrl(this.url + '/count', newParams), {headers});
+
+
   }
 
   getReward(id: string): Observable<Reward> {

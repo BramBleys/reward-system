@@ -16,28 +16,35 @@
     <table class="table mt-3 table-hover">
       <thead>
         <tr>
-          <th>Title</th>
-          <th class="text-center">Description</th>
-          <th class="text-center">Points</th>
+          <th>{{ 'opdrachtCrud.modal.title' | translate }}</th>
+          <th class="text-center d-none d-md-table-cell">{{ 'opdrachtCrud.description' | translate }}</th>
+          <th class="text-center">{{ 'opdrachtCrud.points' | translate }}</th>
           <th class="text-center">
+<<<<<<< HEAD
             <button type="button" (click)="open(add)" class="btn btn-link addChangeDelBtn" placement="top" ngbTooltip="Add new reward"><i
                 class="fas fa-plus-circle fa-lg"></i></button>
+=======
+            <button type="button" (click)="open(add)" class="btn btn-link addChangeDelBtn" placement="top" ngbTooltip="{{ 'opdrachtCrud.addNewAssignment' | translate }}"><i class="fas fa-plus-circle fa-lg"></i></button>
+>>>>>>> ec1971ca2be70e73bc180abc5007d963fadcbe70
           </th>
         </tr>
       </thead>
       <!--OPDRACHTEN-->
       <tbody>
         <tr *ngFor="let opdracht of opdrachten | opdrachtFilter: searchString;">
-          <td>
-            <div>{{ opdracht.titel }}</div>
-          </td>
-          <td class="text-center">{{ opdracht.omschrijving }}</td>
+          <td><div>{{ opdracht.titel }}</div></td>
+          <td class="text-center d-none d-md-table-cell">{{ opdracht.omschrijving }}</td>
           <td class="text-center">{{ opdracht.punten }}</td>
           <td class="text-center">
+<<<<<<< HEAD
             <button (click)="editAssignment(opdracht._id); open(edit)" class="btn addChangeDelBtn btn-link" placement="top"
               ngbTooltip="Change assignment"><i class="fas fa-edit"></i></button>
             <button (click)="deleteAssignment(opdracht._id)" class="btn btn-link addChangeDelBtn" placement="top"
               ngbTooltip="Delete assignment"><i class="fas fa-trash-alt"></i>
+=======
+            <button (click)="editAssignment(opdracht._id); open(edit)" class="btn addChangeDelBtn btn-link" placement="top" ngbTooltip="{{ 'opdrachtCrud.changeAssignment' | translate }}"><i class="fas fa-edit"></i></button>
+            <button (click)="deleteAssignment(opdracht._id)" class="btn btn-link addChangeDelBtn" placement="top" ngbTooltip="{{ 'opdrachtCrud.deleteAssignment' | translate }}"><i class="fas fa-trash-alt"></i>
+>>>>>>> ec1971ca2be70e73bc180abc5007d963fadcbe70
             </button>
           </td>
         </tr>
@@ -48,7 +55,7 @@
 <!--MODAL ADD ASSIGNMENT-->
 <ng-template #add let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Add Assignment</h4>
+    <h4 class="modal-title" id="modal-basic-title">{{ 'opdrachtCrud.addNewAssignment' | translate }}</h4>
     <button type="button" class="close" aria-label="Close" (click)="close()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -57,29 +64,37 @@
     <form [formGroup]="addAssignmentForm" (ngSubmit)="onSubmit()">
       <!--TITLE-->
       <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title">{{ 'opdrachtCrud.modal.title' | translate }}</label>
         <div class="input-group">
+<<<<<<< HEAD
           <input id="title" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" name="title"
             class="form-control" placeholder="Title" [(ngModel)]="opdracht.title" required />
           <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
             <div *ngIf="f.title.errors.required">{{ 'opdrachten.CRUD.required' | translate }}</div>
           </div>
+=======
+          <input id="title" name="title" class="form-control" placeholder="{{ 'opdrachtCrud.modal.title' | translate }}" [(ngModel)]="opdracht.title" />
+>>>>>>> ec1971ca2be70e73bc180abc5007d963fadcbe70
         </div>
       </div>
       <!--DESCRIPTION-->
       <div class="form-group">
-        <label for="description">Description</label>
+        <label for="description">{{ 'opdrachtCrud.modal.description' | translate }}</label>
         <div class="input-group">
+<<<<<<< HEAD
           <input id="description" formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
             name="description" class="form-control" placeholder="Description" [(ngModel)]="opdracht.description" />
           <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
             <div *ngIf="f.description.errors.required">{{ 'opdrachten.CRUD.required' | translate }}</div>
           </div>
+=======
+          <input id="description" name="description" class="form-control" placeholder="{{ 'opdrachtCrud.modal.description' | translate }}" [(ngModel)]="opdracht.description" />
+>>>>>>> ec1971ca2be70e73bc180abc5007d963fadcbe70
         </div>
       </div>
       <!--BEGINDATE-->
       <div class="form-group col-md-3">
-        <label for="beginDate">Begin date assignement:</label>
+        <label for="beginDate">{{ 'opdrachtCrud.modal.beginDate' | translate }}</label>
         <div class="input-group">
           <input class="form-control" formControlName="beginDate" [ngClass]="{ 'is-invalid': submitted && f.beginDate.errors }"
             placeholder="yyyy-mm-dd" name="beginDate" [(ngModel)]="beginDate" ngbDatepicker #d="ngbDatepicker"
@@ -94,7 +109,7 @@
       </div>
       <!--ENDDATE-->
       <div class="form-group col-md-3">
-        <label for="endDate">End date assignement:</label>
+        <label for="endDate">{{ 'opdrachtCrud.modal.endDate' | translate }}</label>
         <div class="input-group">
           <input class="form-control" formControlName="endDate" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }"
             placeholder="yyyy-mm-dd" name="endDate" [(ngModel)]="endDate" ngbDatepicker #f="ngbDatepicker"
@@ -109,9 +124,14 @@
       </div>
       <!--ASSIGNMENT TYPE-->
       <div class="form-group col-md-6">
+<<<<<<< HEAD
         <label for="type">Type assignement:</label>
         <select class="form-control" formControlName="type" [ngClass]="{ 'is-invalid': submitted && f.type.errors }" id="type"
           name="type" [(ngModel)]="opdrachten.type" required>
+=======
+        <label for="type">{{ 'opdrachtCrud.modal.type' | translate }}</label>
+        <select class="form-control" id="type" name="type" #type="ngModel" [(ngModel)]="opdracht.type" required>
+>>>>>>> ec1971ca2be70e73bc180abc5007d963fadcbe70
           <option *ngFor="let type of types" value="{{type._id}}">{{type.naam}}</option>
         </select>
         <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
@@ -120,25 +140,34 @@
       </div>
       <!--POINTS-->
       <div class="form-group">
-        <label for="points">Points</label>
+        <label for="points">{{ 'opdrachtCrud.modal.points' | translate }}</label>
         <div class="input-group">
+<<<<<<< HEAD
           <input id="points" formControlName="points" [ngClass]="{ 'is-invalid': submitted && f.points.errors }" name="points"
             class="form-control" type="number" placeholder="Points" [(ngModel)]="opdracht.points" />
           <div *ngIf="submitted && f.points.errors" class="invalid-feedback">
             <div *ngIf="f.points.errors.required">{{ 'opdrachten.CRUD.required' | translate }}</div>
           </div>
+=======
+          <input id="points" name="points" class="form-control" type="number" placeholder="{{ 'opdrachtCrud.modal.points' | translate }}" [(ngModel)]="opdracht.points" />
+>>>>>>> ec1971ca2be70e73bc180abc5007d963fadcbe70
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
+<<<<<<< HEAD
     <button type="button" [disabled]="loading" class="btn btn-outline-dark" >Save</button>
+=======
+    <button type="button" class="btn btn-outline-dark" (click)="addAssignment()">{{ 'opdrachtCrud.modal.save' | translate }}</button>
+>>>>>>> ec1971ca2be70e73bc180abc5007d963fadcbe70
   </div>
 </ng-template>
 <!--MODAL EDIT ASSIGNMENT-->
 <ng-template #edit let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Edit assignment</h4>
+
+    <h4 class="modal-title" id="modal-basic-title">{{ 'opdrachtCrud.modal.edit' | translate }}</h4>
     <button type="button" class="close" aria-label="Close" (click)="close()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -147,21 +176,21 @@
     <form>
       <!--TITLE-->
       <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title">{{ 'opdrachtCrud.modal.title' | translate }}</label>
         <div class="input-group">
-          <input id="title" name="title" class="form-control" placeholder="Title" [(ngModel)]="opdracht.title" />
+          <input id="title" name="title" class="form-control" placeholder="{{ 'opdrachtCrud.modal.title' | translate }}" [(ngModel)]="opdracht.title" />
         </div>
       </div>
       <!--DESCRIPTION-->
       <div class="form-group">
-        <label for="description">Description</label>
+        <label for="description">{{ 'opdrachtCrud.modal.description' | translate }}</label>
         <div class="input-group">
-          <input id="description" name="description" class="form-control" placeholder="Description" [(ngModel)]="opdracht.description" />
+          <input id="description" name="description" class="form-control" placeholder="{{ 'opdrachtCrud.modal.description' | translate }}" [(ngModel)]="opdracht.description" />
         </div>
       </div>
       <!--BEGINDATE-->
       <div class="form-group col-md-3">
-        <label for="beginDate">Begin date assignement:</label>
+        <label for="beginDate">{{ 'opdrachtCrud.modal.beginDate' | translate }}</label>
         <div class="input-group">
           <input class="form-control" placeholder="yyyy-mm-dd" name="beginDate" [(ngModel)]="begin" ngbDatepicker #d="ngbDatepicker"
             #beginDate="ngModel" [(ngModel)]="opdracht.beginDate" required>
@@ -172,7 +201,7 @@
       </div>
       <!--ENDDATE-->
       <div class="form-group col-md-3">
-        <label for="endDate">End date assignement:</label>
+        <label for="endDate">{{ 'opdrachtCrud.modal.endDate' | translate }}</label>
         <div class="input-group">
           <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" [(ngModel)]="eind" ngbDatepicker #f="ngbDatepicker"
             #endDate="ngModel" [(ngModel)]="opdracht.endDate" required>
@@ -183,21 +212,21 @@
       </div>
       <!--ASSIGNMENT TYPE-->
       <div class="form-group col-md-6">
-        <label for="type">Type assignement:</label>
+        <label for="type">{{ 'opdrachtCrud.modal.type' | translate }}</label>
         <select class="form-control" id="type" name="type" #type="ngModel" [(ngModel)]="opdracht.type" required>
           <option *ngFor="let type of types" value="{{type._id}}">{{type.naam}}</option>
         </select>
       </div>
       <!--POINTS-->
       <div class="form-group">
-        <label for="points">Points</label>
+        <label for="points">{{ 'opdrachtCrud.modal.points' | translate }}</label>
         <div class="input-group">
-          <input id="points" name="points" class="form-control" type="number" placeholder="Points" [(ngModel)]="opdracht.points" />
+          <input id="points" name="points" class="form-control" type="number" placeholder="{{ 'opdrachtCrud.modal.points' | translate }}" [(ngModel)]="opdracht.points" />
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="saveEdit()">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="saveEdit()">{{ 'opdrachtCrud.modal.save' | translate }}</button>
   </div>
 </ng-template>

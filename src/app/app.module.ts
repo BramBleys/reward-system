@@ -16,13 +16,15 @@ import { FormMedewerkerComponent } from './form-medewerker/form-medewerker.compo
 import { SidebarScoresComponent } from './sidebar-scores/sidebar-scores.component';
 import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
 
-import { OpdrachtenModule } from './opdrachten/opdrachten.module';
 import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
 import { RewardsCrudComponent } from './rewards-crud/rewards-crud.component';
 import { TranslateService } from './services/translate.service';
 import { TranslatePipe } from './translate.pipe';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { RewardshopComponent } from './rewardshop/rewardshop.component';
+
+
 import { AlertComponent } from './_directives/alert.component';
 import { AlertService } from './services/alert.service';
 import { UserService } from './services/user.service';
@@ -33,6 +35,8 @@ import { AuthGuard } from './_guards/auth.guard';
 import { OpdrachtFilterPipe } from './pipes/opdrachtPipe';
 import { OpdrachtenCrudComponent } from './opdrachten-crud/opdrachten-crud.component';
 import { FilterPipe } from './pipes/rewardPipe';
+import { ApprovingComponent } from './approving-admin/approving/approving.component';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +52,8 @@ import { FilterPipe } from './pipes/rewardPipe';
     TranslatePipe,
     FormMedewerkerComponent,
     FilterPipe,
+    RewardshopComponent,
+    ApprovingComponent,
     AlertComponent,
     OpdrachtFilterPipe,
     OpdrachtenCrudComponent
@@ -60,7 +66,6 @@ import { FilterPipe } from './pipes/rewardPipe';
     HttpClientModule,
     RoutingModule,
     NgbModule.forRoot(),
-    OpdrachtenModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
