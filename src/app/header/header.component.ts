@@ -33,10 +33,13 @@ export class HeaderComponent implements OnInit {
       } else {
         this.loggedIn = false;
       }
-    }
+    });
 
-    logout() {
-      this.authService.logout();
-      window.location.reload();
-    }
   }
+
+  logout() {
+    this.authService.logout();
+    window.location.reload();
+  }
+
+}
