@@ -20,6 +20,7 @@ const routes: Routes = [
 
   { path: 'addOpdracht', component: FormMedewerkerComponent, canActivate: [AuthGuard] },
   { path: '', component: LeaderboardComponent, outlet: 'sidebar' },
+  {path: '', component: OpdrachtenComponent},
   { path: 'path', component: LeaderboardComponent },
   { path: 'path', component: OpdrachtenComponent, outlet: 'sidebar' },
   { path: 'login', component: LoginComponent },
@@ -37,7 +38,7 @@ export const routingModule: ModuleWithProviders = RouterModule.forRoot(routes);
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: []
+  providers: [AdminGuard]
 })
 
 export class RoutingModule { }
