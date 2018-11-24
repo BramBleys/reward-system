@@ -11,7 +11,7 @@ export class User {
   wachtwoord: string;
   token: string;
   rewards: any[];
-  opdrachten: Array<UserOpdracht>;
+  opdrachten: any[];
   punten: number;
   totaalScore: Number;
 }

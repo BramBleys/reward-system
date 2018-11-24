@@ -16,7 +16,6 @@ import { FormMedewerkerComponent } from './form-medewerker/form-medewerker.compo
 import { SidebarScoresComponent } from './sidebar-scores/sidebar-scores.component';
 import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
 
-import { OpdrachtenModule } from './opdrachten/opdrachten.module';
 import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
 import { RewardsCrudComponent } from './rewards-crud/rewards-crud.component';
 import { TranslateService } from './services/translate.service';
@@ -36,6 +35,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { OpdrachtFilterPipe } from './pipes/opdrachtPipe';
 import { OpdrachtenCrudComponent } from './opdrachten-crud/opdrachten-crud.component';
 import { FilterPipe } from './pipes/rewardPipe';
+import { ApprovingComponent } from './approving-admin/approving/approving.component';
 
 
 @NgModule({
@@ -53,6 +53,7 @@ import { FilterPipe } from './pipes/rewardPipe';
     FormMedewerkerComponent,
     FilterPipe,
     RewardshopComponent,
+    ApprovingComponent,
     AlertComponent,
     OpdrachtFilterPipe,
     OpdrachtenCrudComponent
@@ -65,7 +66,6 @@ import { FilterPipe } from './pipes/rewardPipe';
     HttpClientModule,
     RoutingModule,
     NgbModule.forRoot(),
-    OpdrachtenModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

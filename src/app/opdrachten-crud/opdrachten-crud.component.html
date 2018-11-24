@@ -14,7 +14,7 @@
       <thead>
         <tr>
           <th>{{ 'opdrachtCrud.modal.title' | translate }}</th>
-          <th class="text-center">{{ 'opdrachtCrud.description' | translate }}</th>
+          <th class="text-center d-none d-md-table-cell">{{ 'opdrachtCrud.description' | translate }}</th>
           <th class="text-center">{{ 'opdrachtCrud.points' | translate }}</th>
           <th class="text-center">
             <button type="button" (click)="open(add)" class="btn btn-link addChangeDelBtn" placement="top" ngbTooltip="{{ 'opdrachtCrud.addNewAssignment' | translate }}"><i class="fas fa-plus-circle fa-lg"></i></button>
@@ -23,10 +23,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let opdracht of opdrachten | opdrachtFilter: searchString;">
-          <td>
-            <div>{{ opdracht.titel }}</div>
-          </td>
-          <td class="text-center">{{ opdracht.omschrijving }}</td>
+          <td><div>{{ opdracht.titel }}</div></td>
+          <td class="text-center d-none d-md-table-cell">{{ opdracht.omschrijving }}</td>
           <td class="text-center">{{ opdracht.punten }}</td>
           <td class="text-center">
             <button (click)="editAssignment(opdracht._id); open(edit)" class="btn addChangeDelBtn btn-link" placement="top" ngbTooltip="{{ 'opdrachtCrud.changeAssignment' | translate }}"><i class="fas fa-edit"></i></button>
@@ -92,7 +90,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="addAssignment()">{{ 'opdrachtCrud.modal.title' | translate }}</button>
+    <button type="button" class="btn btn-outline-dark" (click)="addAssignment()">{{ 'opdrachtCrud.modal.save' | translate }}</button>
   </div>
 </ng-template>
 <ng-template #edit let-modal>

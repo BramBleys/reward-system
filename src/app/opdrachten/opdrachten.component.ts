@@ -20,7 +20,7 @@ export class OpdrachtenComponent implements OnInit {
     limit: this.pageSize,
     sortBy: 'titel',
     order: 'asc',
-    private: true
+    private: false
   };
 
   loading = false;

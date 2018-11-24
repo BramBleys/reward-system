@@ -4,6 +4,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Reward } from '../models/reward';
 import { Observable } from 'rxjs';
 import { environment as api } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })

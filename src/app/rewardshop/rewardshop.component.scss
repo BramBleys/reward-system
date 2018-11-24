@@ -1,21 +1,32 @@
-.row{
-    margin: 0;
-  }
-  .assignment{
+.row {
+  margin: 0;
+
+  .assignment {
     margin: 5px !important;
     padding: 0 !important;
-  }
-  
-  h5{
-    display: inline;
-  }
-  i{
-    color: gold;
-    float: right;
-    display: inline;
-    span{
-      color: black;
-      margin: 5px;
+
+    .card-body {
+      padding: 10px 10px 10px 10px !important;
+
+      .btn {
+        margin-top: 10px;
+      }
+      h5 {
+        display: inline;
+      }
+
+      i {
+        margin: 5px;
+        color: gold;
+        float: right;
+        display: inline;
+        span {
+          color: black;
+          margin: 5px;
+        }
+      }
     }
   }
-  
+}
+
+

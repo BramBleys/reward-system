@@ -57,8 +57,9 @@ export class OpdrachtService {
       'token',
       'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
     );
-
+    console.log(id)
     const url = `${this.url}/${id}`;
+    console.log(url);
     return this.http.delete<any>(url, { headers });
   }
 
@@ -68,8 +69,7 @@ export class OpdrachtService {
       'token',
       'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
     );
-
     const url = `${this.url}/${opdracht._id}`;
-    return this.http.patch<any>(url, opdracht, { headers });
+    return this.http.patch(url, opdracht, {headers});
   }
 }
