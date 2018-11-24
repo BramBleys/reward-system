@@ -52,7 +52,7 @@ import { FilterPipe } from './pipes/rewardPipe';
     TranslatePipe,
     FormMedewerkerComponent,
     FilterPipe,
-    RewardshopComponent
+    RewardshopComponent,
 
     AlertComponent,
     OpdrachtFilterPipe,

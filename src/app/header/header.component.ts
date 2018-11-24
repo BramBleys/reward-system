@@ -22,8 +22,7 @@ export class HeaderComponent implements OnInit {
     config.autoClose = false;
   }
 
-  logout() {
-    this.authService.logout();
+  
 
   ngOnInit() {
     this.authService.userData$.subscribe(user => {

@@ -13,4 +13,5 @@ export class User {
   rewards: any[];
   opdrachten: Array<UserOpdracht>;
   punten: number;
+  totaalScore: Number;
 }
