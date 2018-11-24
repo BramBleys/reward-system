@@ -1,5 +1,6 @@
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import {HttpHeaders, HttpClient} from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { TypesService } from '../services/types.service';
 import { Type } from '../models/type';
 
@@ -10,33 +11,35 @@ import { Type } from '../models/type';
 })
 export class FormMedewerkerComponent implements OnInit {
 
-  uid = '5bf5903a57288e2f94a87b22';
+  uid = '';
   opdracht = {
     title: '',
-    beginDate : {
-      year:'',
-      month:'',
-      day:''
+    beginDate: {
+      year: '',
+      month: '',
+      day: ''
     },
-    endDate:{
-      year:'',
-      month:'',
-      day:''
+    endDate: {
+      year: '',
+      month: '',
+      day: ''
     },
-    type:'',
-    description:''
+    type: '',
+    description: ''
   };
 
-  types : Type[];
+  types: Type[];
 
-  constructor(private http: HttpClient, private typesService: TypesService) {
+  constructor(private http: HttpClient, private typesService: TypesService, private authService: AuthService) {
   }
 
-   ngOnInit() {
+  ngOnInit() {
     this.getTypes();
+    this.authService.userData$.subscribe(e => this.uid = e._id);
+
   }
 
-  onSubmit(form){
+  onSubmit(form) {
 
     const headers = new HttpHeaders();
     headers.set('token', 'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg');
@@ -46,14 +49,14 @@ export class FormMedewerkerComponent implements OnInit {
       titel: this.opdracht.title,
       omschrijving: this.opdracht.description,
       goedgekeurd: false,
-      beginDatum:this.opdracht.beginDate ,
+      beginDatum: this.opdracht.beginDate,
       eindDatum: this.opdracht.endDate,
       typeId: this.opdracht.type,
       // fotoURL:'',
       // private:false,
       // beschikbaar: true
 
-    },{headers} ).subscribe(e => console.log(e));
+    }, { headers }).subscribe(e => console.log(e));
     console.log(this.types)
   }
 

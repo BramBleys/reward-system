@@ -6,10 +6,31 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarContent" [ngbCollapse]="isCollapsed">
-    <ul class="navbar-nav mr-auto" (click)="isCollapsed = !isCollapsed"></ul>
+    <ul class="navbar-nav mr-auto" (click)="isCollapsed = !isCollapsed">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/opdrachten">Opdrachten</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/rewardshop">Beloningen</a>
+      </li>
+      
+      
+
+
+
+    </ul>
+    <ul class="navbar-nav " *ngIf="loggedIn && currentuser.type == 'admin'">
+      <li class="dropdown" ngbDropdown autoClose="inside">
+        <a class="nav-link dropdown-toggle" id="dropdownLanguage" ngbDropdownToggle>Beheer</a>
+        <div class="dropdown-menu dropdown" aria-labelledby="dropdownLanguage" ngbDropdownMenu (click)="isCollapsed = !isCollapsed">
+            <a class="nav-link" routerLink="/opdrachtencrud">Opdrachten beheer</a>
+            <a class="nav-link" routerLink="/rewardscrud">Beloningen beheer</a>
+        </div>
+      </li>
+    </ul>
     <ul class="navbar-nav">
       <li class="nav-item userCoins">
-        <p class="nav-link" *ngIf="loggedIn == true">{{currentuser.naam}}<i class="fas fa-coins"><span>{{currentuser.punten}}</span></i></p>
+        <p class="nav-link" *ngIf="loggedIn == true">{{currentuser.naam}}<i class="fas fa-coins"><span>{{currentuser.totaalScore}}</span></i></p>
       </li>
       <li class="nav-item divider" *ngIf="!loggedIn">
         <a class="nav-link" [routerLink]="[{ outlets: { primary: ['login'],sidebar: ['login'] } }]">{{ 'header.login' | translate }}</a>
