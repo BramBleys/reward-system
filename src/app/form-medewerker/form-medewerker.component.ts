@@ -7,7 +7,7 @@ import { Type } from '../models/type';
 @Component({
   selector: 'app-form-medewerker',
   templateUrl: './form-medewerker.component.html',
-  styleUrls: ['./form-medewerker.component.css']
+  styleUrls: ['./form-medewerker.component.scss']
 })
 export class FormMedewerkerComponent implements OnInit {
 
