@@ -16,7 +16,6 @@ import { FormMedewerkerComponent } from './form-medewerker/form-medewerker.compo
 import { SidebarScoresComponent } from './sidebar-scores/sidebar-scores.component';
 import { SidebarAdminComponent } from './sidebar-admin/sidebar-admin.component';
 
-import { OpdrachtenModule } from './opdrachten/opdrachten.module';
 import { OpdrachtenComponent } from './opdrachten/opdrachten.component';
 import { RewardsCrudComponent } from './rewards-crud/rewards-crud.component';
 import { TranslateService } from './services/translate.service';
@@ -65,7 +64,6 @@ import { FilterPipe } from './pipes/rewardPipe';
     HttpClientModule,
     RoutingModule,
     NgbModule.forRoot(),
-    OpdrachtenModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

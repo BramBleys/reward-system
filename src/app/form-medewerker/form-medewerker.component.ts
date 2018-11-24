@@ -6,7 +6,7 @@ import { Type } from '../models/type';
 @Component({
   selector: 'app-form-medewerker',
   templateUrl: './form-medewerker.component.html',
-  styleUrls: ['./form-medewerker.component.css']
+  styleUrls: ['./form-medewerker.component.scss']
 })
 export class FormMedewerkerComponent implements OnInit {
 
@@ -40,8 +40,8 @@ export class FormMedewerkerComponent implements OnInit {
 
     const headers = new HttpHeaders();
     headers.set('token', 'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg');
-    
-    this.http.post('https://radiant-peak-48979.herokuapp.com/v1/opdrachten/create', { 
+
+    this.http.post('https://radiant-peak-48979.herokuapp.com/v1/opdrachten/create', {
       userId: this.uid,
       titel: this.opdracht.title,
       omschrijving: this.opdracht.description,
@@ -59,6 +59,6 @@ export class FormMedewerkerComponent implements OnInit {
 
   getTypes() {
     this.typesService.getTypes().subscribe((data) => (this.types = data));
-    
+
   }
 }
