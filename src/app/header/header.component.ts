@@ -49,10 +49,7 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
-<<<<<<< HEAD
   
-=======
->>>>>>> 7bbf9946457ac8524d221e1bddd77ea2b971661a
   logout() {
     this.authService.logout();
     window.location.reload();
