@@ -113,7 +113,7 @@ export class OpdrachtenCrudComponent implements OnInit {
     opdracht.punten = this.opdracht.points;
     opdracht.private = false;
 
-    // this.opdrachtService.editAssignment(opdracht).subscribe((e) => this.getAssignments());
+    this.opdrachtService.editAssignment(opdracht).subscribe((e) => this.getAssignments());
     this.close();
   }
 

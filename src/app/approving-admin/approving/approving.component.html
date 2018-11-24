@@ -10,13 +10,16 @@
           </p>
         </div>
 
-        <div *ngFor="let opdracht of (opdrachten$ | async)" class=" col-12 col-md-2" (click)="setOpdracht(opdracht)">
-          <img src="../../assets/images/presentation.jpeg" alt="Presentation">
-          <p>{{opdracht.titel}}</p>
+        <div *ngFor="let opdracht of (opdrachten$ | async)" class=" col-12 col-md-2 opdracht" (click)="setOpdracht(opdracht)">
+          <img src="../../assets/images/placeholderUser.png" alt="Presentation">
+          <p>{{opdracht.titel.substring(0, 20)}}</p>
         </div>
-        <div class="col-12">
+        <div class="col-12 pagination">
           <ngb-pagination class="paginator" [collectionSize]="(count$|async) / (pageSize/10)" [(page)]="currentPage"
             [maxSize]="3"></ngb-pagination>
+        </div>
+        <div class="col-12 text-center" *ngIf="!opdracht">
+          <p>Choose one of the assignements from above. </p>
         </div>
       </div>
     </div>
@@ -47,14 +50,17 @@
       </div>
     </div>
   </div>
-  <div class="card-footer">
+  <div class="card-footer" *ngIf="opdracht">
+    <form #contactForm="ngForm" (ngSubmit)="submit()" class="needs-validation" novalidate>
       <div class="">
-        <label *ngIf="opdracht" for="punten">Punten:</label>
-        <input *ngIf="opdracht" type="number" class="form-control" name="punten" #punten="ngModel" [(ngModel)]="opdracht.punten" value="0">
+        <label for="punten">Points:</label>
+        <input type="number" class="form-control" name="punten" #punten="ngModel" [(ngModel)]="opdracht.punten" value="0" required>
       </div>
       <div class="text-right">
-        <button class="btn btn-success" type="submit" (click)="submit()">Approve</button>
+        <p *ngIf="!contactForm.form.valid" class="badge badge-danger">Error: Fill in the points before approving</p>
+        <button class="btn btn-success" type="submit" (click)="submit()" [disabled] = "!contactForm.form.valid">Approve</button>
         <button class="btn btn-danger" type="reset" (click)="disapprove()">Disapprove</button>
       </div>
+    </form>
   </div>
 </div>

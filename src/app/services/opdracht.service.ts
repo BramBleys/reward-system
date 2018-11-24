@@ -70,6 +70,6 @@ export class OpdrachtService {
       'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
     );
     const url = `${this.url}/${opdracht._id}`;
-    this.http.patch(url, opdracht, {headers}).subscribe(data => {console.log("Put Request is succesful", data)}, error => {console.log(error)});
+    return this.http.patch(url, opdracht, {headers});
   }
 }

@@ -25,6 +25,7 @@ export class ApprovingComponent implements OnInit {
   beginDatum: String;
   punten: number;
   typeNaam: '';
+  ready: boolean;
 
   readonly pageSize = 6;
 
@@ -33,7 +34,8 @@ export class ApprovingComponent implements OnInit {
     limit: this.pageSize,
     order: 'desc',
     goedgekeurd: false
-  };  
+  };
+
   loading = false;
   private _currentPage = 1;
 
@@ -74,23 +76,22 @@ export class ApprovingComponent implements OnInit {
   }
 
   submit(){
+    this.ready = false;
     this.patchOpdracht();
     this.patchUser();
-    
     this.refresh();
   }
 
   disapprove(){
-    console.log(this.opdracht._id);
-    this.opdrachtService.deleteAssignment(this.opdracht._id);
+    this.ready = false;
+    this.opdrachtService.deleteAssignment(this.opdracht._id).subscribe(e=> this.refresh());
   }
 
   patchUser(){
       this.userService.setOpdracht(this.uid, this.opdracht._id, this.opdracht.punten);
-      this.refresh();
   }
 
-  refresh(){ 
+  refresh(){
       this.getAssignmentsFiltered();
       this.getAssignementsCount();
   }
@@ -103,7 +104,7 @@ export class ApprovingComponent implements OnInit {
     let opdracht = new Opdracht();
     opdracht = this.opdracht;
     opdracht.goedgekeurd = true;
-    this.opdrachtService.editAssignment(opdracht);
+    this.opdrachtService.editAssignment(opdracht).subscribe(e => this.refresh());
   }
 
   ngOnInit() {
