@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { User } from '../models/user';
 import { TranslateService } from '../services/translate.service';
-import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,6 +22,8 @@ export class HeaderComponent implements OnInit {
     config.autoClose = false;
   }
 
+
+
   ngOnInit() {
     this.authService.userData$.subscribe(user => {
       this.currentuser = user;
@@ -31,22 +33,10 @@ export class HeaderComponent implements OnInit {
       } else {
         this.loggedIn = false;
       }
-    });
-  }
+    }
 
-  changeLanguage(language: string) {
-    switch (language) {
-      case 'en':
-        this.translate.use('en');
-        break;
-      case 'nl':
-        this.translate.use('nl');
-        break;
+    logout() {
+      this.authService.logout();
+      window.location.reload();
     }
   }
-
-  logout() {
-    this.authService.logout();
-    window.location.reload();
-  }
-}

@@ -10,4 +10,5 @@ export class Opdracht {
   fotoUrl: string;
   private: boolean;
   punten: number;
+  userId: string;
 }

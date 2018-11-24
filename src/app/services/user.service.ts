@@ -66,4 +66,16 @@ export class UserService {
     });
     })
   }
+
+  setOpdracht(userId, opdrachtId, punten){
+    this.getUser(userId).subscribe(user => {
+      let opdracht = {
+        opdrachtId,
+        punten
+      }
+      user.opdrachten.push(opdracht);
+
+      this.updateUser(userId, user)
+    })
+  }
 }
