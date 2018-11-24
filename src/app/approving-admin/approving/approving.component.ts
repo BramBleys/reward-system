@@ -14,7 +14,7 @@ import { User } from '../../models/user';
 })
 export class ApprovingComponent implements OnInit {
 
-  uid = '5bf81b2300dc814480c0cdde';
+  uid = '5bf9492eda8b7f55301b4243';
   opdrachten$: Observable<any[]>;
   count$: Observable<Number>;
   type$: Observable<any>;
@@ -74,9 +74,15 @@ export class ApprovingComponent implements OnInit {
   }
 
   submit(){
-    this.patchUser();
     this.patchOpdracht();
+    this.patchUser();
+    
     this.refresh();
+  }
+
+  disapprove(){
+    console.log(this.opdracht._id);
+    this.opdrachtService.deleteAssignment(this.opdracht._id);
   }
 
   patchUser(){
@@ -91,14 +97,13 @@ export class ApprovingComponent implements OnInit {
 
   getAssignementsCount() {
     this.count$ = this.opdrachtService.getCount(this.filterParams);
-    console.log(this.filterParams);
-
   }
 
   patchOpdracht(){
-    this.opdracht.goedgekeurd = true;
-    console.log(this.opdracht);
-    this.opdrachtService.editAssignment(this.opdracht);
+    let opdracht = new Opdracht();
+    opdracht = this.opdracht;
+    opdracht.goedgekeurd = true;
+    this.opdrachtService.editAssignment(opdracht);
   }
 
   ngOnInit() {
