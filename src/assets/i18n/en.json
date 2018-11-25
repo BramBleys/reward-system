@@ -78,5 +78,18 @@
   "form.notValid": "Make sure all fields are correct.",
   "form.valid": "All fields are correct",
   "form.cancel": "Cancel",
-  "form.send": "Send"
+  "form.send": "Send",
+
+  "approve.head": "Approve assignements",
+  "approve.helpline": "Choose one of the assignements from above.",
+  "approve.title": "Title:",
+  "approve.beginDate": "Begin assignement:",
+  "approve.endDate": "End assignement:",
+  "approve.type": "Type assignement:",
+  "approve.description": "Description:",
+  "approve.points": "Points:",
+  "approve.error": "Error: Fill in the points before approving",
+  "approve.submit": "Approve",
+  "approve.delete": "Disapprove"
+  
 }

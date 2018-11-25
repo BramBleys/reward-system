@@ -77,5 +77,17 @@
   "form.notValid": "Error: zorg dat all velden correct zijn ingevuld!",
   "form.valid": "ALle velden zijn correct.",
   "form.cancel": "Annuleer",
-  "form.send": "Verzend"
+  "form.send": "Verzend",
+
+  "approve.head": "Opdrachten goedkeuren",
+  "approve.helpline": "Kies één van de bovenstaande opdrachten.",
+  "approve.title": "Titel:",
+  "approve.beginDate": "Begin opdracht:",
+  "approve.endDate": "Einde opdracht:",
+  "approve.type": "Type opdracht:",
+  "approve.description": "Beschrijving:",
+  "approve.points": "Punten:",
+  "approve.error": "Error: Vul de punten in voordat je goedkeurd!",
+  "approve.submit": "Goedkeuren",
+  "approve.delete": "Afkeuren"
 }
