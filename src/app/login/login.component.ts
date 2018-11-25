@@ -46,13 +46,14 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          window.location.reload();
-          this.router.navigate(['']);
-          this.alertService.success('Login successful', true);
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        });
+          if(data['message']){
+            this.alertService.error(data.message);
+          }else{
+            window.location.reload();
+            this.router.navigate(['/']);
+            
+          }
+        }
+       );
   }
 }

@@ -8,23 +8,19 @@
   <div class="collapse navbar-collapse" id="navbarContent" [ngbCollapse]="isCollapsed">
     <ul class="navbar-nav mr-auto" (click)="isCollapsed = !isCollapsed">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/opdrachten">Opdrachten</a>
+        <a class="nav-link" routerLink="/opdrachten">{{ 'header.assignments' | translate }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/rewardshop">Beloningen</a>
+        <a class="nav-link" routerLink="/rewardshop">{{ 'header.rewards' | translate }}</a>
       </li>
-      
-      
-
-
-
     </ul>
     <ul class="navbar-nav " *ngIf="loggedIn && currentuser.type == 'admin'">
       <li class="dropdown" ngbDropdown autoClose="inside">
-        <a class="nav-link dropdown-toggle" id="dropdownLanguage" ngbDropdownToggle>Beheer</a>
-        <div class="dropdown-menu dropdown" aria-labelledby="dropdownLanguage" ngbDropdownMenu (click)="isCollapsed = !isCollapsed">
-            <a class="nav-link" routerLink="/opdrachtencrud">Opdrachten beheer</a>
-            <a class="nav-link" routerLink="/rewardscrud">Beloningen beheer</a>
+        <a class="nav-link dropdown-toggle" id="manageDropdown" ngbDropdownToggle>{{ 'header.adminDropdown' | translate }}</a>
+        <div class="dropdown-menu dropdown" aria-labelledby="manageDropdown" ngbDropdownMenu (click)="isCollapsed = !isCollapsed">
+            <a class="nav-link" routerLink="/approveassignements">Goedkeuren inzendingen</a>
+            <a class="nav-link" routerLink="/opdrachtencrud">{{ 'header.adminAssignments' | translate }}</a>
+            <a class="nav-link" routerLink="/rewardscrud">{{ 'header.adminRewards' | translate }}</a>
         </div>
       </li>
     </ul>

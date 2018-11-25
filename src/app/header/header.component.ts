@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
         break;
     }
   }
-  
+
   ngOnInit() {
     this.authService.userData$.subscribe((user) => {
       this.currentuser = user;

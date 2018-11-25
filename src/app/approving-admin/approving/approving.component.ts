@@ -59,6 +59,9 @@ export class ApprovingComponent implements OnInit {
 
   setOpdracht(opdracht){
     this.opdracht = opdracht;
+    if (opdracht.punten == 0) {
+      opdracht.punten = '';
+    }
     this.eindDatum = (opdracht.eindDatum.day + "/" + opdracht.eindDatum.month + "/" + opdracht.eindDatum.year);
     this.beginDatum = (opdracht.beginDatum.day +"/" + opdracht.beginDatum.month + "/" + opdracht.beginDatum.year);
     this.getType(opdracht.typeId);
@@ -76,15 +79,12 @@ export class ApprovingComponent implements OnInit {
   }
 
   submit(){
-    this.ready = false;
     this.patchOpdracht();
     this.patchUser();
-    this.refresh();
   }
 
   disapprove(){
-    this.ready = false;
-    this.opdrachtService.deleteAssignment(this.opdracht._id).subscribe(e=> this.refresh());
+    this.opdrachtService.deleteAssignment(this.opdracht._id).subscribe(e => this.refresh());
   }
 
   patchUser(){

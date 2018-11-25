@@ -5,6 +5,11 @@
   "header.points": "points",
   "header.login": "Sign in",
   "header.logout": "Sign out",
+  "header.assignments": "Assignments",
+  "header.rewards": "Rewards",
+  "header.adminAssignments": "Manage Assignments",
+  "header.adminRewards": "Manage Rewards",
+  "header.adminDropdown": "Manage",
 
   "login.mail.placeholder": "Email",
   "login.mail.error.invalid": "Please fill out a valid email-address",
@@ -16,12 +21,16 @@
   "leaderboard.title": "Leaderboard",
   "leaderboard.points": "Points",
 
-  "opdrachtenBoard.add": "Submit Completed Assignment",
+  "opdrachtenBoard.add": "Submit Assignment",
 
   "rewardsCrud.search": "Type to search...",
   "rewardsCrud.name": "Reward name",
   "rewardsCrud.points": "Points",
   "rewardsCrud.available": "Available",
+  "rewardsCrud.addNewReward": "Add new reward",
+  "rewardsCrud.changeReward": "Change Reward",
+  "rewardsCrud.deleteReward": "Delete Reward",
+
 
   "opdrachtCrud.description": "Description",
   "opdrachtCrud.points": "Points",

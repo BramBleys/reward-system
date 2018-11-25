@@ -5,6 +5,11 @@
   "header.points": "punten",
   "header.login": "Log in",
   "header.logout": "Log uit",
+  "header.assignments": "Opdrachten",
+  "header.rewards": "Beloningen",
+  "header.adminAssignments": "Beheer opdrachten",
+  "header.adminRewards": "Beheer beloningen",
+  "header.adminDropdown": "Beheer",
 
   "login.mail.placeholder": "Email",
   "login.mail.error.invalid": "Gelieve een geldig email-adres in te geven",
@@ -16,16 +21,19 @@
   "leaderboard.title": "Klassement",
   "leaderboard.points": "Punten",
 
-  "opdrachtenBoard.add": "Voeg voltooide opdracht toe",
+  "opdrachtenBoard.add": "Voeg toe",
 
   "rewardsCrud.search": "Typ om te zoeken...",
   "rewardsCrud.name": "Beloning naam",
   "rewardsCrud.points": "Punten",
   "rewardsCrud.available": "Beschikbaar",
+  "rewardsCrud.addNewReward": "Voeg beloning toe",
+  "rewardsCrud.changeReward": "Wijzig beloning",
+  "rewardsCrud.deleteReward": "Verwijder beloning",
 
   "opdrachtCrud.description": "Beschrijving",
   "opdrachtCrud.points": "Punten",
-  "opdrachtCrud.addNewAssignment": "Voeg een nieuwe opdracht toe",
+  "opdrachtCrud.addNewAssignment": "Voeg nieuwe opdracht toe",
   "opdrachtCrud.changeAssignment": "Wijzig opdracht",
   "opdrachtCrud.deleteAssignment": "Verwijder opdracht",
   "opdrachtCrud.modal.title": "Titel",
