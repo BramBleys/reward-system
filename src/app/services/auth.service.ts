@@ -54,6 +54,8 @@ export class AuthService {
       punten: user.punten,
       totaalScore: user.totaalScore
     });
+
+    this.userData$.subscribe(e => localStorage.setItem('currentUser', JSON.stringify(e)));
   }
 
   //  Log out the user, remove user from localstorage
