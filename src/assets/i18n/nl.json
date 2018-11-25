@@ -6,10 +6,12 @@
   "header.login": "Log in",
   "header.logout": "Log uit",
   "header.assignments": "Opdrachten",
+  "header.overview":"Mijn overzicht",
   "header.rewards": "Beloningen",
   "header.adminAssignments": "Beheer opdrachten",
   "header.adminRewards": "Beheer beloningen",
   "header.adminDropdown": "Beheer",
+  "header.approve": "Goedkeuren inzendingen",
 
   "welcom.hello": "Hey!",
   "welcom.text1": "Welkom op de jstack beloning applicatie.",

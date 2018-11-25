@@ -6,10 +6,12 @@
   "header.login": "Sign in",
   "header.logout": "Sign out",
   "header.assignments": "Assignments",
+  "header.overview":"My overview",
   "header.rewards": "Rewards",
   "header.adminAssignments": "Manage Assignments",
   "header.adminRewards": "Manage Rewards",
   "header.adminDropdown": "Manage",
+  "header.approve": "Approve assignements",
 
   "welcom.hello": "Hello there!",
   "welcom.text1": "Welcome on the jstack Rewards application.",

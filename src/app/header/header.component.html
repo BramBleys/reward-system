@@ -14,14 +14,14 @@
         <a class="nav-link" routerLink="/rewardshop" *ngIf="loggedIn">{{ 'header.rewards' | translate }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/useroverzicht" *ngIf="loggedIn">Mijn overzicht</a>
+        <a class="nav-link" routerLink="/useroverzicht" *ngIf="loggedIn">{{ 'header.overview' | translate }}</a>
       </li>
     </ul>
     <ul class="navbar-nav " *ngIf="loggedIn && currentuser.type == 'admin'">
       <li class="dropdown" ngbDropdown autoClose="inside">
         <a class="nav-link dropdown-toggle" id="manageDropdown" ngbDropdownToggle>{{ 'header.adminDropdown' | translate }}</a>
         <div class="dropdown-menu dropdown" aria-labelledby="manageDropdown" ngbDropdownMenu (click)="isCollapsed = !isCollapsed">
-            <a class="nav-link" routerLink="/approveassignements">Goedkeuren inzendingen</a>
+            <a class="nav-link" routerLink="/approveassignements">{{ "header.approve" | translate }}</a>
             <a class="nav-link" routerLink="/opdrachtencrud">{{ 'header.adminAssignments' | translate }}</a>
             <a class="nav-link" routerLink="/rewardscrud">{{ 'header.adminRewards' | translate }}</a>
         </div>
