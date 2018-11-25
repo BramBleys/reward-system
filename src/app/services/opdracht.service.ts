@@ -70,6 +70,6 @@ export class OpdrachtService {
       'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
     );
     const url = `${this.url}/${opdracht._id}`;
-    return this.http.patch(url, opdracht, {headers});
+    return this.http.patch<any>(url, opdracht, {headers});
   }
 }
