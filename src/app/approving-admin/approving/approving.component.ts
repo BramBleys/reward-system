@@ -28,6 +28,7 @@ export class ApprovingComponent implements OnInit {
   typeNaam: '';
   ready: boolean;
 
+
   readonly pageSize = 6;
 
   filterParams = {
@@ -118,6 +119,7 @@ export class ApprovingComponent implements OnInit {
   ngOnInit() {
     this.getAssignmentsFiltered();
     this.getAssignementsCount();
+    this.opdrachten$.subscribe(e => console.log(this.userService.getUser(e[0].userId).subscribe(a => console.log(a))))
   }
 
 }

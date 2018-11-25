@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/reward-system",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
