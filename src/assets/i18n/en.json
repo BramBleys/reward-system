@@ -44,6 +44,8 @@
   "rewardsCrud.addNewReward": "Add new reward",
   "rewardsCrud.changeReward": "Change Reward",
   "rewardsCrud.deleteReward": "Delete Reward",
+  "rewardsCrud.save": "Save",
+  "rewardsCrud.required":"Please fill in this field!",
 
   "opdrachtCrud.description": "Description",
   "opdrachtCrud.points": "Points",
@@ -101,5 +103,4 @@
   "approve.delete": "Disapprove",
 
   "opdrachten.did": "I did this!"
-  
 }

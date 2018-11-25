@@ -46,6 +46,8 @@
   "rewardsCrud.addNewReward": "Voeg beloning toe",
   "rewardsCrud.changeReward": "Wijzig beloning",
   "rewardsCrud.deleteReward": "Verwijder beloning",
+  "rewardsCrud.save": "Opslaan",
+  "rewardsCrud.required":"Vul dit veld in!",
 
   "opdrachtCrud.description": "Beschrijving",
   "opdrachtCrud.points": "Punten",
