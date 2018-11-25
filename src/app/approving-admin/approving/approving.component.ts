@@ -16,7 +16,6 @@ import { AlertService } from 'src/app/services/alert.service';
 })
 export class ApprovingComponent implements OnInit {
 
-  uid = '5bf9492eda8b7f55301b4243';
   opdrachten$: Observable<any[]>;
   count$: Observable<Number>;
   type$: Observable<any>;
@@ -35,7 +34,8 @@ export class ApprovingComponent implements OnInit {
     offset: 0,
     limit: this.pageSize,
     order: 'desc',
-    goedgekeurd: false
+    goedgekeurd: false,
+    private: true
   };
 
   loading = false;
@@ -91,6 +91,7 @@ export class ApprovingComponent implements OnInit {
   disapprove(){
     this.opdrachtService.deleteAssignment(this.opdracht._id).subscribe(e => this.refresh());
     this.alertService.success("Assignment was disapproved.");
+    this.opdracht = null;
   }
 
   patchUser(){

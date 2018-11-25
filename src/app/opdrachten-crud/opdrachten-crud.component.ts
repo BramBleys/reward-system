@@ -1,3 +1,4 @@
+import { ParametersService } from './../services/parameters.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Type } from '../models/type';
@@ -41,7 +42,8 @@ export class OpdrachtenCrudComponent implements OnInit {
     private typesService: TypesService,
     private http: HttpClient,
     private opdrachtService: OpdrachtService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private parameterService: ParametersService
   ) {}
 
   ngOnInit() {
@@ -67,11 +69,7 @@ export class OpdrachtenCrudComponent implements OnInit {
   }
 
   addAssignment() {
-    const headers = new HttpHeaders();
-    headers.set(
-      'token',
-      'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
-    );
+    const headers = this.parameterService.getUserHeaders();
 
     this.http
       .post(
