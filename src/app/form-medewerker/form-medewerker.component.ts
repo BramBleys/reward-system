@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
@@ -30,7 +31,7 @@ export class FormMedewerkerComponent implements OnInit {
 
   types: Type[];
 
-  constructor(private http: HttpClient, private typesService: TypesService, private authService: AuthService) {
+  constructor(private http: HttpClient, private typesService: TypesService, private authService: AuthService,private router: Router) {
   }
 
   ngOnInit() {
@@ -56,8 +57,7 @@ export class FormMedewerkerComponent implements OnInit {
       // private:false,
       // beschikbaar: true
 
-    }, { headers }).subscribe(e => console.log(e));
-    console.log(this.types)
+    }, { headers }).subscribe(() => this.router.navigate(['/opdrachten']));
   }
 
   getTypes() {

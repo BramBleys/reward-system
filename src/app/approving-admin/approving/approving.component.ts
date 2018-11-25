@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit} from '@angular/core';
 import { OpdrachtService} from '../../services/opdracht.service';
 import { Opdracht } from '../../models/opdracht';
@@ -49,7 +50,9 @@ export class ApprovingComponent implements OnInit {
     this.getAssignmentsFiltered();
   }
 
-  constructor(public opdrachtService: OpdrachtService, public config: NgbProgressbarConfig, public typeSrevice: TypesService, public userService: UserService) {
+  constructor(public opdrachtService: OpdrachtService,
+     public config: NgbProgressbarConfig, 
+     public typeSrevice: TypesService, public userService: UserService, private router: Router) {
     config.max = 250;
     config.striped = true;
     config.animated = true;
@@ -81,6 +84,7 @@ export class ApprovingComponent implements OnInit {
   submit(){
     this.patchOpdracht();
     this.patchUser();
+    
   }
 
   disapprove(){
@@ -88,7 +92,7 @@ export class ApprovingComponent implements OnInit {
   }
 
   patchUser(){
-      this.userService.setOpdracht(this.uid, this.opdracht._id, this.opdracht.punten);
+      this.userService.setOpdracht(this.opdracht.userId, this.opdracht._id, this.opdracht.punten);
   }
 
   refresh(){

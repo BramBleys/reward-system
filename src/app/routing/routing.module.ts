@@ -1,3 +1,4 @@
+import { UseroverzichtComponent } from './../useroverzicht/useroverzicht.component';
 import { ApprovingComponent } from './../approving-admin/approving/approving.component';
 import { AdminGuard } from './../_guards/admin.guard';
 import { OpdrachtenCrudComponent } from './../opdrachten-crud/opdrachten-crud.component';
@@ -20,18 +21,19 @@ const routes: Routes = [
 
   { path: 'addOpdracht', component: FormMedewerkerComponent, canActivate: [AuthGuard] },
   { path: '', component: LeaderboardComponent, outlet: 'sidebar' },
-  {path: '', component: OpdrachtenComponent},
+  { path: '', component: OpdrachtenComponent },
   { path: 'path', component: LeaderboardComponent },
   { path: 'path', component: OpdrachtenComponent, outlet: 'sidebar' },
   { path: 'login', component: LoginComponent },
   { path: 'login', component: LeaderboardComponent, outlet: 'sidebar' },
   { path: 'sendassignement', component: LeaderboardComponent, outlet: 'sidebar' },
-  { path: 'sendassignement', component: FormMedewerkerComponent},
-  {path: 'rewardshop', component: RewardshopComponent, canActivate:[AuthGuard]},
-  {path: 'rewardscrud', component: RewardsCrudComponent, canActivate:[AdminGuard]},
-  {path: 'opdrachten', component: OpdrachtenComponent, canActivate: [AuthGuard]},
-  {path: 'opdrachtencrud', component: OpdrachtenCrudComponent, canActivate:[AdminGuard]},
-  {path: 'approveassignements', component: ApprovingComponent, canActivate:[AdminGuard]}
+  { path: 'sendassignement', component: FormMedewerkerComponent },
+  { path: 'rewardshop', component: RewardshopComponent, canActivate: [AuthGuard] },
+  { path: 'rewardscrud', component: RewardsCrudComponent, canActivate: [AdminGuard] },
+  { path: 'opdrachten', component: OpdrachtenComponent, canActivate: [AuthGuard] },
+  { path: 'opdrachtencrud', component: OpdrachtenCrudComponent, canActivate: [AdminGuard] },
+  { path: 'approveassignements', component: ApprovingComponent, canActivate: [AdminGuard] },
+  { path: 'useroverzicht', component: UseroverzichtComponent, canActivate: [AuthGuard] }
 ];
 
 export const routingModule: ModuleWithProviders = RouterModule.forRoot(routes);
