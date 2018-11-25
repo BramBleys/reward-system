@@ -1,3 +1,4 @@
+import { ParametersService } from './../services/parameters.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -32,7 +33,7 @@ export class FormMedewerkerComponent implements OnInit {
 
   types: Type[];
 
-  constructor(private http: HttpClient, private typesService: TypesService, private authService: AuthService,private router: Router, private alertService: AlertService) {
+  constructor(private http: HttpClient, private typesService: TypesService, private authService: AuthService,private router: Router, private alertService: AlertService, private parameterService: ParametersService) {
   }
 
   ngOnInit() {
@@ -43,9 +44,7 @@ export class FormMedewerkerComponent implements OnInit {
 
   onSubmit(form) {
 
-    const headers = new HttpHeaders();
-    headers.set('token', 'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg');
-
+    const headers = this.parameterService.getUserHeaders();
     this.http.post('https://radiant-peak-48979.herokuapp.com/v1/opdrachten/create', {
       userId: this.uid,
       titel: this.opdracht.title,
@@ -54,12 +53,13 @@ export class FormMedewerkerComponent implements OnInit {
       beginDatum: this.opdracht.beginDate,
       eindDatum: this.opdracht.endDate,
       typeId: this.opdracht.type,
+      private: true
       // fotoURL:'',
       // private:false,
       // beschikbaar: true
 
     }, { headers }).subscribe(() => this.router.navigate(['/opdrachten']));
-
+    this.router.navigate(['/opdrachten']);
     this.alertService.success("Assignment sent.");
   }
 
