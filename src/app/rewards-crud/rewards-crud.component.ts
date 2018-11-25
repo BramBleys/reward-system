@@ -65,11 +65,11 @@ export class RewardsCrudComponent implements OnInit {
     this.rewardService
       .getReward(id)
       .subscribe((data) => {
-          (this.RewardsForm.controls['id'].setValue(data.id)),
-            (this.RewardsForm.controls['name'].setValue(data.naam)),
-            (this.RewardsForm.controls['points'].setValue(data.punten)),
-            (this.RewardsForm.controls['available'].setValue(data.beschikbaar))
-        });
+        (this.RewardsForm.controls['id'].setValue(id)),
+          (this.RewardsForm.controls['name'].setValue(data.naam)),
+          (this.RewardsForm.controls['points'].setValue(data.punten)),
+          (this.RewardsForm.controls['available'].setValue(data.beschikbaar))
+      });
   }
 
   saveEdit() {

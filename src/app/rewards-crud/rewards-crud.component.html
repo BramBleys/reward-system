@@ -98,7 +98,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="RewardsForm" (ngSubmit)="editReward()">
+    <form [formGroup]="RewardsForm" (ngSubmit)="saveEdit()">
       <!--NAME-->
       <div class="form-group">
         <label for="name">{{ 'rewardsCrud.name' | translate }}</label>
@@ -130,7 +130,7 @@
   </div>
   <!--SUBMIT-->
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="editReward()" [disabled]="RewardsForm.invalid">{{
+    <button type="button" class="btn btn-outline-dark" (click)="saveEdit()" [disabled]="RewardsForm.invalid">{{
       'rewardsCrud.save' | translate }}</button>
   </div>
 </ng-template>

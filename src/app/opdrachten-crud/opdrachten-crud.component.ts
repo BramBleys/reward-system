@@ -52,12 +52,9 @@ export class OpdrachtenCrudComponent implements OnInit {
   ngOnInit() {
     this.getTypes();
     this.getAssignments();
-
-    console.log(this.AssignmentForm)
   }
 
   open(content) {
-    console.log(this.AssignmentForm)
     if (content._def.references.add != null) {
       this.maakOpdrachtenLeeg();
     }
@@ -66,7 +63,6 @@ export class OpdrachtenCrudComponent implements OnInit {
   }
 
   close() {
-    console.log(this.AssignmentForm)
     this.modalReference.close();
   }
 
@@ -103,9 +99,8 @@ export class OpdrachtenCrudComponent implements OnInit {
   }
 
   editAssignment(id: string) {
-    console.log(id);
     this.opdrachtService.getOpdracht(id).subscribe((data) => {
-      (this.AssignmentForm.controls['id'].setValue(data._id)),
+      (this.AssignmentForm.controls['id'].setValue(id)),
         (this.AssignmentForm.controls['title'].setValue(data.titel)),
         (this.AssignmentForm.controls['description'].setValue(data.omschrijving)),
         (this.AssignmentForm.controls['beginDate'].setValue(data.beginDatum)),
@@ -116,8 +111,6 @@ export class OpdrachtenCrudComponent implements OnInit {
   }
 
   saveEdit() {
-    console.log("ID: ")
-    console.log(this.AssignmentForm.get('id').value)
     let opdracht = new Opdracht();
     opdracht._id = this.AssignmentForm.get('id').value;
     opdracht.beginDatum = this.AssignmentForm.get('beginDate').value;
@@ -127,8 +120,6 @@ export class OpdrachtenCrudComponent implements OnInit {
     opdracht.typeId = this.AssignmentForm.get('type').value;
     opdracht.punten = this.AssignmentForm.get('points').value;
     opdracht.private = false;
-    console.log(opdracht)
-
     this.opdrachtService.editAssignment(opdracht).subscribe((e) => this.getAssignments());
     this.close();
     this.alertService.success('Assignment edited.');
