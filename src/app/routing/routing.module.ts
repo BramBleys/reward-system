@@ -14,13 +14,16 @@ import { LoginComponent } from '../login/login.component';
 import { RewardsCrudComponent } from '../rewards-crud/rewards-crud.component';
 import { SidebarAdminComponent } from '../sidebar-admin/sidebar-admin.component';
 import { SidebarScoresComponent } from '../sidebar-scores/sidebar-scores.component';
+import {WelcomeComponent} from '../welcome/welcome.component';
 
 
 const routes: Routes = [
 
   { path: 'addOpdracht', component: FormMedewerkerComponent, canActivate: [AuthGuard] },
   { path: '', component: LeaderboardComponent, outlet: 'sidebar' },
-  {path: '', component: OpdrachtenComponent},
+  {path: '', component: WelcomeComponent},
+  { path: 'overview', component: LeaderboardComponent, outlet: 'sidebar' },
+  {path: 'overview', component: OpdrachtenComponent},
   { path: 'path', component: LeaderboardComponent },
   { path: 'path', component: OpdrachtenComponent, outlet: 'sidebar' },
   { path: 'login', component: LoginComponent },
