@@ -5,7 +5,7 @@ import { TypesService } from '../services/types.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { OpdrachtService } from '../services/opdracht.service';
 import { Opdracht } from '../models/opdracht';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-opdrachten-crud',
@@ -13,27 +13,24 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./opdrachten-crud.component.scss']
 })
 export class OpdrachtenCrudComponent implements OnInit {
-  addAssignmentForm: FormGroup;
-  loading = false;
-  submitted = false;
-  opdracht = {
-    id: null,
-    title: '',
-    beginDate: {
+  AssignmentForm = new FormGroup({
+    id: new FormControl(null, Validators.required),
+    title: new FormControl('', Validators.required),
+    beginDate: new FormControl({
       year: '',
       month: '',
       day: ''
-    },
-    endDate: {
+    }, Validators.required),
+    endDate: new FormControl({
       year: '',
       month: '',
       day: ''
-    },
-    type: '',
-    description: '',
-    points: 0
-  };
-  
+    }, Validators.required),
+    type: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    points: new FormControl(0, Validators.required),
+  });
+
   modalReference: any;
   types: Type[];
   opdrachten: Opdracht[];
@@ -50,38 +47,8 @@ export class OpdrachtenCrudComponent implements OnInit {
   ngOnInit() {
     this.getTypes();
     this.getAssignments();
-    this.addAssignmentForm = this.formBuilder.group({
-      id: [null, Validators.required],
-      title: ['', Validators.required],
-      beginDate: [{
-        year: '',
-        month: '',
-        day: ''
-      }, Validators.required],
-      endDate: [{
-        year: '',
-        month: '',
-        day: ''
-      }, Validators.required],
-      type: ['', Validators.required],
-      description: ['', Validators.required],
-      points: [0, Validators.required]
-    })
-  }
 
-  // convenience getter for easy access to form fields
-  get f() { return this.addAssignmentForm.controls; }
-
-  onSubmit() {
-    this.submitted = true;
-
-    // stop here if form is invalid
-    if (this.addAssignmentForm.invalid) {
-      return;
-    }
-
-    this.loading = true;
-    this.addAssignment();
+    console.log(this.types, this.opdrachten)
   }
 
   open(content) {
@@ -112,14 +79,14 @@ export class OpdrachtenCrudComponent implements OnInit {
       .post(
         'https://radiant-peak-48979.herokuapp.com/v1/opdrachten/create',
         {
-          titel: this.f.title.value,
-          omschrijving: this.f.description.value,
+          titel: this.AssignmentForm.get('title').value,
+          omschrijving: this.AssignmentForm.get('description').value,
           goedgekeurd: false,
-          beginDatum: this.f.beginDate.value,
-          eindDatum: this.f.endDate.value,
-          typeId: this.f.type.value,
+          beginDatum: this.AssignmentForm.get('beginDate').value,
+          eindDatum: this.AssignmentForm.get('endDate').value,
+          typeId: this.AssignmentForm.get('type').value,
           private: false,
-          punten: this.f.points.value
+          punten: this.AssignmentForm.get('points').value
         },
         { headers }
       )
@@ -130,25 +97,24 @@ export class OpdrachtenCrudComponent implements OnInit {
 
   editAssignment(id: string) {
     this.opdrachtService.getOpdracht(id).subscribe((data) => {
-      (this.opdracht.title = data.titel),
-        (this.opdracht.description = data.omschrijving),
-        (this.opdracht.type = data.typeId),
-        (this.opdracht.beginDate = data.beginDatum),
-        (this.opdracht.endDate = data.eindDatum),
-        (this.opdracht.points = data.punten),
-        (this.opdracht.id = data._id);
+      (this.AssignmentForm.setValue(this.title ,data.title)),
+        (this.AssignmentForm.setValue(this.description ,data.description)),
+        (this.AssignmentForm.setValue(this.type ,data.type)),
+        (this.AssignmentForm.setValue(this.beginDate ,data.beginDate)),
+        (this.AssignmentForm.setValue(this.endDate ,data.endDate)),
+        (this.AssignmentForm.setValue(this.points ,data.points));
     });
   }
 
   saveEdit() {
     let opdracht = new Opdracht();
-    opdracht._id = this.opdracht.id;
-    opdracht.beginDatum = this.opdracht.beginDate;
-    opdracht.eindDatum = this.opdracht.endDate;
-    opdracht.titel = this.opdracht.title;
-    opdracht.omschrijving = this.opdracht.description;
-    opdracht.typeId = this.opdracht.type;
-    opdracht.punten = this.opdracht.points;
+    opdracht._id = this.AssignmentForm.get('id').value;
+    opdracht.beginDatum = this.AssignmentForm.get('beginDate').value;
+    opdracht.eindDatum = this.AssignmentForm.get('endDate').value;
+    opdracht.titel = this.AssignmentForm.get('title').value;
+    opdracht.omschrijving = this.AssignmentForm.get('description').value;
+    opdracht.typeId = this.AssignmentForm.get('type').value;
+    opdracht.punten = this.AssignmentForm.get('points').value;
     opdracht.private = false;
 
     this.opdrachtService.editAssignment(opdracht).subscribe((e) => this.getAssignments());
@@ -162,20 +128,29 @@ export class OpdrachtenCrudComponent implements OnInit {
   }
 
   maakOpdrachtenLeeg() {
-    this.opdracht.id = null;
-    this.opdracht.title = '';
-    this.opdracht.beginDate = {
-      year: '',
-      month: '',
-      day: ''
-    };
-    this.opdracht.endDate = {
-      year: '',
-      month: '',
-      day: ''
-    };
-    this.opdracht.type = '';
-    this.opdracht.description = '';
-    this.opdracht.points = 0;
+    this.AssignmentForm = new FormGroup({
+      id: new FormControl(null),
+      title: new FormControl('', Validators.required),
+      beginDate: new FormControl({
+        year: '',
+        month: '',
+        day: ''
+      }, Validators.required),
+      endDate: new FormControl({
+        year: '',
+        month: '',
+        day: ''
+      }, Validators.required),
+      type: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      points: new FormControl(0, Validators.required),
+    });
   }
+
+  get title() {return this.AssignmentForm.get('title');}
+  get description() {return this.AssignmentForm.get('description');}
+  get beginDate() {return this.AssignmentForm.get('beginDate');}
+  get endDate() {return this.AssignmentForm.get('endDate');}
+  get type() {return this.AssignmentForm.get('type');}
+  get points() {return this.AssignmentForm.get('points');}
 }
