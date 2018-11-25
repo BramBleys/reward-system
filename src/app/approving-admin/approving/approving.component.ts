@@ -90,6 +90,7 @@ export class ApprovingComponent implements OnInit {
 
   disapprove(){
     this.opdrachtService.deleteAssignment(this.opdracht._id).subscribe(e => this.refresh());
+    this.alertService.success("Assignment was disapproved.");
   }
 
   patchUser(){
