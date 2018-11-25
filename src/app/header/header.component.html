@@ -18,6 +18,7 @@
       <li class="dropdown" ngbDropdown autoClose="inside">
         <a class="nav-link dropdown-toggle" id="manageDropdown" ngbDropdownToggle>{{ 'header.adminDropdown' | translate }}</a>
         <div class="dropdown-menu dropdown" aria-labelledby="manageDropdown" ngbDropdownMenu (click)="isCollapsed = !isCollapsed">
+            <a class="nav-link" routerLink="/approveassignements">Goedkeuren inzendingen</a>
             <a class="nav-link" routerLink="/opdrachtencrud">{{ 'header.adminAssignments' | translate }}</a>
             <a class="nav-link" routerLink="/rewardscrud">{{ 'header.adminRewards' | translate }}</a>
         </div>
