@@ -1,3 +1,4 @@
+import { PassopdrachtService } from './../services/passopdracht.service';
 import { ParametersService } from './../services/parameters.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -43,7 +44,7 @@ export class OpdrachtenCrudComponent implements OnInit {
     private http: HttpClient,
     private opdrachtService: OpdrachtService,
     private alertService: AlertService,
-    private parameterService: ParametersService
+    private parameterService: ParametersService,
   ) {}
 
   ngOnInit() {
