@@ -16,12 +16,12 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="wachtwoord">{{ 'login.password.placeholder'| translate }}</label>
-            <input type="password" id="wachtwoord" formControlName="wachtwoord" class="form-control"
+            <label for="password">{{ 'login.password.placeholder'| translate }}</label>
+            <input type="password" id="password" formControlName="password" class="form-control"
                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
                    placeholder="{{ 'login.password.placeholder' | translate }}"/>
-            <div *ngIf="submitted && f.wachtwoord.errors" class="invalid-feedback">
-              <div *ngIf="f.wachtwoord.errors.required">{{ 'login.password.error.empty' | translate }}</div>
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">{{ 'login.password.error.empty' | translate }}</div>
             </div>
           </div>
           <div class="form-group">
