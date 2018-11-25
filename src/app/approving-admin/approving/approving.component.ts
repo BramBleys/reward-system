@@ -59,6 +59,9 @@ export class ApprovingComponent implements OnInit {
 
   setOpdracht(opdracht){
     this.opdracht = opdracht;
+    if (opdracht.punten == 0) {
+      opdracht.punten = '';
+    }
     this.eindDatum = (opdracht.eindDatum.day + "/" + opdracht.eindDatum.month + "/" + opdracht.eindDatum.year);
     this.beginDatum = (opdracht.beginDatum.day +"/" + opdracht.beginDatum.month + "/" + opdracht.beginDatum.year);
     this.getType(opdracht.typeId);

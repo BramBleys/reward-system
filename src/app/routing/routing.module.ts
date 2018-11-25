@@ -11,8 +11,8 @@ import { OpdrachtenComponent } from '../opdrachten/opdrachten.component';
 import { ModuleWithProviders } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { RewardsCrudComponent } from '../rewards-crud/rewards-crud.component';
-import {SidebarAdminComponent} from '../sidebar-admin/sidebar-admin.component';
-import {SidebarScoresComponent} from '../sidebar-scores/sidebar-scores.component';
+import { SidebarAdminComponent } from '../sidebar-admin/sidebar-admin.component';
+import { SidebarScoresComponent } from '../sidebar-scores/sidebar-scores.component';
 import { ApprovingComponent } from '../approving-admin/approving/approving.component';
 
 
@@ -30,7 +30,8 @@ const routes: Routes = [
   {path: 'rewardshop', component: RewardshopComponent, canActivate:[AuthGuard]},
   {path: 'rewardscrud', component: RewardsCrudComponent, canActivate:[AdminGuard]},
   {path: 'opdrachten', component: OpdrachtenComponent, canActivate: [AuthGuard]},
-  {path: 'opdrachtencrud', component: OpdrachtenCrudComponent, canActivate:[AdminGuard]}
+  {path: 'opdrachtencrud', component: OpdrachtenCrudComponent, canActivate:[AdminGuard]},
+  {path: 'approveassignements', component: ApprovingComponent, canActivate:[AdminGuard]}
 ];
 
 export const routingModule: ModuleWithProviders = RouterModule.forRoot(routes);
