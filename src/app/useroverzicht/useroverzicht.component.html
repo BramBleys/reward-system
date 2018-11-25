@@ -2,7 +2,7 @@
   <div class="col-12">
     <div class="card ">
       <div class="card-header">
-        <h5>Mijn gegevens</h5>
+        <h5>{{ "overview.title" | translate}}</h5>
       </div>
       <div class="card-body">
         <h5 class="card-title">{{user.naam}}</h5>
@@ -10,10 +10,10 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item list-group-item d-flex justify-content-between align-items-center">
-          Totaal aantal punten verzameld: <span>{{user.punten}}</span>
+          {{ "overview.points" | translate}}<span>{{user.punten}}</span>
         </li>
-        <li class="list-group-item list-group-item d-flex justify-content-between align-items-center">Aantal opdrachten voltooid: <span>{{(opdrachten$ | async)?.length}}</span></li>
-        <li class="list-group-item list-group-item d-flex justify-content-between align-items-center">Aantal rewards geclaimd: <span>{{(rewards$ | async)?.length}}</span></li>
+        <li class="list-group-item list-group-item d-flex justify-content-between align-items-center">{{ "overview.completedassignements" | translate}}<span>{{(opdrachten$ | async)?.length}}</span></li>
+        <li class="list-group-item list-group-item d-flex justify-content-between align-items-center">{{ "overview.claimedRewards" | translate}}<span>{{(rewards$ | async)?.length}}</span></li>
       </ul>
     </div>
   </div>
@@ -21,7 +21,7 @@
   <div class="col-12 col-md-6 mt-3">
     <div class="card ">
       <div class="card-header">
-        <h5>Mijn opdrachten</h5>
+        <h5>{{"overview.assignements" | translate}}</h5>
       </div>
       <div style="max-height: 400px; overflow-y: scroll">
         <ul class="list-group list-group-flush">
@@ -38,7 +38,7 @@
   <div class="col-12 col-md-6 mt-3">
     <div class="card ">
       <div class="card-header">
-        <h5>Mijn rewards</h5>
+        <h5>{{ "overview.rewards" | translate}}</h5>
       </div>
       <div style="max-height: 400px; overflow-y: scroll">
         <ul class="list-group list-group-flush">
