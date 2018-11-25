@@ -35,6 +35,10 @@ export class UserService {
     return this.http.get<User[]>(url, { headers });
   }
 
+  getLeaderBoard(): Observable<any[]>{
+    return this.http.get<any[]>(this.url + '/leaderboard');
+  }
+
   updateUser(id, params = {}){
     const headers = new HttpHeaders();
     headers.set(
@@ -42,7 +46,7 @@ export class UserService {
       'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
     );
 
-    this.http.patch<User>(this.url + '/' + id, params, {headers} );
+    this.http.patch<User>(this.url + '/' + id, params, {headers} ).subscribe(e => console.log(e));
 
   }
 
@@ -62,6 +66,7 @@ export class UserService {
       );
       this.http.patch<User>(this.url + '/' + userId, user, {headers} ).subscribe(e => {
         this.authService.setUserData(e);
+
       
     });
     })
@@ -73,9 +78,20 @@ export class UserService {
         opdrachtId,
         punten
       }
+
+
       user.opdrachten.push(opdracht);
+      console.log('heej');
 
       this.updateUser(userId, user)
     })
+  }
+
+  getUserRewards(uid: String): Observable<any[]>{
+    return this.http.get<any[]>(this.url + '/' + uid + "/rewards");
+  }
+
+  getUserOpdrachten(uid: String): Observable<any[]>{
+    return this.http.get<any[]>(this.url + '/' + uid + "/opdrachten");
   }
 }

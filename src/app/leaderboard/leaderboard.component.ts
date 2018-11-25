@@ -19,15 +19,9 @@ export class LeaderboardComponent implements OnInit {
   getLeaderboard() {
     let userArray = [];
 
-    this.userService.getAllUsers().subscribe((data) =>
-      data.forEach((user) => {
-        userArray.push({ naam: user.naam, score: user.punten });
-        userArray.sort(function(a, b) {
-          return b.score - a.score;
-        });
-      })
+    this.userService.getLeaderBoard().subscribe((data) =>
+      this.users = data
     );
 
-    this.users = userArray;
   }
 }
