@@ -68,7 +68,7 @@ export class RewardsCrudComponent implements OnInit {
           (this.RewardsForm.controls['id'].setValue(data.id)),
             (this.RewardsForm.controls['name'].setValue(data.naam)),
             (this.RewardsForm.controls['points'].setValue(data.punten)),
-            (this.RewardsForm.controls['available'].setValue(data.beschikbaar))
+            (this.RewardsForm.controls['available'].setValue(data.beschikbaar));
         });
   }
 
@@ -87,8 +87,6 @@ export class RewardsCrudComponent implements OnInit {
     if (confirm('Are you sure you want to delete this item?')) {
       this.rewardService.deleteReward(id).subscribe((e) => this.getRewards());
       this.alertService.success('Reward deleted.');
-    } else {
-      this.alertService.error('No reward was deleted.');
     }
   }
 
