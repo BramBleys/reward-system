@@ -128,7 +128,7 @@
   </div>
   <!--SUBMIT-->
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" [disabled]="AssignmentForm.invalid">{{ 'opdrachtCrud.modal.save' | translate }}</button>
+    <button type="button" class="btn btn-outline-dark" (click)="addAssignment()" >{{ 'opdrachtCrud.modal.save' | translate }}</button>
   </div>
 </ng-template>
 <!--MODAL EDIT ASSIGNMENT-->
@@ -146,58 +146,75 @@
       <div class="form-group">
         <label for="title">{{ 'opdrachtCrud.modal.title' | translate }}</label>
         <div class="input-group">
-          <input id="title" name="title" class="form-control" placeholder="{{ 'opdrachtCrud.modal.title' | translate }}"
-            [(ngModel)]="opdracht.title" />
+          <input id="title" formControlName="title" class="form-control" placeholder="{{ 'opdrachtCrud.modal.title' | translate }}" [ngClass]="{ 'is-invalid': title.invalid && (title.dirty || title.touched) }" required />
+        </div>
+        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="invalid-feedback">
+          <div *ngIf="title.errors.required">Reward title is required.</div>
         </div>
       </div>
       <!--DESCRIPTION-->
       <div class="form-group">
         <label for="description">{{ 'opdrachtCrud.modal.description' | translate }}</label>
         <div class="input-group">
-          <input id="description" name="description" class="form-control" placeholder="{{ 'opdrachtCrud.modal.description' | translate }}"
-            [(ngModel)]="opdracht.description" />
+          <input id="description" formControlName="description" class="form-control" placeholder="{{ 'opdrachtCrud.modal.description' | translate }}" [ngClass]="{ 'is-invalid': description.invalid && (description.dirty || description.touched) }" required />
+        </div>
+        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="invalid-feedback">
+          <div *ngIf="description.errors.required">Reward title is required.</div>
         </div>
       </div>
       <!--BEGINDATE-->
       <div class="form-group col-md-3">
         <label for="beginDate">{{ 'opdrachtCrud.modal.beginDate' | translate }}</label>
         <div class="input-group">
-          <input class="form-control" placeholder="yyyy-mm-dd" name="beginDate" [(ngModel)]="begin" ngbDatepicker #d="ngbDatepicker"
-            #beginDate="ngModel" [(ngModel)]="opdracht.beginDate" required>
+          <input class="form-control" formControlName="beginDate" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker" 
+          [ngClass]="{ 'is-invalid': beginDate.invalid && (beginDate.dirty || beginDate.touched) }" required />
           <div class="input-group-append">
             <button class="btn btn-outline calendar" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
           </div>
+        </div>
+        <div *ngIf="beginDate.invalid && (beginDate.dirty || beginDate.touched)" class="invalid-feedback">
+          <div *ngIf="beginDate.errors.required">Reward title is required.</div>
         </div>
       </div>
       <!--ENDDATE-->
       <div class="form-group col-md-3">
         <label for="endDate">{{ 'opdrachtCrud.modal.endDate' | translate }}</label>
         <div class="input-group">
-          <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" [(ngModel)]="eind" ngbDatepicker #f="ngbDatepicker"
-            #endDate="ngModel" [(ngModel)]="opdracht.endDate" required>
+          <input class="form-control" formControlName="endDate" placeholder="yyyy-mm-dd" ngbDatepicker #f="ngbDatepicker" 
+          [ngClass]="{ 'is-invalid': endDate.invalid && (endDate.dirty || endDate.touched) }" required />
           <div class="input-group-append">
             <button class="btn btn-outline calendar" (click)="f.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
           </div>
+        </div>
+        <div *ngIf="endDate.invalid && (endDate.dirty || endDate.touched)" class="invalid-feedback">
+          <div *ngIf="endDate.errors.required">Reward title is required.</div>
         </div>
       </div>
       <!--ASSIGNMENT TYPE-->
       <div class="form-group col-md-6">
         <label for="type">{{ 'opdrachtCrud.modal.type' | translate }}</label>
-        <select class="form-control" id="type" name="type" #type="ngModel" [(ngModel)]="opdracht.type" required>
+        <select class="form-control" id="type" formControlName="type" [ngClass]="{ 'is-invalid': type.invalid && (type.dirty || type.touched) }" required >
           <option *ngFor="let type of types" value="{{type._id}}">{{type.naam}}</option>
         </select>
+        <div *ngIf="type.invalid && (type.dirty || type.touched)" class="invalid-feedback">
+          <div *ngIf="type.errors.required">Reward title is required.</div>
+        </div>
       </div>
       <!--POINTS-->
       <div class="form-group">
         <label for="points">{{ 'opdrachtCrud.modal.points' | translate }}</label>
         <div class="input-group">
-          <input id="points" name="points" class="form-control" type="number" placeholder="{{ 'opdrachtCrud.modal.points' | translate }}"
-            [(ngModel)]="opdracht.points" />
+          <input id="points" formControlName="points" class="form-control" type="number" placeholder="{{ 'opdrachtCrud.modal.points' | translate }}"
+          [ngClass]="{ 'is-invalid': points.invalid && (points.dirty || points.touched) }" required >
+        </div>
+        <div *ngIf="points.invalid && (points.dirty || points.touched)" class="invalid-feedback">
+          <div *ngIf="points.errors.required">Reward title is required.</div>
         </div>
       </div>
     </form>
   </div>
+  <!--SUBMIT-->
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="saveEdit()">{{ 'opdrachtCrud.modal.save' | translate }}</button>
+    <button type="button" class="btn btn-outline-dark" (click)="editAssignment()" >{{ 'opdrachtCrud.modal.save' | translate }}</button>
   </div>
 </ng-template>

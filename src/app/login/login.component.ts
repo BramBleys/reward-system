@@ -6,7 +6,12 @@ import { first } from 'rxjs/operators';
 import { AlertService } from '../services/alert.service';
 import { AuthService } from '../services/auth.service';
 
-@Component({ templateUrl: 'login.component.html' })
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
+})
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
@@ -46,13 +51,14 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.alertService.success('Login successful', true);
-          this.router.navigate(['']);
-          window.location.reload();
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        });
+          if (data['message']) {
+            this.alertService.error(data.message);
+          } else {
+            window.location.reload();
+            this.router.navigate(['/overview']);
+
+          }
+        }
+       );
   }
 }

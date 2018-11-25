@@ -5,6 +5,25 @@
   "header.points": "points",
   "header.login": "Sign in",
   "header.logout": "Sign out",
+  "header.assignments": "Assignments",
+  "header.overview":"My overview",
+  "header.rewards": "Rewards",
+  "header.adminAssignments": "Manage Assignments",
+  "header.adminRewards": "Manage Rewards",
+  "header.adminDropdown": "Manage",
+  "header.approve": "Approve assignements",
+
+  "welcom.hello": "Hello there!",
+  "welcom.text1": "Welcome on the jstack Rewards application.",
+  "welcom.text2": "Here you can find all assignments that you can complete to earn points. When you have enough point you can spends those in the rewards shop. On the assignments page you can see all available assignments.",
+  "welcom.text3": " Sign in to see your total earned points, claim a prise or submit a completed assignment.",
+
+  "overview.title": "My detials",
+  "overview.points": "Totale points collected: ",
+  "overview.completedassignements": "Completed assignements: ",
+  "overview.claimedRewards": "Claimed rewards: ",
+  "overview.rewards": "My rewards",
+  "overview.assignements":"My assignements",
 
   "login.mail.placeholder": "Email",
   "login.mail.error": "Please fill out a valid email-address",
@@ -16,12 +35,15 @@
   "leaderboard.title": "Leaderboard",
   "leaderboard.points": "Points",
 
-  "opdrachtenBoard.add":"Submit Completed Assignment",
+  "opdrachtenBoard.add": "Submit Assignment",
 
-  "rewardsCrud.search":"Type to search...",
-  "rewardsCrud.name":"Reward name",
-  "rewardsCrud.points":"Points",
-  "rewardsCrud.available":"Available",
+  "rewardsCrud.search": "Type to search...",
+  "rewardsCrud.name": "Reward name",
+  "rewardsCrud.points": "Points",
+  "rewardsCrud.available": "Available",
+  "rewardsCrud.addNewReward": "Add new reward",
+  "rewardsCrud.changeReward": "Change Reward",
+  "rewardsCrud.deleteReward": "Delete Reward",
 
   "opdrachtCrud.description": "Description",
   "opdrachtCrud.points": "Points",
@@ -64,5 +86,18 @@
   "form.notValid": "Make sure all fields are correct.",
   "form.valid": "All fields are correct",
   "form.cancel": "Cancel",
-  "form.send": "Send"
+  "form.send": "Send",
+
+  "approve.head": "Approve assignements",
+  "approve.helpline": "Choose one of the assignements from above.",
+  "approve.title": "Title:",
+  "approve.beginDate": "Begin assignement:",
+  "approve.endDate": "End assignement:",
+  "approve.type": "Type assignement:",
+  "approve.description": "Description:",
+  "approve.points": "Points:",
+  "approve.error": "Error: Fill in the points before approving",
+  "approve.submit": "Approve",
+  "approve.delete": "Disapprove"
+  
 }

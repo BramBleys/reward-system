@@ -16,7 +16,7 @@
           <tr *ngFor="let user of users; let i = index">
             <th *ngIf="i < 10"  scope="row">{{ i + 1 }}</th>
             <td *ngIf="i < 10">{{ user.naam }}</td>
-            <td *ngIf="i < 10">{{ user.score }}</td>
+            <td *ngIf="i < 10">{{ user.punten }}</td>
           </tr>
         </tbody>
       </table>

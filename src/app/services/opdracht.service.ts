@@ -15,24 +15,13 @@ export class OpdrachtService {
   constructor(private http: HttpClient, private parametersService: ParametersService) {}
 
   getOpdracht(id: string) {
-    const headers = new HttpHeaders();
-    headers.set(
-      'token',
-      'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
-    );
-
+    const headers = this.parametersService.getUserHeaders();
     const url = `https://radiant-peak-48979.herokuapp.com/v1/opdrachten/${id}`;
-    return this.http.get<any>(url, { headers });
+    return this.http.get<any>(url, {headers});
   }
 
   getAssignmentsFiltered(params = {}): Observable<any[]> {
-    const headers = new HttpHeaders();
-    headers.set(
-      'token',
-      'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
-    );
-
-    return this.http.get<any[]>(this.parametersService.generateGetUrl(this.url, params), { headers });
+    return this.http.get<any[]>(this.parametersService.generateGetUrl(this.url, params));
   }
 
   getCount(params = {}): Observable<Number> {
@@ -42,21 +31,12 @@ export class OpdrachtService {
     delete newParams['sortBy'];
     delete newParams['order'];
 
-    const headers = new HttpHeaders();
-    headers.set(
-      'token',
-      'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
-    );
 
-    return this.http.get<Number>(this.parametersService.generateGetUrl(this.url + '/count', newParams), { headers });
+    return this.http.get<Number>(this.parametersService.generateGetUrl(this.url + '/count', newParams));
   }
 
   deleteAssignment(id: string) {
-    const headers = new HttpHeaders();
-    headers.set(
-      'token',
-      'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
-    );
+    const headers = this.parametersService.getUserHeaders();
     console.log(id)
     const url = `${this.url}/${id}`;
     console.log(url);
@@ -64,12 +44,8 @@ export class OpdrachtService {
   }
 
   editAssignment(opdracht: Opdracht) {
-    const headers = new HttpHeaders();
-    headers.set(
-      'token',
-      'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
-    );
+    const headers = this.parametersService.getUserHeaders();
     const url = `${this.url}/${opdracht._id}`;
-    return this.http.patch(url, opdracht, {headers});
+    return this.http.patch<any>(url, opdracht, {headers});
   }
 }

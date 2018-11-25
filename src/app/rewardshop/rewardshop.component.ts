@@ -1,3 +1,4 @@
+import { AlertService } from './../services/alert.service';
 import { AuthService } from './../services/auth.service';
 import { User } from './../models/user';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -17,7 +18,7 @@ export class RewardshopComponent implements OnInit {
   readonly pageSize = 6;
   userData: User;
 
- 
+
 
   count$: Observable<Number>;
   filterParams = {
@@ -38,12 +39,12 @@ export class RewardshopComponent implements OnInit {
     this._currentPage = page;
     this.filterParams['offset'] = this._currentPage * this.pageSize - this.pageSize;
     this.getAllRewards();
-    
+
   }
 
-  constructor(public rewardsService: RewardsService, 
+  constructor(public rewardsService: RewardsService,
     public config: NgbProgressbarConfig,
-    private userService: UserService, private authService: AuthService) { 
+    private userService: UserService, private authService: AuthService, private alertService: AlertService) {
     config.max = 250;
     config.striped = true;
     config.animated = true;
@@ -59,24 +60,32 @@ export class RewardshopComponent implements OnInit {
     this.getCount();
   }
 
-  getCount(){
+  getCount() {
     this.count$ = this.rewardsService.getCount(this.filterParams);
     this.count$.subscribe(e => console.log(e));
   }
 
-  getAllRewards(){
+  getAllRewards() {
     this.allRewards$ = this.rewardsService.getRewardsFiltered(this.filterParams);
     this.loading = true;
-    this.allRewards$.subscribe(e => this.loading= false);
+    this.allRewards$.subscribe(e => this.loading = false);
   }
 
-  claimReward(reward){
-    // if(this.userData.totaalScore > reward.punten){
-    this.userService.claimReward(this.userData._id, reward._id, reward.punten);
+  claimReward(reward) {
 
-    // } else {
-    //   alert("niet genoeg punten")
-    // }
+    if (window.confirm('Claim ' + reward.naam + '?')) {
+      if (JSON.parse(localStorage.getItem('currentUser')).totaalScore < reward.punten) {
+        this.alertService.error('U hebt niet genoeg punten');
+      } else {
+        this.userService.claimReward(this.userData._id, reward._id, reward.punten);
+        this.alertService.success('Opdracht geclaimd')
+      }
+    }
   }
+
+
+
 
 }
+
+

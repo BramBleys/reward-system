@@ -8,29 +8,28 @@
   <div class="collapse navbar-collapse" id="navbarContent" [ngbCollapse]="isCollapsed">
     <ul class="navbar-nav mr-auto" (click)="isCollapsed = !isCollapsed">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/opdrachten">Opdrachten</a>
+        <a class="nav-link" routerLink="/opdrachten">{{ 'header.assignments' | translate }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/rewardshop">Beloningen</a>
+        <a class="nav-link" routerLink="/rewardshop" *ngIf="loggedIn">{{ 'header.rewards' | translate }}</a>
       </li>
-      
-      
-
-
-
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/useroverzicht" *ngIf="loggedIn">{{ 'header.overview' | translate }}</a>
+      </li>
     </ul>
     <ul class="navbar-nav " *ngIf="loggedIn && currentuser.type == 'admin'">
       <li class="dropdown" ngbDropdown autoClose="inside">
-        <a class="nav-link dropdown-toggle" id="dropdownLanguage" ngbDropdownToggle>Beheer</a>
-        <div class="dropdown-menu dropdown" aria-labelledby="dropdownLanguage" ngbDropdownMenu (click)="isCollapsed = !isCollapsed">
-            <a class="nav-link" routerLink="/opdrachtencrud">Opdrachten beheer</a>
-            <a class="nav-link" routerLink="/rewardscrud">Beloningen beheer</a>
+        <a class="nav-link dropdown-toggle" id="manageDropdown" ngbDropdownToggle>{{ 'header.adminDropdown' | translate }}</a>
+        <div class="dropdown-menu dropdown" aria-labelledby="manageDropdown" ngbDropdownMenu (click)="isCollapsed = !isCollapsed">
+            <a class="nav-link" routerLink="/approveassignements">{{ "header.approve" | translate }}</a>
+            <a class="nav-link" routerLink="/opdrachtencrud">{{ 'header.adminAssignments' | translate }}</a>
+            <a class="nav-link" routerLink="/rewardscrud">{{ 'header.adminRewards' | translate }}</a>
         </div>
       </li>
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item userCoins">
-        <p class="nav-link" *ngIf="loggedIn == true">{{currentuser.naam}}<i class="fas fa-coins"><span>{{currentuser.totaalScore}}</span></i></p>
+        <p class="nav-link" *ngIf="loggedIn == true">{{currentuser.naam}}<i class="fas fa-coins"><span>{{currentuser.totaalScore}}</span></i><button ngbTooltip="refresh" class="btn btn-link text-success" (click)="updateCoins()" ><i class="fas fa-sync-alt"></i></button></p>
       </li>
       <li class="nav-item divider" *ngIf="!loggedIn">
         <a class="nav-link" [routerLink]="[{ outlets: { primary: ['login'],sidebar: ['login'] } }]">{{ 'header.login' | translate }}</a>

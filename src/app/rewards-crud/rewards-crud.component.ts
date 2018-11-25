@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { RewardsService } from '../services/rewards.service';
 import { Reward } from '../models/reward';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-rewards-crud',
@@ -29,7 +30,11 @@ export class RewardsCrudComponent implements OnInit {
   @Input() rewardAvailable = true;
   @Input() rewardId: string;
 
-  constructor(private rewardService: RewardsService, private modalService: NgbModal) {}
+  constructor(
+    private rewardService: RewardsService,
+    private modalService: NgbModal,
+    private alertService: AlertService
+  ) {}
 
   ngOnInit() {
     this.getRewards();
@@ -45,6 +50,7 @@ export class RewardsCrudComponent implements OnInit {
       .addReward(this.rewardName, this.rewardPoints, this.rewardAvailable)
       .subscribe((e) => this.getRewards());
     this.close();
+    this.alertService.success('Reward added.');
   }
 
   editReward(id: string) {
@@ -68,11 +74,15 @@ export class RewardsCrudComponent implements OnInit {
     reward.beschikbaar = this.rewardAvailable;
     this.rewardService.editReward(reward).subscribe((e) => this.getRewards());
     this.close();
+    this.alertService.success('Reward edited.');
   }
 
   deleteReward(id: string) {
     if (confirm('Are you sure you want to delete this item?')) {
       this.rewardService.deleteReward(id).subscribe((e) => this.getRewards());
+      this.alertService.success('Reward deleted.');
+    } else {
+      this.alertService.error('No reward was deleted.');
     }
   }
 

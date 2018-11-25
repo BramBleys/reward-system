@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card ">
+      <div class="card-header">
+        <h5>{{ "overview.title" | translate}}</h5>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{user.naam}}</h5>
+
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item list-group-item d-flex justify-content-between align-items-center">
+          {{ "overview.points" | translate}}<span>{{user.punten}}</span>
+        </li>
+        <li class="list-group-item list-group-item d-flex justify-content-between align-items-center">{{ "overview.completedassignements" | translate}}<span>{{(opdrachten$ | async)?.length}}</span></li>
+        <li class="list-group-item list-group-item d-flex justify-content-between align-items-center">{{ "overview.claimedRewards" | translate}}<span>{{(rewards$ | async)?.length}}</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <div class="card ">
+      <div class="card-header">
+        <h5>{{"overview.assignements" | translate}}</h5>
+      </div>
+      <div style="max-height: 400px; overflow-y: scroll">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let opdracht of (opdrachten$ | async)">
+            {{opdracht.opdracht.titel}} <span>{{opdracht.punten}} <i class="fas fa-coins" style="color:gold"></i></span>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <div class="card ">
+      <div class="card-header">
+        <h5>{{ "overview.rewards" | translate}}</h5>
+      </div>
+      <div style="max-height: 400px; overflow-y: scroll">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let reward of (rewards$ | async)">
+            {{reward.reward.naam}} <span>{{reward.punten}} <i class="fas fa-coins" style="color:gold"></i></span>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>

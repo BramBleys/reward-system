@@ -1,3 +1,4 @@
+import { ParametersService } from './../services/parameters.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Type } from '../models/type';
@@ -6,6 +7,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { OpdrachtService } from '../services/opdracht.service';
 import { Opdracht } from '../models/opdracht';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-opdrachten-crud',
@@ -41,7 +43,9 @@ export class OpdrachtenCrudComponent implements OnInit {
     private typesService: TypesService,
     private http: HttpClient,
     private opdrachtService: OpdrachtService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private alertService: AlertService,
+    private parameterService: ParametersService
   ) { }
 
   ngOnInit() {
@@ -52,6 +56,10 @@ export class OpdrachtenCrudComponent implements OnInit {
   }
 
   open(content) {
+    if (content._def.references.add != null) {
+      this.maakOpdrachtenLeeg();
+    }
+
     this.modalReference = this.modalService.open(content);
   }
 
@@ -69,11 +77,7 @@ export class OpdrachtenCrudComponent implements OnInit {
   }
 
   addAssignment() {
-    const headers = new HttpHeaders();
-    headers.set(
-      'token',
-      'eyJhbGciOiJIUzI1NiJ9.NWJmMmExZDg1OTQyNDYzODZjYmYyNDY4.9fUrbPXXOAuU9n-9l3Ot5GnhQB2bguyfXOX82IP0Olg'
-    );
+    const headers = this.parameterService.getUserHeaders();
 
     this.http
       .post(
@@ -93,16 +97,18 @@ export class OpdrachtenCrudComponent implements OnInit {
       .subscribe((e) => this.getAssignments());
 
     this.close();
+    this.alertService.success('New assignment created.');
   }
 
-  editAssignment(id: string) {
-    this.opdrachtService.getOpdracht(id).subscribe((data) => {
-      (this.AssignmentForm.setValue(this.title ,data.title)),
-        (this.AssignmentForm.setValue(this.description ,data.description)),
-        (this.AssignmentForm.setValue(this.type ,data.type)),
-        (this.AssignmentForm.setValue(this.beginDate ,data.beginDate)),
-        (this.AssignmentForm.setValue(this.endDate ,data.endDate)),
-        (this.AssignmentForm.setValue(this.points ,data.points));
+  editAssignment(opdracht: string) {
+    this.opdrachtService.getOpdracht(opdracht).subscribe((data) => {
+      (this.AssignmentForm.controls['id'].setValue(data._id)),
+        (this.AssignmentForm.controls['title'].setValue(data.titel)),
+        (this.AssignmentForm.controls['description'].setValue(data.omschrijving)),
+        (this.AssignmentForm.controls['beginDate'].setValue(data.beginDatum)),
+        (this.AssignmentForm.controls['endDate'].setValue(data.eindDatum)),
+        (this.AssignmentForm.controls['type'].setValue(data.typeId)),
+        (this.AssignmentForm.controls['points'].setValue(data.punten))
     });
   }
 
@@ -119,11 +125,15 @@ export class OpdrachtenCrudComponent implements OnInit {
 
     this.opdrachtService.editAssignment(opdracht).subscribe((e) => this.getAssignments());
     this.close();
+    this.alertService.success('Assignment edited.');
   }
 
   deleteAssignment(id: string) {
     if (confirm('Are you sure you want to delete this item?')) {
       this.opdrachtService.deleteAssignment(id).subscribe((e) => this.getAssignments());
+      this.alertService.success('Assignment deleted.');
+    } else {
+      this.alertService.error('No assignment was deleted.');
     }
   }
 
@@ -147,10 +157,10 @@ export class OpdrachtenCrudComponent implements OnInit {
     });
   }
 
-  get title() {return this.AssignmentForm.get('title');}
-  get description() {return this.AssignmentForm.get('description');}
-  get beginDate() {return this.AssignmentForm.get('beginDate');}
-  get endDate() {return this.AssignmentForm.get('endDate');}
-  get type() {return this.AssignmentForm.get('type');}
-  get points() {return this.AssignmentForm.get('points');}
+  get title() { return this.AssignmentForm.get('title'); }
+  get description() { return this.AssignmentForm.get('description'); }
+  get beginDate() { return this.AssignmentForm.get('beginDate'); }
+  get endDate() { return this.AssignmentForm.get('endDate'); }
+  get type() { return this.AssignmentForm.get('type'); }
+  get points() { return this.AssignmentForm.get('points'); }
 }

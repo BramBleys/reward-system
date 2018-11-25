@@ -5,7 +5,28 @@
   "header.points": "punten",
   "header.login": "Log in",
   "header.logout": "Log uit",
+  "header.assignments": "Opdrachten",
+  "header.overview":"Mijn overzicht",
+  "header.rewards": "Beloningen",
+  "header.adminAssignments": "Beheer opdrachten",
+  "header.adminRewards": "Beheer beloningen",
+  "header.adminDropdown": "Beheer",
+  "header.approve": "Goedkeuren inzendingen",
 
+  "welcom.hello": "Hey!",
+  "welcom.text1": "Welkom op de jstack beloning applicatie.",
+  "welcom.text2": "Hier vindt u alle opdrachten die u kan doen om punten te verdienen. Wanneer u genoeg punten hebt kan u een beloning kopen in de shop. Op de opdrachtenpagina vindt u alle beschikbare opdrachten.",
+  "welcom.text3": "Log in om uw totaal aantal punten te zien, een beloning te kiezen of om een voltooide opdracht te verzenden.",
+
+  "overview.title": "Mijn gegevens",
+  "overview.points": "Totaal aantal punten verzameld: ",
+  "overview.completedassignements": "Aantal opdrachten voltooid: ",
+  "overview.claimedRewards": "Aantal rewards geclaimd: ",
+  "overview.rewards": "Mijn rewards",
+  "overview.assignements":"Mijn opdrachten",
+
+  
+  
   "login.mail.placeholder": "Email",
   "login.mail.error.invalid": "Gelieve een geldig email-adres in te geven",
   "login.password.placeholder": "Wachtwoord",
@@ -16,16 +37,19 @@
   "leaderboard.title": "Klassement",
   "leaderboard.points": "Punten",
 
-  "opdrachtenBoard.add": "Voeg voltooide opdracht toe",
+  "opdrachtenBoard.add": "Voeg toe",
 
   "rewardsCrud.search": "Typ om te zoeken...",
   "rewardsCrud.name": "Beloning naam",
   "rewardsCrud.points": "Punten",
   "rewardsCrud.available": "Beschikbaar",
+  "rewardsCrud.addNewReward": "Voeg beloning toe",
+  "rewardsCrud.changeReward": "Wijzig beloning",
+  "rewardsCrud.deleteReward": "Verwijder beloning",
 
   "opdrachtCrud.description": "Beschrijving",
   "opdrachtCrud.points": "Punten",
-  "opdrachtCrud.addNewAssignment": "Voeg een nieuwe opdracht toe",
+  "opdrachtCrud.addNewAssignment": "Voeg nieuwe opdracht toe",
   "opdrachtCrud.changeAssignment": "Wijzig opdracht",
   "opdrachtCrud.deleteAssignment": "Verwijder opdracht",
   "opdrachtCrud.modal.title": "Titel",
@@ -64,5 +88,17 @@
   "form.notValid": "Error: zorg dat all velden correct zijn ingevuld!",
   "form.valid": "ALle velden zijn correct.",
   "form.cancel": "Annuleer",
-  "form.send": "Verzend"
+  "form.send": "Verzend",
+
+  "approve.head": "Opdrachten goedkeuren",
+  "approve.helpline": "Kies één van de bovenstaande opdrachten.",
+  "approve.title": "Titel:",
+  "approve.beginDate": "Begin opdracht:",
+  "approve.endDate": "Einde opdracht:",
+  "approve.type": "Type opdracht:",
+  "approve.description": "Beschrijving:",
+  "approve.points": "Punten:",
+  "approve.error": "Error: Vul de punten in voordat je goedkeurd!",
+  "approve.submit": "Goedkeuren",
+  "approve.delete": "Afkeuren"
 }

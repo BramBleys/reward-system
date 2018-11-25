@@ -1,6 +1,9 @@
 .row {
   margin: 0;
 
+  .loadingbar{
+    margin: 10px;
+  }
   h5 {
     display: inline;
   }
@@ -8,7 +11,7 @@
   .assignment {
     margin: 5px !important;
   }
-  i {
+  i.fa-coins {
     color: gold;
     float: right;
     display: inline;
