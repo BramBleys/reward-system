@@ -47,13 +47,11 @@ export class OpdrachtenCrudComponent implements OnInit {
     private formBuilder: FormBuilder,
     private alertService: AlertService,
     private parameterService: ParametersService,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getTypes();
     this.getAssignments();
-
-    console.log(this.types, this.opdrachten)
   }
 
   open(content) {
@@ -66,7 +64,6 @@ export class OpdrachtenCrudComponent implements OnInit {
 
   close() {
     this.modalReference.close();
-    this.maakOpdrachtenLeeg();
   }
 
   getAssignments() {
@@ -101,8 +98,8 @@ export class OpdrachtenCrudComponent implements OnInit {
     this.alertService.success('New assignment created.');
   }
 
-  editAssignment(opdracht: string) {
-    this.opdrachtService.getOpdracht(opdracht).subscribe((data) => {
+  editAssignment(id: string) {
+    this.opdrachtService.getOpdracht(id).subscribe((data) => {
       (this.AssignmentForm.controls['id'].setValue(data._id)),
         (this.AssignmentForm.controls['title'].setValue(data.titel)),
         (this.AssignmentForm.controls['description'].setValue(data.omschrijving)),

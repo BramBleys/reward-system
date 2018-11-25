@@ -4,43 +4,47 @@
       <div class="form-group">
         <div class="input-group">
           <div class="searchIcon"><i class="fas fa-search"></i></div>
-          <input type="text" class="form-control col-md-2 searchField" name="searchString" placeholder="{{ 'rewardsCrud.search' | translate }}" [(ngModel)]="searchString">
+          <input type="text" class="form-control col-md-2 searchField" name="searchString" placeholder="{{ 'rewardsCrud.search' | translate }}"
+            [(ngModel)]="searchString">
         </div>
       </div>
     </form>
   </div>
+  <!--HEADER-->
   <div class="fixed_header">
     <table class="table mt-3 table-hover">
       <thead>
-      <tr>
-        <th>{{ 'rewardsCrud.name' | translate }}</th>
-        <th class="text-center">{{ 'rewardsCrud.points' | translate }}</th>
-        <th class="text-center">{{ 'rewardsCrud.available' | translate }}</th>
-        <th class="text-center">
-          <button type="button" (click)="open(add)" class="btn btn-link addChangeDelBtn" placement="top" ngbTooltip="{{ 'rewardsCrud.addNewReward' | translate }}"><i class="fas fa-plus-circle fa-lg"></i></button>
-        </th>
-      </tr>
+        <tr>
+          <th>{{ 'rewardsCrud.name' | translate }}</th>
+          <th class="text-center">{{ 'rewardsCrud.points' | translate }}</th>
+          <th class="text-center">{{ 'rewardsCrud.available' | translate }}</th>
+          <th class="text-center">
+            <button type="button" (click)="open(add)" class="btn btn-link addChangeDelBtn" placement="top" ngbTooltip="{{ 'rewardsCrud.addNewReward' | translate }}"><i
+                class="fas fa-plus-circle fa-lg"></i></button>
+          </th>
+        </tr>
       </thead>
+      <!--REWARDS-->
       <tbody>
-      <tr *ngFor="let reward of rewards | filter : searchString;">
-        <td>
-          <div>{{ reward.naam }}</div>
-        </td>
-        <td class="text-center">{{ reward.punten }}</td>
-        <td class="text-center">{{reward.beschikbaar ? 'Yes' : 'No'}}</td>
-        <td class="text-center">
-          <button (click)="editReward(reward._id); open(edit)" class="btn addChangeDelBtn btn-link" placement="top"
-                  ngbTooltip="{{ 'rewardsCrud.changeReward' | translate }}"><i class="fas fa-edit"></i></button>
-          <button (click)="deleteReward(reward._id)" class="btn btn-link addChangeDelBtn" placement="top"
-                  ngbTooltip="{{ 'rewardsCrud.deleteReward' | translate }}"><i class="fas fa-trash-alt"></i>
-          </button>
-        </td>
-      </tr>
+        <tr *ngFor="let reward of rewards | filter : searchString;">
+          <td>
+            <div>{{ reward.naam }}</div>
+          </td>
+          <td class="text-center">{{ reward.punten }}</td>
+          <td class="text-center">{{reward.beschikbaar ? 'Yes' : 'No'}}</td>
+          <td class="text-center">
+            <button (click)="editReward(reward._id); open(edit)" class="btn addChangeDelBtn btn-link" placement="top"
+              ngbTooltip="{{ 'rewardsCrud.changeReward' | translate }}"><i class="fas fa-edit"></i></button>
+            <button (click)="deleteReward(reward._id)" class="btn btn-link addChangeDelBtn" placement="top" ngbTooltip="{{ 'rewardsCrud.deleteReward' | translate }}"><i
+                class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
 </div>
-
+<!--MODAL ADD REWARD-->
 <ng-template #add let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Add reward</h4>
@@ -49,30 +53,42 @@
     </button>
   </div>
   <div class="modal-body">
-    <form>
+    <form [formGroup]="RewardsForm" (ngSubmit)="addReward()">
+      <!--NAME-->
       <div class="form-group">
         <label for="name">Name</label>
         <div class="input-group">
-          <input id="name" name="name" class="form-control" placeholder="Name" [(ngModel)]="rewardName"/>
+          <input id="name" formControlName="name" class="form-control" placeholder="Name" [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) }"
+            required />
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+            <div *ngIf="name.errors.required">Reward title is required.</div>
+          </div>
         </div>
       </div>
+      <!--POINTS-->
       <div class="form-group">
         <label for="points">Points</label>
         <div class="input-group">
-          <input id="points" name="points" class="form-control" type="number" placeholder="Points"
-                 [(ngModel)]="rewardPoints"/>
+          <input id="points" formControlName="points" class="form-control" type="number" placeholder="Points" [ngClass]="{ 'is-invalid': points.invalid && (points.dirty || points.touched) }"
+            required />
+          <div *ngIf="points.invalid && (points.dirty || points.touched)" class="invalid-feedback">
+            <div *ngIf="points.errors.required">Reward title is required.</div>
+          </div>
         </div>
       </div>
+      <!--AVAILABLE-->
       <div class="form-group">
-        <input id="available" type="checkbox" name="available" [(ngModel)]="rewardAvailable"/>
+        <input id="available" type="checkbox" formControlName="available"/>
         <label for="available">Available</label>
       </div>
     </form>
   </div>
+  <!--SUBMIT-->
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="addReward()">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="addReward()" [disabled]="RewardsForm.invalid">Save</button>
   </div>
 </ng-template>
+<!--MODAL EDIT REWARD-->
 <ng-template #edit let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Edit reward</h4>
@@ -85,23 +101,22 @@
       <div class="form-group">
         <label for="name">Name</label>
         <div class="input-group">
-          <input id="name" name="name" class="form-control" placeholder="Name" [(ngModel)]="rewardName"/>
+          <input id="name" name="name" class="form-control" placeholder="Name" [(ngModel)]="rewardName" />
         </div>
       </div>
       <div class="form-group">
         <label for="points">Points</label>
         <div class="input-group">
-          <input id="points" name="points" class="form-control" type="number" placeholder="Points"
-                 [(ngModel)]="rewardPoints"/>
+          <input id="points" name="points" class="form-control" type="number" placeholder="Points" [(ngModel)]="rewardPoints" />
         </div>
       </div>
       <div class="form-group">
-        <input id="available" type="checkbox" name="available" [(ngModel)]="rewardAvailable"/>
+        <input id="available" type="checkbox" name="available" [(ngModel)]="rewardAvailable" />
         <label for="available">Available</label>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="saveEdit()">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="saveEdit()" [disabled]="RewardsForm.invalid">Save</button>
   </div>
 </ng-template>
