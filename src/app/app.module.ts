@@ -58,7 +58,7 @@ import { UseroverzichtComponent } from './useroverzicht/useroverzicht.component'
     AlertComponent,
     OpdrachtFilterPipe,
     OpdrachtenCrudComponent,
-    WelcomeComponent
+    WelcomeComponent,
     UseroverzichtComponent
   ],
   imports: [
