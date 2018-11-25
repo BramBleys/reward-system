@@ -11,6 +11,11 @@
   "header.adminRewards": "Beheer beloningen",
   "header.adminDropdown": "Beheer",
 
+  "welcom.hello": "Hey!",
+  "welcom.text1": "Welkom op de jstack beloning applicatie.",
+  "welcom.text2": "Hier vindt u alle opdrachten die u kan doen om punten te verdienen. Wanneer u genoeg punten hebt kan u een beloning kopen in de shop. Op de opdrachtenpagina vindt u alle beschikbare opdrachten.",
+  "welcom.text3": "Log in om uw totaal aantal punten te zien, een beloning te kiezen of om een voltooide opdracht te verzenden.",
+
   "login.mail.placeholder": "Email",
   "login.mail.error.invalid": "Gelieve een geldig email-adres in te geven",
   "login.password.placeholder": "Wachtwoord",

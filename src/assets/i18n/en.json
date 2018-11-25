@@ -11,6 +11,11 @@
   "header.adminRewards": "Manage Rewards",
   "header.adminDropdown": "Manage",
 
+  "welcom.hello": "Hello there!",
+  "welcom.text1": "Welcome on the jstack Rewards application.",
+  "welcom.text2": "Here you can find all assignments that you can complete to earn points. When you have enough point you can spends those in the rewards shop. On the assignments page you can see all available assignments.",
+  "welcom.text3": " Sign in to see your total earned points, claim a prise or submit a completed assignment.",
+
   "login.mail.placeholder": "Email",
   "login.mail.error.invalid": "Please fill out a valid email-address",
   "login.password.placeholder": "Password",
