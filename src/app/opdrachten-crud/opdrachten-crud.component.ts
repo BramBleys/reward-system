@@ -138,8 +138,6 @@ export class OpdrachtenCrudComponent implements OnInit {
     if (confirm('Are you sure you want to delete this item?')) {
       this.opdrachtService.deleteAssignment(id).subscribe((e) => this.getAssignments());
       this.alertService.success('Assignment deleted.');
-    } else {
-      this.alertService.error('No assignment was deleted.');
     }
   }
 
