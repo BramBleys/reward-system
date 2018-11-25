@@ -86,6 +86,7 @@ export class ApprovingComponent implements OnInit {
     this.patchOpdracht();
     this.patchUser();
     this.alertService.success("Assignment approved.");
+    this.opdracht = null;
   }
 
   disapprove(){
