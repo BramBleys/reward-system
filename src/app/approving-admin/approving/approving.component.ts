@@ -7,6 +7,7 @@ import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 import { TypesService } from '../../services/types.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-approving',
@@ -52,7 +53,7 @@ export class ApprovingComponent implements OnInit {
 
   constructor(public opdrachtService: OpdrachtService,
      public config: NgbProgressbarConfig, 
-     public typeSrevice: TypesService, public userService: UserService, private router: Router) {
+     public typeSrevice: TypesService, public userService: UserService, private router: Router, private alertService: AlertService) {
     config.max = 250;
     config.striped = true;
     config.animated = true;
@@ -84,7 +85,7 @@ export class ApprovingComponent implements OnInit {
   submit(){
     this.patchOpdracht();
     this.patchUser();
-    
+    this.alertService.success("Assignment approved.");
   }
 
   disapprove(){

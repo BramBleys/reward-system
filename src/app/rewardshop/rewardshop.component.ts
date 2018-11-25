@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Reward } from '../models/reward';
 import { UserService } from '../services/user.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-rewardshop',
@@ -43,7 +44,7 @@ export class RewardshopComponent implements OnInit {
 
   constructor(public rewardsService: RewardsService,
     public config: NgbProgressbarConfig,
-    private userService: UserService, private authService: AuthService) {
+    private userService: UserService, private authService: AuthService, private alertService: AlertService) {
     config.max = 250;
     config.striped = true;
     config.animated = true;
@@ -74,9 +75,10 @@ export class RewardshopComponent implements OnInit {
 
     if (window.confirm('Claim reward' + reward.naam)) {
       if (JSON.parse(localStorage.getItem('currentUser')).totaalScore < reward.punten) {
-        alert('U hebt niet genoeg punten');
+        this.alertService.error("You don't have enough points.");
       } else {
         this.userService.claimReward(this.userData._id, reward._id, reward.punten);
+        this.alertService.success("Reward claimed!");
       }
     }
   }
