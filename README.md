@@ -3,7 +3,7 @@ This project is a rewardsystem for the company jstack. When the employees comple
 
 ## Demo
 
-insert link to hosting here
+https://rewards-jstack.firebaseapp.com/
 
 ## API
 To get the rewards:
