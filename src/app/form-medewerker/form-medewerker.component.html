@@ -14,7 +14,7 @@
         <div class="form-group col-md-3">
             <label for="beginDate">{{ 'form.beginDate' | translate }}</label>
           <div class="input-group">
-            <input class="form-control" placeholder="yyyy-mm-dd" name="beginDate" ngbDatepicker #d="ngbDatepicker" #beginDate="ngModel" [(ngModel)]="opdracht.beginDate" required >
+            <input class="form-control" placeholder="yyyy-mm-dd" name="beginDate" ngbDatepicker #d="ngbDatepicker" #beginDate="ngModel" [(ngModel)]="opdracht.beginDate" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" required >
             <div class="input-group-append">
               <button class="btn btn-outline calendar" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
             </div>
@@ -24,7 +24,7 @@
         <div class="form-group col-md-3">
             <label for="endDate">{{ 'form.endDate' | translate }}</label>
           <div class="input-group">
-            <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" ngbDatepicker #f="ngbDatepicker" #endDate="ngModel" [(ngModel)]="opdracht.endDate" required >
+            <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" ngbDatepicker #f="ngbDatepicker" #endDate="ngModel" [(ngModel)]="opdracht.endDate" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" required >
             <div class="input-group-append">
               <button class="btn btn-outline calendar" (click)="f.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
             </div>
