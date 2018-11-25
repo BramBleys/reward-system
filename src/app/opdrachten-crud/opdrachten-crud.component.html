@@ -83,13 +83,9 @@
       <div class="form-group col-md-3">
         <label for="beginDate">{{ 'opdrachtCrud.modal.beginDate' | translate }}</label>
         <div class="input-group">
-          <input class="form-control" formControlName="beginDate" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker"
-            [ngClass]="{ 'is-invalid': beginDate.invalid && (beginDate.dirty || beginDate.touched) }" required />
+          <input class="form-control" formControlName="beginDate" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker" />
           <div class="input-group-append">
             <button class="btn btn-outline calendar" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
-          </div>
-          <div *ngIf="beginDate.invalid && (beginDate.dirty || beginDate.touched)" class="invalid-feedback">
-            <div *ngIf="beginDate.errors.required">{{ 'opdrachtCrud.modal.error' | translate}}</div>
           </div>
         </div>
       </div>
@@ -97,13 +93,9 @@
       <div class="form-group col-md-3">
         <label for="endDate">{{ 'opdrachtCrud.modal.endDate' | translate }}</label>
         <div class="input-group">
-          <input class="form-control" formControlName="endDate" placeholder="yyyy-mm-dd" ngbDatepicker #f="ngbDatepicker"
-            [ngClass]="{ 'is-invalid': endDate.invalid && (endDate.dirty || endDate.touched) }" required />
+          <input class="form-control" formControlName="endDate" placeholder="yyyy-mm-dd" ngbDatepicker #f="ngbDatepicker" />
           <div class="input-group-append">
             <button class="btn btn-outline calendar" (click)="f.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
-          </div>
-          <div *ngIf="endDate.invalid && (endDate.dirty || endDate.touched)" class="invalid-feedback">
-            <div *ngIf="endDate.errors.required">{{ 'opdrachtCrud.modal.error' | translate}}</div>
           </div>
         </div>
       </div>
@@ -133,7 +125,7 @@
   </div>
   <!--SUBMIT-->
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="addAssignment()" [disabled]="AssignmentForm.invalid">{{
+    <button type="button" class="btn btn-outline-dark" (click)="addAssignment()" >{{
       'opdrachtCrud.modal.save' |
       translate }}</button>
   </div>
@@ -148,13 +140,13 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="AssignmentForm" (ngSubmit)="editAssignment()">
+    <form [formGroup]="AssignmentForm" (ngSubmit)="saveEdit()">
       <!--TITLE-->
       <div class="form-group">
         <label for="title">{{ 'opdrachtCrud.modal.title' | translate }}</label>
         <div class="input-group">
           <input id="title" formControlName="title" class="form-control" placeholder="{{ 'opdrachtCrud.modal.title' | translate }}"
-            [ngClass]="{ 'is-invalid': title.invalid && (title.dirty || title.touched) }" required />
+            [ngClass]="{ 'is-invalid': title.invalid && (title.dirty || title.touched) }" />
         </div>
         <div *ngIf="title.invalid && (title.dirty || title.touched)" class="invalid-feedback">
           <div *ngIf="title.errors.required">{{ 'opdrachtCrud.modal.error' | translate}}</div>
@@ -175,28 +167,20 @@
       <div class="form-group col-md-3">
         <label for="beginDate">{{ 'opdrachtCrud.modal.beginDate' | translate }}</label>
         <div class="input-group">
-          <input class="form-control" formControlName="beginDate" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker"
-            [ngClass]="{ 'is-invalid': beginDate.invalid && (beginDate.dirty || beginDate.touched) }" required />
+          <input class="form-control" formControlName="beginDate" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker" />
           <div class="input-group-append">
             <button class="btn btn-outline calendar" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
           </div>
-        </div>
-        <div *ngIf="beginDate.invalid && (beginDate.dirty || beginDate.touched)" class="invalid-feedback">
-          <div *ngIf="beginDate.errors.required">{{ 'opdrachtCrud.modal.error' | translate}}</div>
         </div>
       </div>
       <!--ENDDATE-->
       <div class="form-group col-md-3">
         <label for="endDate">{{ 'opdrachtCrud.modal.endDate' | translate }}</label>
         <div class="input-group">
-          <input class="form-control" formControlName="endDate" placeholder="yyyy-mm-dd" ngbDatepicker #f="ngbDatepicker"
-            [ngClass]="{ 'is-invalid': endDate.invalid && (endDate.dirty || endDate.touched) }" required />
+          <input class="form-control" formControlName="endDate" placeholder="yyyy-mm-dd" ngbDatepicker #f="ngbDatepicker" />
           <div class="input-group-append">
             <button class="btn btn-outline calendar" (click)="f.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
           </div>
-        </div>
-        <div *ngIf="endDate.invalid && (endDate.dirty || endDate.touched)" class="invalid-feedback">
-          <div *ngIf="endDate.errors.required">{{ 'opdrachtCrud.modal.error' | translate}}</div>
         </div>
       </div>
       <!--ASSIGNMENT TYPE-->
@@ -225,7 +209,7 @@
   </div>
   <!--SUBMIT-->
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="editAssignment()" [disabled]="AssignmentForm.invalid">{{
+    <button type="button" class="btn btn-outline-dark" (click)="saveEdit()">{{
       'opdrachtCrud.modal.save' |
       translate }}</button>
   </div>
