@@ -76,15 +76,12 @@ export class ApprovingComponent implements OnInit {
   }
 
   submit(){
-    this.ready = false;
     this.patchOpdracht();
     this.patchUser();
-    this.refresh();
   }
 
   disapprove(){
-    this.ready = false;
-    this.opdrachtService.deleteAssignment(this.opdracht._id).subscribe(e=> this.refresh());
+    this.opdrachtService.deleteAssignment(this.opdracht._id).subscribe(e => this.refresh());
   }
 
   patchUser(){
