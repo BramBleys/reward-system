@@ -98,6 +98,8 @@
   "approve.points": "Points:",
   "approve.error": "Error: Fill in the points before approving",
   "approve.submit": "Approve",
-  "approve.delete": "Disapprove"
+  "approve.delete": "Disapprove",
+
+  "opdrachten.did": "I did this!"
   
 }

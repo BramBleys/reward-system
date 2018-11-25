@@ -1,3 +1,4 @@
+import { PassopdrachtService } from './../services/passopdracht.service';
 import { ParametersService } from './../services/parameters.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../services/auth.service';
@@ -31,15 +32,22 @@ export class FormMedewerkerComponent implements OnInit {
     description: ''
   };
 
+  punten = 0;
+
   types: Type[];
 
-  constructor(private http: HttpClient, private typesService: TypesService, private authService: AuthService,private router: Router, private alertService: AlertService, private parameterService: ParametersService) {
+  constructor(private http: HttpClient, private typesService: TypesService, private authService: AuthService,private router: Router, private alertService: AlertService, private parameterService: ParametersService, private passopdrachtService: PassopdrachtService) {
   }
 
   ngOnInit() {
     this.getTypes();
     this.authService.userData$.subscribe(e => this.uid = e._id);
-
+    if(this.passopdrachtService.opdracht != null){
+      this.opdracht.title = this.passopdrachtService.opdracht.titel;
+      this.opdracht.type = this.passopdrachtService.opdracht.typeId;
+      this.opdracht.description = this.passopdrachtService.opdracht.omschrijving;
+      this.punten = this.passopdrachtService.opdracht.punten;
+    }
   }
 
   onSubmit(form) {
@@ -53,7 +61,8 @@ export class FormMedewerkerComponent implements OnInit {
       beginDatum: this.opdracht.beginDate,
       eindDatum: this.opdracht.endDate,
       typeId: this.opdracht.type,
-      private: true
+      private: true,
+      punten: this.punten
       // fotoURL:'',
       // private:false,
       // beschikbaar: true
