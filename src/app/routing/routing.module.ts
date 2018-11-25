@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'sendassignement', component: FormMedewerkerComponent },
   { path: 'rewardshop', component: RewardshopComponent, canActivate: [AuthGuard] },
   { path: 'rewardscrud', component: RewardsCrudComponent, canActivate: [AdminGuard] },
-  { path: 'opdrachten', component: OpdrachtenComponent, canActivate: [AuthGuard] },
+  { path: 'opdrachten', component: OpdrachtenComponent},
   { path: 'opdrachtencrud', component: OpdrachtenCrudComponent, canActivate: [AdminGuard] },
   { path: 'approveassignements', component: ApprovingComponent, canActivate: [AdminGuard] },
   { path: 'useroverzicht', component: UseroverzichtComponent, canActivate: [AuthGuard] }
