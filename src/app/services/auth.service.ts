@@ -16,7 +16,6 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     const user = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(user);
     if (user != null) {
       this.setUserData(user);
     }
@@ -26,10 +25,8 @@ export class AuthService {
   Login(email: string, wachtwoord: string) {
     return this.http.post<any>(`${environment.API_URL}/users/login`, { email: email, wachtwoord: wachtwoord })
       .pipe(map(user => {
-        console.log('user', user);
         // login successful if there's a jwt token in the response
         if (user && user.token) {
-          console.log('succes');
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
         }

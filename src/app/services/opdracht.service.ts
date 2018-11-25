@@ -37,9 +37,7 @@ export class OpdrachtService {
 
   deleteAssignment(id: string) {
     const headers = this.parametersService.getUserHeaders();
-    console.log(id)
     const url = `${this.url}/${id}`;
-    console.log(url);
     return this.http.delete<any>(url, { headers });
   }
 

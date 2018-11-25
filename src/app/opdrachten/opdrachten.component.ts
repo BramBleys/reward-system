@@ -60,7 +60,6 @@ export class OpdrachtenComponent implements OnInit {
   }
   getAssignementsCount() {
     this.count$ = this.opdrachtService.getCount(this.filterParams);
-    console.log(this.filterParams);
   }
 
   passOpdracht(opdracht: Opdracht){

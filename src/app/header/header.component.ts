@@ -45,7 +45,6 @@ export class HeaderComponent implements OnInit {
       this.currentuser = user;
       if (user != null) {
         this.loggedIn = true;
-        console.log(user);
       } else {
         this.loggedIn = false;
       }
