@@ -20,10 +20,10 @@
 
   "overview.title": "My detials",
   "overview.points": "Total points collected: ",
-  "overview.completedassignements": "Completed assignements: ",
+  "overview.completedassignements": "Completed assignments: ",
   "overview.claimedRewards": "Claimed rewards: ",
   "overview.rewards": "My rewards",
-  "overview.assignements":"My assignements",
+  "overview.assignements":"My assignments",
 
   "login.mail.placeholder": "Email",
   "login.mail.error.invalid": "Please fill out a valid email-address",
