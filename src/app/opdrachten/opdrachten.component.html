@@ -18,6 +18,7 @@
       <div class="card-body">
         <h5 class="card-title">{{opdracht.titel}}<i class="fas fa-coins"><span>{{opdracht.punten}}</span></i></h5>
         <p class="card-text">{{opdracht.omschrijving}}</p>
+        <button (click)="passOpdracht(opdracht)" class="btn btn-block btn-success">{{'opdrachten.did' | translate}}</button>
       </div>
     </div>
   </div>

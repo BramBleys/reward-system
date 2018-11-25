@@ -1,3 +1,6 @@
+import { TranslateService } from './../services/translate.service';
+import { Router } from '@angular/router';
+import { PassopdrachtService } from './../services/passopdracht.service';
 import { Component, OnInit } from '@angular/core';
 import { OpdrachtService } from '../services/opdracht.service';
 import { Observable } from 'rxjs';
@@ -35,7 +38,9 @@ export class OpdrachtenComponent implements OnInit {
     this.getAssignmentsFiltered();
   }
 
-  constructor(public opdrachtService: OpdrachtService, public config: NgbProgressbarConfig) {
+  constructor(public opdrachtService: OpdrachtService, public config: NgbProgressbarConfig, public passopdrachtService: PassopdrachtService,
+    private router: Router,
+  ) {
     config.max = 250;
     config.striped = true;
     config.animated = true;
@@ -58,5 +63,10 @@ export class OpdrachtenComponent implements OnInit {
     console.log(this.filterParams);
   }
 
-  
+  passOpdracht(opdracht: Opdracht){
+    this.passopdrachtService.pass(opdracht);
+    this.router.navigate(['/addOpdracht']);
+  }
+
+
 }
