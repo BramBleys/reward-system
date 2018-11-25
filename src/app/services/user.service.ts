@@ -12,7 +12,7 @@ import { environment as api } from '../../environments/environment';
 export class UserService {
   private url = api.API_URL + '/users';
 
-  constructor(private http: HttpClient, private authService: AuthService, private parametersService: ParametersService) {}
+  constructor(private http: HttpClient, private authService: AuthService, private parametersService: ParametersService) { }
 
   getUser(accountId: string): Observable<User> {
     const headers = this.parametersService.getUserHeaders();
@@ -21,26 +21,26 @@ export class UserService {
     return this.http.get<User>(url, { headers });
   }
 
-  getAllUsers(): Observable<User[]>{
+  getAllUsers(): Observable<User[]> {
     const headers = this.parametersService.getUserHeaders();
 
     const url = `${this.url}`;
     return this.http.get<User[]>(url, { headers });
   }
 
-  getLeaderBoard(): Observable<any[]>{
+  getLeaderBoard(): Observable<any[]> {
     return this.http.get<any[]>(this.url + '/leaderboard');
   }
 
-  updateUser(id, params = {}){
+  updateUser(id, params = {}) {
     const headers = this.parametersService.getUserHeaders();
 
-    this.http.patch<User>(this.url + '/' + id, params, {headers} ).subscribe(e => console.log(e));
+    this.http.patch<User>(this.url + '/' + id, params, { headers }).subscribe(e => console.log(e));
 
   }
 
-  claimReward(userId, rewardId, punten){
-    this.getUser(userId).subscribe( user => {
+  claimReward(userId, rewardId, punten) {
+    this.getUser(userId).subscribe(user => {
       let reward = {
         rewardId,
         punten
@@ -48,15 +48,15 @@ export class UserService {
       user.rewards.push(reward);
 
       const headers = this.parametersService.getUserHeaders();
-      this.http.patch<User>(this.url + '/' + userId, user, {headers} ).subscribe(e => {
+      this.http.patch<User>(this.url + '/' + userId, user, { headers }).subscribe(e => {
         this.authService.setUserData(e);
 
-      
-    });
+
+      });
     })
   }
 
-  setOpdracht(userId, opdrachtId, punten){
+  setOpdracht(userId, opdrachtId, punten) {
     this.getUser(userId).subscribe(user => {
       let opdracht = {
         opdrachtId,
@@ -68,13 +68,13 @@ export class UserService {
     })
   }
 
-  getUserRewards(uid: String): Observable<any[]>{
+  getUserRewards(uid: String): Observable<any[]> {
     const headers = this.parametersService.getUserHeaders();
-    return this.http.get<any[]>(this.url + '/' + uid + "/rewards", {headers});
+    return this.http.get<any[]>(this.url + '/' + uid + "/rewards", { headers });
   }
 
-  getUserOpdrachten(uid: String): Observable<any[]>{
+  getUserOpdrachten(uid: String): Observable<any[]> {
     const headers = this.parametersService.getUserHeaders();
-    return this.http.get<any[]>(this.url + '/' + uid + "/opdrachten", {headers});
+    return this.http.get<any[]>(this.url + '/' + uid + "/opdrachten", { headers });
   }
 }

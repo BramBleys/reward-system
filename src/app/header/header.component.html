@@ -29,7 +29,7 @@
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item userCoins">
-        <p class="nav-link" *ngIf="loggedIn == true">{{currentuser.naam}}<i class="fas fa-coins"><span>{{currentuser.totaalScore}}</span></i></p>
+        <p class="nav-link" *ngIf="loggedIn == true">{{currentuser.naam}}<i class="fas fa-coins"><span>{{currentuser.totaalScore}}</span></i><button ngbTooltip="refresh" class="btn btn-link text-success" (click)="updateCoins()" ><i class="fas fa-sync-alt"></i></button></p>
       </li>
       <li class="nav-item divider" *ngIf="!loggedIn">
         <a class="nav-link" [routerLink]="[{ outlets: { primary: ['login'],sidebar: ['login'] } }]">{{ 'header.login' | translate }}</a>

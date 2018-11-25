@@ -1,3 +1,4 @@
+import { AlertService } from './../services/alert.service';
 import { AuthService } from './../services/auth.service';
 import { User } from './../models/user';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -43,7 +44,7 @@ export class RewardshopComponent implements OnInit {
 
   constructor(public rewardsService: RewardsService,
     public config: NgbProgressbarConfig,
-    private userService: UserService, private authService: AuthService) {
+    private userService: UserService, private authService: AuthService, private alertService: AlertService) {
     config.max = 250;
     config.striped = true;
     config.animated = true;
@@ -72,11 +73,12 @@ export class RewardshopComponent implements OnInit {
 
   claimReward(reward) {
 
-    if (window.confirm('Claim reward' + reward.naam)) {
+    if (window.confirm('Claim ' + reward.naam + '?')) {
       if (JSON.parse(localStorage.getItem('currentUser')).totaalScore < reward.punten) {
-        alert('U hebt niet genoeg punten');
+        this.alertService.error('U hebt niet genoeg punten');
       } else {
         this.userService.claimReward(this.userData._id, reward._id, reward.punten);
+        this.alertService.success('Opdracht geclaimd')
       }
     }
   }

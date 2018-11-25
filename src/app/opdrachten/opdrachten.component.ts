@@ -57,4 +57,6 @@ export class OpdrachtenComponent implements OnInit {
     this.count$ = this.opdrachtService.getCount(this.filterParams);
     console.log(this.filterParams);
   }
+
+  
 }

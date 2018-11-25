@@ -4,6 +4,7 @@ import { User } from '../models/user';
 import { TranslateService } from '../services/translate.service';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,8 @@ export class HeaderComponent implements OnInit {
     public authService: AuthService,
     private translate: TranslateService,
     config: NgbDropdownConfig,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {
     config.placement = 'bottom-right';
     config.autoClose = false;
@@ -52,5 +54,9 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.authService.logout();
     window.location.reload();
+  }
+
+  updateCoins(){
+    this.userService.getUser(JSON.parse(localStorage.getItem('currentUser'))._id).subscribe(user => this.authService.setUserData(user));
   }
 }
