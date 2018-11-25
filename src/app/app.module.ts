@@ -36,8 +36,8 @@ import { OpdrachtFilterPipe } from './pipes/opdrachtPipe';
 import { OpdrachtenCrudComponent } from './opdrachten-crud/opdrachten-crud.component';
 import { FilterPipe } from './pipes/rewardPipe';
 import { ApprovingComponent } from './approving-admin/approving/approving.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 import { UseroverzichtComponent } from './useroverzicht/useroverzicht.component';
-
 
 @NgModule({
   declarations: [
@@ -58,6 +58,7 @@ import { UseroverzichtComponent } from './useroverzicht/useroverzicht.component'
     AlertComponent,
     OpdrachtFilterPipe,
     OpdrachtenCrudComponent,
+    WelcomeComponent
     UseroverzichtComponent
   ],
   imports: [

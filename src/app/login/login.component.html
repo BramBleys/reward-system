@@ -2,7 +2,7 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="email">{{ 'login.mail.placeholder'| translate }}</label>
-    <input type="text" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+    <input type="email" id="email" formControlName="email" class="form-control col-md-6 col-lg-4" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
       placeholder="{{ 'login.mail.placeholder' | translate }}" />
     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
       <div *ngIf="f.email.errors.required">{{ 'login.mail.error.invalid' | translate }}</div>
@@ -10,14 +10,14 @@
   </div>
   <div class="form-group">
     <label for="wachtwoord">{{ 'login.password.placeholder'| translate }}</label>
-    <input type="password" id="wachtwoord" formControlName="wachtwoord" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+    <input type="password" id="wachtwoord" formControlName="wachtwoord" class="form-control col-md-6 col-lg-4" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
       placeholder="{{ 'login.password.placeholder' | translate }}" />
     <div *ngIf="submitted && f.wachtwoord.errors" class="invalid-feedback">
       <div *ngIf="f.wachtwoord.errors.required">{{ 'login.password.error.empty' | translate }}</div>
     </div>
   </div>
   <div class="form-group">
-    <button [disabled]="loading" class="btn btn-secondary">{{ 'header.login' | translate }}</button>
+    <button [disabled]="loading" class="btn btn-secondary mr-4">{{ 'header.login' | translate }}</button>
     <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
     <a [routerLink]="['/']" class="btn btn-primary">{{ 'login.cancel' | translate }}</a>
   </div>
