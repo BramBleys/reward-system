@@ -20,12 +20,9 @@ export class ParametersService {
     return url + queryString;
   }
 
-  getUserHeaders(): HttpHeaders{
-    let headers = new HttpHeaders();
-    this.authService.userData$.subscribe(e => {
-      headers.set('token', e.token)
-    });
-
-    return headers;
+  getUserHeaders(){
+    return {
+      token: JSON.parse(localStorage.getItem('currentUser')).token
+    }
   }
 }
