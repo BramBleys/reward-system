@@ -87,8 +87,6 @@ export class RewardsCrudComponent implements OnInit {
     if (confirm('Are you sure you want to delete this item?')) {
       this.rewardService.deleteReward(id).subscribe((e) => this.getRewards());
       this.alertService.success('Reward deleted.');
-    } else {
-      this.alertService.error('No reward was deleted.');
     }
   }
 
