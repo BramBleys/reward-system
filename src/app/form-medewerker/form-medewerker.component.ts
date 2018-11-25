@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { TypesService } from '../services/types.service';
 import { Type } from '../models/type';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-form-medewerker',
@@ -31,7 +32,7 @@ export class FormMedewerkerComponent implements OnInit {
 
   types: Type[];
 
-  constructor(private http: HttpClient, private typesService: TypesService, private authService: AuthService,private router: Router) {
+  constructor(private http: HttpClient, private typesService: TypesService, private authService: AuthService,private router: Router, private alertService: AlertService) {
   }
 
   ngOnInit() {
@@ -58,6 +59,8 @@ export class FormMedewerkerComponent implements OnInit {
       // beschikbaar: true
 
     }, { headers }).subscribe(() => this.router.navigate(['/opdrachten']));
+
+    this.alertService.success("Assignment sent.");
   }
 
   getTypes() {

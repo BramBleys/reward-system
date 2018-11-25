@@ -5,6 +5,7 @@ import { TypesService } from '../services/types.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { OpdrachtService } from '../services/opdracht.service';
 import { Opdracht } from '../models/opdracht';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-opdrachten-crud',
@@ -39,7 +40,8 @@ export class OpdrachtenCrudComponent implements OnInit {
     private modalService: NgbModal,
     private typesService: TypesService,
     private http: HttpClient,
-    private opdrachtService: OpdrachtService
+    private opdrachtService: OpdrachtService,
+    private alertService: AlertService
   ) {}
 
   ngOnInit() {
@@ -89,6 +91,7 @@ export class OpdrachtenCrudComponent implements OnInit {
       .subscribe((e) => this.getAssignments());
 
     this.close();
+    this.alertService.success('New assignment created.');
   }
 
   editAssignment(id: string) {
@@ -116,11 +119,15 @@ export class OpdrachtenCrudComponent implements OnInit {
 
     this.opdrachtService.editAssignment(opdracht).subscribe((e) => this.getAssignments());
     this.close();
+    this.alertService.success('Assignment edited.');
   }
 
   deleteAssignment(id: string) {
     if (confirm('Are you sure you want to delete this item?')) {
       this.opdrachtService.deleteAssignment(id).subscribe((e) => this.getAssignments());
+      this.alertService.success('Assignment deleted.');
+    } else {
+      this.alertService.error('No assignment was deleted.');
     }
   }
 
