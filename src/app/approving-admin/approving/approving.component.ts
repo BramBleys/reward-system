@@ -118,6 +118,11 @@ export class ApprovingComponent implements OnInit {
   ngOnInit() {
     this.getAssignmentsFiltered();
     this.getAssignementsCount();
+    this.opdrachten$.subscribe(e => console.log(this.userService.getUser(e[0].userId).subscribe(a => console.log(a))))
+  }
+
+  getUser(id){
+    return this.userService.getUser(id);
   }
 
 }
