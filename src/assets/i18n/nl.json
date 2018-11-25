@@ -100,5 +100,7 @@
   "approve.points": "Punten:",
   "approve.error": "Error: Vul de punten in voordat je goedkeurd!",
   "approve.submit": "Goedkeuren",
-  "approve.delete": "Afkeuren"
+  "approve.delete": "Afkeuren",
+
+  "opdrachten.did": "Dit deed ik!"
 }
