@@ -2,7 +2,7 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="email">{{ 'login.mail.placeholder'| translate }}</label>
-    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+    <input type="text" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
       placeholder="{{ 'login.mail.placeholder' | translate }}" />
     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
       <div *ngIf="f.email.errors.required">{{ 'login.mail.error.invalid' | translate }}</div>
@@ -10,7 +10,7 @@
   </div>
   <div class="form-group">
     <label for="wachtwoord">{{ 'login.password.placeholder'| translate }}</label>
-    <input type="password" formControlName="wachtwoord" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+    <input type="password" id="wachtwoord" formControlName="wachtwoord" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
       placeholder="{{ 'login.password.placeholder' | translate }}" />
     <div *ngIf="submitted && f.wachtwoord.errors" class="invalid-feedback">
       <div *ngIf="f.wachtwoord.errors.required">{{ 'login.password.error.empty' | translate }}</div>

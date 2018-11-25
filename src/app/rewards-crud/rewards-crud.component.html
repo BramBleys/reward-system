@@ -17,7 +17,7 @@
         <th class="text-center">{{ 'rewardsCrud.points' | translate }}</th>
         <th class="text-center">{{ 'rewardsCrud.available' | translate }}</th>
         <th class="text-center">
-          <button type="button" (click)="open(add)" class="btn btn-link addChangeDelBtn" placement="top" ngbTooltip="Add new reward"><i class="fas fa-plus-circle fa-lg"></i></button>
+          <button type="button" (click)="open(add)" class="btn btn-link addChangeDelBtn" placement="top" ngbTooltip="{{ 'rewardsCrud.addNewReward' | translate }}"><i class="fas fa-plus-circle fa-lg"></i></button>
         </th>
       </tr>
       </thead>
@@ -30,9 +30,9 @@
         <td class="text-center">{{reward.beschikbaar ? 'Yes' : 'No'}}</td>
         <td class="text-center">
           <button (click)="editReward(reward._id); open(edit)" class="btn addChangeDelBtn btn-link" placement="top"
-                  ngbTooltip="Change reward"><i class="fas fa-edit"></i></button>
+                  ngbTooltip="{{ 'rewardsCrud.changeReward' | translate }}"><i class="fas fa-edit"></i></button>
           <button (click)="deleteReward(reward._id)" class="btn btn-link addChangeDelBtn" placement="top"
-                  ngbTooltip="Delete reward"><i class="fas fa-trash-alt"></i>
+                  ngbTooltip="{{ 'rewardsCrud.deleteReward' | translate }}"><i class="fas fa-trash-alt"></i>
           </button>
         </td>
       </tr>
