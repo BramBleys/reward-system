@@ -67,7 +67,7 @@ export class OpdrachtenCrudComponent implements OnInit {
   }
 
   getAssignments() {
-    this.opdrachtService.getAssignmentsFiltered({}).subscribe((data) => (this.opdrachten = data));
+    this.opdrachtService.getAssignmentsFiltered({private: false}).subscribe((data) => (this.opdrachten = data));
   }
 
   getTypes() {
