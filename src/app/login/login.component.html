@@ -9,20 +9,15 @@
           <div class="form-group">
             <label for="email">{{ 'login.mail.placeholder'| translate }}</label>
             <input type="email" id="email" formControlName="email" class="form-control"
-                   [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+                   
                    placeholder="{{ 'login.mail.placeholder' | translate }}"/>
-            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-              <div *ngIf="f.email.errors.required">{{ 'login.mail.error.invalid' | translate }}</div>
-            </div>
+            
           </div>
           <div class="form-group">
             <label for="password">{{ 'login.password.placeholder'| translate }}</label>
             <input type="password" id="password" formControlName="password" class="form-control"
-                   [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
                    placeholder="{{ 'login.password.placeholder' | translate }}"/>
-            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-              <div *ngIf="f.password.errors.required">{{ 'login.password.error.empty' | translate }}</div>
-            </div>
+            
           </div>
           <div class="form-group">
             <button [disabled]="loading" class="btn  btn-primary mr-4">{{ 'header.login' | translate }}</button>
